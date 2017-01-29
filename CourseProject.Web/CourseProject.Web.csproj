@@ -221,6 +221,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="TestPage.aspx" />
+    <Content Include="Test\TestControl.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -386,6 +388,25 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="TestPage.aspx.cs">
+      <DependentUpon>TestPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestPage.aspx.designer.cs">
+      <DependentUpon>TestPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\FindPersonEventArgs.cs" />
+    <Compile Include="Test\ITestView.cs" />
+    <Compile Include="Test\Person.cs" />
+    <Compile Include="Test\TestControl.ascx.cs">
+      <DependentUpon>TestControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\TestControl.ascx.designer.cs">
+      <DependentUpon>TestControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\TestModel.cs" />
+    <Compile Include="Test\TestPresenter.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
