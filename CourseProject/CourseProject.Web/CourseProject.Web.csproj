@@ -418,6 +418,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CourseProject.Data\CourseProject.Data.csproj">
+      <Project>{9b188619-2704-4d00-8c75-ef2a42171618}</Project>
+      <Name>CourseProject.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CourseProject.Models\CourseProject.Models.csproj">
+      <Project>{da9e8888-beba-4db3-bfea-d9867d4d7ea0}</Project>
+      <Name>CourseProject.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
