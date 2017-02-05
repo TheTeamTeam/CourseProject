@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Web;
-using System.Web.UI;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Owin;
+using WebFormsMvp;
+using WebFormsMvp.Web;
 using CourseProject.Web.Identity;
+using CourseProject.Web.Account.Views;
+using CourseProject.Web.Account.Models;
+using CourseProject.Web.Account.EventArguments;
+using CourseProject.Web.Account.Presenters;
 
 namespace CourseProject.Web.Account
 {
-    public partial class Login : Page
+    [PresenterBinding(typeof(LoginPresenter))]
+    public partial class Login : MvpPage<LoginModel>, ILoginView
     {
+        public event EventHandler<LoginEventArgs> LoggingIn;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
@@ -27,15 +33,11 @@ namespace CourseProject.Web.Account
         {
             if (IsValid)
             {
-                // Validate the user password
-                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                var signinManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
-
                 // This doen't count login failures towards account lockout
                 // To enable password failures to trigger lockout, change to shouldLockout: true
-                var result = signinManager.PasswordSignIn(this.UserName.Text, this.Password.Text, this.RememberMe.Checked, shouldLockout: false);
+                this.LoggingIn?.Invoke(this, new LoginEventArgs(this.Context, this.UserName.Text, this.Password.Text, this.RememberMe.Checked, shouldLockOut: false));
 
-                switch (result)
+                switch (this.Model.SignInStatus)
                 {
                     case SignInStatus.Success:
                         IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
@@ -44,7 +46,7 @@ namespace CourseProject.Web.Account
                         Response.Redirect("/Account/Lockout");
                         break;
                     case SignInStatus.RequiresVerification:
-                        Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}", 
+                        Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}",
                                                         Request.QueryString["ReturnUrl"],
                                                         RememberMe.Checked),
                                           true);
