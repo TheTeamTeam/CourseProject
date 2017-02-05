@@ -5,7 +5,8 @@ using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
-using CourseProject.Web.Models;
+using CourseProject.Models;
+using CourseProject.Web.Identity;
 
 namespace CourseProject.Web.Account
 {
@@ -15,7 +16,15 @@ namespace CourseProject.Web.Account
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
-            var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
+            var user = new User()
+            {
+                UserName = this.UserName.Text,
+                Email = this.Email.Text,
+                FirstName = this.FirstName.Text,
+                LastName = this.LastName.Text,
+                Age = int.Parse(this.Age.Text)
+            };
+
             IdentityResult result = manager.Create(user, Password.Text);
             if (result.Succeeded)
             {

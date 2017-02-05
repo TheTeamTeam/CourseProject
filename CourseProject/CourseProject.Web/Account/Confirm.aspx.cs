@@ -4,7 +4,7 @@ using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
-using CourseProject.Web.Models;
+using CourseProject.Web.Identity;
 
 namespace CourseProject.Web.Account
 {

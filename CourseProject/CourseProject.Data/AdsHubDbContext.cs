@@ -6,19 +6,26 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace CourseProject.Data
 {
-    public class AdsHubDbContext : DbContext
+    public class AdsHubDbContext : IdentityDbContext<User>
     {
         public AdsHubDbContext() : base("AdsHub")
         {
+            
         }
 
         public virtual IDbSet<Advertisement> Advertisements { get; set; }
-        public virtual IDbSet<User> Users { get; set; }
+        // public virtual IDbSet<User> Users { get; set; }
         public virtual IDbSet<City> Cities { get; set; }
         public virtual IDbSet<Category> Categories { get; set; }
+
+        public static AdsHubDbContext Create()
+        {
+            return new AdsHubDbContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

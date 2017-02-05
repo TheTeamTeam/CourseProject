@@ -14,7 +14,7 @@ namespace CourseProject.Web
         {
             using(var context = new AdsHubDbContext())
             {
-                var usernames = context.Users.Select(x=>x.Username).ToList();
+                var usernames = context.Users.Select(x=>x.UserName).ToList();
                 this.Sth.Text = string.Join(", ", usernames);
             }
         }

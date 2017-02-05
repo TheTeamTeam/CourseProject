@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
-using CourseProject.Web.Models;
+using CourseProject.Web.Identity;
 
 namespace CourseProject.Web.Account
 {

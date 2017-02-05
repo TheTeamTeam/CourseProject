@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace CourseProject.Models
 {
-    public class User
+    public class User : IdentityUser
     {
         private ICollection<Advertisement> savedAds;
         private ICollection<Advertisement> upcomingAds;
@@ -21,13 +24,13 @@ namespace CourseProject.Models
             this.followedUsers = new HashSet<User>();
         }
 
-        public int Id { get; set; }
+        // public int Id { get; set; }
 
-        [Required]
-        [Index(IsUnique = true)]
-        [MinLength(6)]
-        [MaxLength(20)]
-        public string Username { get; set; }
+        //[Required]
+        //[Index(IsUnique = true)]
+        //[MinLength(6)]
+        //[MaxLength(20)]
+        //public string Username { get; set; }
 
         [Required]
         [MinLength(3)]
@@ -38,12 +41,9 @@ namespace CourseProject.Models
         [MinLength(3)]
         [MaxLength(20)]
         public string LastName { get; set; }
-        
-        [Range(12,120)]
-        public int? Age { get; set; }
 
-        [Required]
-        public string Password { get; set; }
+        [Range(12, 120)]
+        public int? Age { get; set; }
 
         public virtual ICollection<Advertisement> SavedAds
         {
@@ -67,6 +67,19 @@ namespace CourseProject.Models
             {
                 this.upcomingAds = value;
             }
+        }
+
+        public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)
+        {
+            // note the authenticationtype must match the one defined in cookieauthenticationoptions.authenticationtype
+            var useridentity = manager.CreateIdentity(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // add custom user claims here
+            return useridentity;
+        }
+
+        public Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
+        {
+            return Task.FromResult(GenerateUserIdentity(manager));
         }
 
         public virtual ICollection<User> FollowedUsers

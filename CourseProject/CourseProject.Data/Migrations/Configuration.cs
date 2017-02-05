@@ -5,11 +5,14 @@ namespace CourseProject.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CourseProject.Data.AdsHubDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<CourseProject.Data.AdsHubDbContext>
     {
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
+
+            // TODO: Remove when db models are final.
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(CourseProject.Data.AdsHubDbContext context)
