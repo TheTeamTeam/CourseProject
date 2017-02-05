@@ -42,5 +42,10 @@ namespace CourseProject.Tests.Web.Account.Presenters.Mocks
         {
             return this.logginInInvocationList.Contains(methodName);
         }
+
+        public void InvokeLogginIn(object sender, LoginEventArgs e)
+        {
+            this.logginIn?.Invoke(sender, e);
+        }
     }
 }

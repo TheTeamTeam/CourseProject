@@ -267,6 +267,8 @@
       <DependentUpon>Lockout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\EventArguments\LoginEventArgs.cs" />
+    <Compile Include="Account\EventArguments\RegisterEventArgs.cs" />
+    <Compile Include="Account\EventArguments\SignInEventArgs.cs" />
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -296,6 +298,7 @@
       <DependentUpon>ManagePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Models\LoginModel.cs" />
+    <Compile Include="Account\Models\RegisterModel.cs" />
     <Compile Include="Account\OpenAuthProviders.ascx.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -304,6 +307,7 @@
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
     </Compile>
     <Compile Include="Account\Presenters\LoginPresenter.cs" />
+    <Compile Include="Account\Presenters\RegisterPresenter.cs" />
     <Compile Include="Account\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -347,6 +351,7 @@
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Views\ILoginView.cs" />
+    <Compile Include="Account\Views\IRegisterView.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>

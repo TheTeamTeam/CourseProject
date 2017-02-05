@@ -1,44 +1,49 @@
 ﻿using System;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
+using WebFormsMvp;
+using WebFormsMvp.Web;
 using CourseProject.Models;
 using CourseProject.Web.Identity;
+using CourseProject.Web.Account.Models;
+using CourseProject.Web.Account.Views;
+using CourseProject.Web.Account.EventArguments;
+using CourseProject.Web.Account.Presenters;
 
 namespace CourseProject.Web.Account
 {
-    public partial class Register : Page
+    [PresenterBinding(typeof(RegisterPresenter))]
+    public partial class Register : MvpPage<RegisterModel>, IRegisterView
     {
+        public event EventHandler<RegisterEventArgs> Registering;
+        public event EventHandler<SignInEventArgs> SigningIn;
+
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
             var user = new User()
             {
-                UserName = this.UserName.Text,
-                Email = this.Email.Text,
-                FirstName = this.FirstName.Text,
-                LastName = this.LastName.Text,
-                Age = int.Parse(this.Age.Text)
+                UserName = UserName.Text,
+                Email = Email.Text,
+                FirstName = FirstName.Text,
+                LastName = LastName.Text,
+                Age = int.Parse(Age.Text)
             };
 
-            IdentityResult result = manager.Create(user, Password.Text);
-            if (result.Succeeded)
+            this.Registering?.Invoke(this, new RegisterEventArgs(this.Context, user, this.Password.Text));
+
+            if (this.Model.IdentityResult.Succeeded)
             {
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 //string code = manager.GenerateEmailConfirmationToken(user.Id);
                 //string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
                 //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
 
-                signInManager.SignIn( user, isPersistent: false, rememberBrowser: false);
+                this.SigningIn?.Invoke(this, new SignInEventArgs(this.Context, user));
+
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
             }
             else 
             {
-                ErrorMessage.Text = result.Errors.FirstOrDefault();
+                ErrorMessage.Text = this.Model.IdentityResult.Errors.FirstOrDefault();
             }
         }
     }

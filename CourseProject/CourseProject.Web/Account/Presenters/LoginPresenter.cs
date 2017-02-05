@@ -12,11 +12,11 @@ namespace CourseProject.Web.Account.Presenters
         public LoginPresenter(ILoginView view)
             : base(view)
         {
-            this.View.LoggingIn += View_LoggingIn;
+            this.View.LoggingIn += OnLoggingIn;
         }
 
         //TODO: remove public
-        public void View_LoggingIn(object sender, LoginEventArgs e)
+        public void OnLoggingIn(object sender, LoginEventArgs e)
         {
             var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signinManager = e.Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
