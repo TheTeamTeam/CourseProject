@@ -192,6 +192,7 @@
     <Content Include="Account\AdditionalFunctionalities\ManageLogins.aspx" />
     <Content Include="Account\AdditionalFunctionalities\ManagePassword.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
+    <Content Include="Account\Profile.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\AdditionalFunctionalities\RegisterExternalLogin.aspx" />
     <Content Include="Account\AdditionalFunctionalities\ResetPassword.aspx" />
@@ -286,6 +287,7 @@
     <Compile Include="Account\AdditionalFunctionalities\Lockout.aspx.designer.cs">
       <DependentUpon>Lockout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\EventArguments\GetUserEventArgs.cs" />
     <Compile Include="Account\EventArguments\LoginEventArgs.cs" />
     <Compile Include="Account\EventArguments\RegisterEventArgs.cs" />
     <Compile Include="Account\EventArguments\SignInEventArgs.cs" />
@@ -318,6 +320,7 @@
       <DependentUpon>ManagePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Models\LoginModel.cs" />
+    <Compile Include="Account\Models\ProfileModel.cs" />
     <Compile Include="Account\Models\RegisterModel.cs" />
     <Compile Include="Account\OpenAuthProviders.ascx.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
@@ -327,7 +330,15 @@
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
     </Compile>
     <Compile Include="Account\Presenters\LoginPresenter.cs" />
+    <Compile Include="Account\Presenters\ProfilePresenter.cs" />
     <Compile Include="Account\Presenters\RegisterPresenter.cs" />
+    <Compile Include="Account\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -372,6 +383,7 @@
     </Compile>
     <Compile Include="Account\Views\ILoginView.cs" />
     <Compile Include="Account\Views\IRegisterView.cs" />
+    <Compile Include="Account\Views\IProfileView.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
