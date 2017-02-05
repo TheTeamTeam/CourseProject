@@ -8,5 +8,7 @@ namespace CourseProject.Web.Test
     public class TestModel
     {
         public Person Person { get; set; }
+
+        public IEnumerable<string> Usernames { get; set; }
     }
 }

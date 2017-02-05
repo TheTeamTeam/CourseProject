@@ -4,3 +4,4 @@
 <asp:Button runat="server" ID="Search" OnClick="Search_Click" Text="Search"/>
 <p><%# Model.Person.FirstName %></p>
 <p><%# Model.Person.Age %></p>
+<asp:Literal runat="server" ID="UsernamesLiteral"></asp:Literal>

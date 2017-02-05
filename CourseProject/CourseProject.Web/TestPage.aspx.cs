@@ -12,11 +12,6 @@ namespace CourseProject.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            using(var context = new AdsHubDbContext())
-            {
-                var usernames = context.Users.Select(x=>x.UserName).ToList();
-                this.Sth.Text = string.Join(", ", usernames);
-            }
         }
     }
 }

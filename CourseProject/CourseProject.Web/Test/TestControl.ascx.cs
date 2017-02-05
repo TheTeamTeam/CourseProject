@@ -13,10 +13,12 @@ namespace CourseProject.Web.Test
     public partial class TestControl : MvpUserControl<TestModel>, ITestView
     {
         public event EventHandler<FindPersonEventArgs> Finding;
+        public event EventHandler GettingUsernames;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            GettingUsernames(this, new EventArgs());
+            this.UsernamesLiteral.Text = string.Join(", ", this.Model.Usernames);
         }
 
         protected void Search_Click(object sender, EventArgs e)

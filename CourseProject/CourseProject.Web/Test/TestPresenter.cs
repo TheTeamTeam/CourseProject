@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CourseProject.Data.Repositories;
+using CourseProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,9 +12,20 @@ namespace CourseProject.Web.Test
     {
         private ICollection<Person> people;
 
-        public TestPresenter(ITestView view) : base(view)
+        private readonly IGenericRepository<User> usersRepository;
+
+        public TestPresenter(ITestView view, IGenericRepository<User> usersRepository) 
+            : base(view)
         {
-            View.Finding += Finding;
+            if(usersRepository == null)
+            {
+                throw new ArgumentNullException("Users repository cannot be null!");
+            }
+
+            this.usersRepository = usersRepository;
+            this.View.GettingUsernames += OnGettingUsernames;
+
+            this.View.Finding += Finding;
             this.people = new List<Person>
             {
                 new Person {FirstName="Pesho", Age=5 },
@@ -21,10 +34,16 @@ namespace CourseProject.Web.Test
             View.Model.Person = this.people.First();
         }
 
+        private void OnGettingUsernames(object sender, EventArgs e)
+        {
+            var usernames = this.usersRepository.Select(x => x.UserName).ToList();
+            this.View.Model.Usernames = usernames;
+        }
+
         private void Finding(object sender, FindPersonEventArgs e)
         {
             var name = e.Name;
-            View.Model.Person = this.people.FirstOrDefault(x => x.FirstName == name) ?? this.people.First();
+            this.View.Model.Person = this.people.FirstOrDefault(x => x.FirstName == name) ?? this.people.First();
         }
     }
 }

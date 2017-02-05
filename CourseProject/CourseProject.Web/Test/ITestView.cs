@@ -10,5 +10,7 @@ namespace CourseProject.Web.Test
     public interface ITestView : IView<TestModel>
     {
         event EventHandler<FindPersonEventArgs> Finding;
+
+        event EventHandler GettingUsernames;
     }
 }

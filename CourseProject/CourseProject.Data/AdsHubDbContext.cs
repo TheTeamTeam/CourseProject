@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace CourseProject.Data
 {
-    public class AdsHubDbContext : IdentityDbContext<User>
+    public class AdsHubDbContext : IdentityDbContext<User>, IAdsHubDbContext
     {
         public AdsHubDbContext() : base("AdsHub")
         {
@@ -37,6 +37,12 @@ namespace CourseProject.Data
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        // TODO: deicide how to implement method
+        IDbSet<T> IAdsHubDbContext.Set<T>()
+        { 
+            return base.Set<T>();
         }
     }
 }

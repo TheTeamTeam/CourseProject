@@ -3,5 +3,4 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <uc:TestControl runat="server" />
-    <asp:Literal ID="Sth" runat="server"></asp:Literal>
 </asp:Content>
