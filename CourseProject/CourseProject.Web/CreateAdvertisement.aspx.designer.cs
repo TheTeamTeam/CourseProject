@@ -49,21 +49,21 @@ namespace CourseProject.Web {
         protected global::System.Web.UI.WebControls.TextBox Price;
         
         /// <summary>
-        /// Category control.
+        /// Categories control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Category;
+        protected global::System.Web.UI.WebControls.DropDownList Categories;
         
         /// <summary>
-        /// City control.
+        /// Cities control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox City;
+        protected global::System.Web.UI.WebControls.DropDownList Cities;
     }
 }

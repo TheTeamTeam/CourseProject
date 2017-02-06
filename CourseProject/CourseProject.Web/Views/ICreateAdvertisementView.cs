@@ -10,6 +10,7 @@ namespace CourseProject.Web.Views
 {
     public interface ICreateAdvertisementView : IView<CreateAdvertisementModel>
     {
+        event EventHandler MyInit;
         event EventHandler<CreatingAdvertisementEventArgs> CreatingAdvertisement;
     }
 }

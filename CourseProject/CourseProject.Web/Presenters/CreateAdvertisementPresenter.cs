@@ -16,7 +16,15 @@ namespace CourseProject.Web.Presenters
         {
             this.adsService = adsService;
 
+            this.View.MyInit += OnInit;
             this.View.CreatingAdvertisement += OnCreatingAdvertisement;
+        }
+
+        private void OnInit(object sender, System.EventArgs e)
+        {
+            //this.adsService.GetUsers();
+            this.View.Model.Categories = this.adsService.GetCategories();
+            this.View.Model.Cities = this.adsService.GetCities();
         }
 
         private void OnCreatingAdvertisement(object sender, CreatingAdvertisementEventArgs e)

@@ -29,15 +29,19 @@
             </div>
         </div>
          <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Category" CssClass="col-md-2 control-label">Category</asp:Label>
-            <div class="col-md-10">
+            <asp:Label runat="server" AssociatedControlID="Categories" CssClass="col-md-2 control-label">Category</asp:Label>
+             <div class="col-md-10">
+                <asp:DropDownList runat="server" ID="Categories" CssClass="form-control" DataTextField="Name" DataValueField="Id"></asp:DropDownList>
+             </div>
+            <%--<div class="col-md-10">
                 <asp:TextBox runat="server" ID="Category" CssClass="form-control" />
-            </div>
+            </div>--%>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="City" CssClass="col-md-2 control-label">City</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="Cities" CssClass="col-md-2 control-label">City</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="City" CssClass="form-control"/>
+                <asp:DropDownList runat="server" ID="Cities" CssClass="form-control" DataTextField="Name" DataValueField="Id"></asp:DropDownList>
+                <%--<asp:TextBox runat="server" ID="Cities" CssClass="form-control"/>--%>
             </div>
         </div>
         <div class="form-group">

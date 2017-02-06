@@ -2,6 +2,7 @@
 using CourseProject.Data.Repositories;
 using CourseProject.Data.UnitsOfWork;
 using CourseProject.Models;
+using System.Collections.Generic;
 
 namespace CourseProject.Services
 {
@@ -11,7 +12,9 @@ namespace CourseProject.Services
         private readonly IGenericRepository<Category> categoriesRepository;
         private readonly IGenericRepository<City> citiesRepository;
         private readonly IGenericRepository<Advertisement> adsRepository;
-        
+        private readonly IGenericRepository<User> usersRepository;
+
+
         public AdvertisementsService(
             IUnitOfWork unitOfWork,
             IGenericRepository<Category> categoriesRepository,
@@ -25,12 +28,20 @@ namespace CourseProject.Services
             this.adsRepository = adsRepository;
         }
 
+        public IEnumerable<Category> GetCategories()
+        {
+            return this.categoriesRepository.GetAll();
+        }
+
+        public IEnumerable<City> GetCities()
+        {
+            return this.citiesRepository.GetAll();
+        }
+
         public void CreateAdvertisement(Advertisement ad)
         {
             using (this.unitOfWork)
             {
-                this.categoriesRepository.Add(ad.Category);
-                this.citiesRepository.Add(ad.City);
                 this.adsRepository.Add(ad);
                 this.unitOfWork.Commit();
             }

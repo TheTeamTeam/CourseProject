@@ -8,6 +8,8 @@ namespace CourseProject.Web.Models
 {
     public class CreateAdvertisementModel
     {
-        public Advertisement Advertisement { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
+
+        public IEnumerable<City> Cities { get; set; }
     }
 }

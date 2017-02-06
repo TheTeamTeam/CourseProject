@@ -18,19 +18,32 @@ namespace CourseProject.Web
     [PresenterBinding(typeof(CreateAdvertisementPresenter))]
     public partial class CreateAdvertisement : MvpPage<CreateAdvertisementModel>, ICreateAdvertisementView
     {
+        public event EventHandler MyInit;
         public event EventHandler<CreatingAdvertisementEventArgs> CreatingAdvertisement;
 
-        protected void CreateAdvertisement_Click(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            var category = new Category()
-            {
-                Name = Category.Text
-            };
+            this.MyInit?.Invoke(sender, e);
 
-            var city = new City()
-            {
-                Name = City.Text
-            };
+            if (!IsPostBack)
+            {             
+                this.Categories.DataSource = this.Model.Categories;
+                this.Categories.DataBind();
+
+                this.Cities.DataSource = this.Model.Cities;
+                this.Cities.DataBind();
+            }
+        }
+        protected void CreateAdvertisement_Click(object sender, EventArgs e)
+        { 
+
+            var id = this.Page.User.Identity.GetUserId();
+
+            var selectedCategoryId = int.Parse(this.Categories.SelectedValue);
+            var category = this.Model.Categories.FirstOrDefault(ca => ca.Id == selectedCategoryId);
+
+            var selectedCityId = int.Parse(this.Cities.SelectedValue);
+            var city = this.Model.Cities.FirstOrDefault(c => c.Id == selectedCityId);
 
             var advertisement = new Advertisement()
             {
@@ -39,12 +52,12 @@ namespace CourseProject.Web
                 Places = int.Parse(Places.Text),
                 Price = decimal.Parse(Price.Text),
                 Category = category,
-                City = city
+                CategoryId = category.Id,
+                City = city,
+                CityId = city.Id,
+                SellerId = id
             };
-
-            var id = this.Page.User.Identity.GetUserId();
-            advertisement.SellerId = id;
-
+            
             this.CreatingAdvertisement?.Invoke(sender, new CreatingAdvertisementEventArgs(advertisement));
         }
     }

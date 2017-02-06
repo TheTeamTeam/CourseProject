@@ -25,10 +25,10 @@ namespace CourseProject.Web.Account.Presenters
             
             IdentityResult result = manager.Create(e.User, e.Password);
             
-            if (result.Succeeded)
-            {
-                manager.AddToRole(e.User.Id, "Regular");
-            }
+            //if (result.Succeeded)
+            //{
+            //    manager.AddToRole(e.User.Id, "Regular");
+            //}
 
             this.View.Model.IdentityResult = result;
         }
