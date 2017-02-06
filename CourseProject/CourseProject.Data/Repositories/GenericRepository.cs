@@ -102,5 +102,10 @@ namespace CourseProject.Data.Repositories
 
             return entry;
         }
+
+        public void SaveChanges()
+        {
+            this.Context.SaveChanges();
+        }
     }
 }

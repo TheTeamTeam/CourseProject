@@ -38,12 +38,12 @@ namespace CourseProject.Models
         [MaxLength(20)]
         public string Description { get; set; }
 
-        public int SellerId { get; set; }
+        public string SellerId { get; set; }
         public virtual User Seller { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
         public int CityId { get; set; }
-        public virtual User City { get; set; }
+        public virtual City City { get; set; }
 
         public virtual ICollection<User> UsersSaved
         {

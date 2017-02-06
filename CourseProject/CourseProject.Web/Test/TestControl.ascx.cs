@@ -17,14 +17,16 @@ namespace CourseProject.Web.Test
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            GettingUsernames(this, new EventArgs());
+            this.GettingUsernames?.Invoke(sender, e);
+            //GettingUsernames(this, new EventArgs());
             this.UsernamesLiteral.Text = string.Join(", ", this.Model.Usernames);
         }
 
         protected void Search_Click(object sender, EventArgs e)
         {
             var name = this.NameBox.Text;
-            Finding(this, new FindPersonEventArgs(name));
+            this.Finding?.Invoke(sender, new FindPersonEventArgs(name));
+            //Finding(this, new FindPersonEventArgs(name));
         }
     }
 }
