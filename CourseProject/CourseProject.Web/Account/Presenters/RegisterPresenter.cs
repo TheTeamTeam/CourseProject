@@ -1,4 +1,5 @@
 ﻿using System.Web;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using WebFormsMvp;
@@ -21,8 +22,13 @@ namespace CourseProject.Web.Account.Presenters
         {
             var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = e.Context.GetOwinContext().Get<ApplicationSignInManager>();
-           
+            
             IdentityResult result = manager.Create(e.User, e.Password);
+            
+            if (result.Succeeded)
+            {
+                manager.AddToRole(e.User.Id, "Regular");
+            }
 
             this.View.Model.IdentityResult = result;
         }
