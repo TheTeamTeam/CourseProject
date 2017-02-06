@@ -490,6 +490,10 @@
       <Project>{da9e8888-beba-4db3-bfea-d9867d4d7ea0}</Project>
       <Name>CourseProject.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CourseProject.Services\CourseProject.Services.csproj">
+      <Project>{b04986bf-c421-440a-906a-741b51bda0bb}</Project>
+      <Name>CourseProject.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

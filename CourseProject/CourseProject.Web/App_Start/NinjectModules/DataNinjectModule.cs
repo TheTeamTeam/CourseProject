@@ -1,11 +1,10 @@
-﻿using CourseProject.Data;
-using CourseProject.Data.Repositories;
-using Ninject.Modules;
+﻿using Ninject.Modules;
 using Ninject.Web.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using CourseProject.Data;
+using CourseProject.Data.Repositories;
+using CourseProject.Data.UnitsOfWork;
+using CourseProject.Services;
+using CourseProject.Services.Contracts;
 
 namespace CourseProject.Web.App_Start.NinjectModules
 {
@@ -13,8 +12,12 @@ namespace CourseProject.Web.App_Start.NinjectModules
     {
         public override void Load()
         {
+            // TODO: Bind default interfaces
+
             this.Bind<IAdsHubDbContext>().To<AdsHubDbContext>().InRequestScope();
             this.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>)).InRequestScope();
+            this.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
+            this.Bind<IAdvertisementsService>().To<AdvertisementsService>().InRequestScope();
         }
     }
 }
