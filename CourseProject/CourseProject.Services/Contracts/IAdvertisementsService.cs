@@ -5,6 +5,7 @@ namespace CourseProject.Services.Contracts
 {
     public interface IAdvertisementsService
     {
+        Advertisement GetAdById(int id);
         IEnumerable<Category> GetCategories();
 
         IEnumerable<City> GetCities();

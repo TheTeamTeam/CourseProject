@@ -67,7 +67,7 @@ namespace CourseProject.Web
                 Description = Description.Text,
                 Places = int.Parse(Places.Text),
                 Price = decimal.Parse(Price.Text),
-                ImagePath = filename != null ? "~/Images/" + filename : null,
+                ImagePath = filename != null ? "/Images/" + filename : null,
                 Category = category,
                 CategoryId = category.Id,
                 City = city,

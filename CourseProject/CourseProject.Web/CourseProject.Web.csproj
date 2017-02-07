@@ -199,6 +199,7 @@
     <Content Include="Account\AdditionalFunctionalities\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\AdditionalFunctionalities\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\AdditionalFunctionalities\VerifyPhoneNumber.aspx" />
+    <Content Include="AdDetails.aspx" />
     <Content Include="CreateAdvertisement.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -385,6 +386,13 @@
     <Compile Include="Account\Views\ILoginView.cs" />
     <Compile Include="Account\Views\IRegisterView.cs" />
     <Compile Include="Account\Views\IProfileView.cs" />
+    <Compile Include="AdDetails.aspx.cs">
+      <DependentUpon>AdDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdDetails.aspx.designer.cs">
+      <DependentUpon>AdDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreateAdvertisement.aspx.cs">
       <DependentUpon>CreateAdvertisement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -424,6 +432,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EventArguments\AdDetailsEventArgs.cs" />
     <Compile Include="EventArguments\CreatingAdvertisementEventArgs.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -431,7 +440,9 @@
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Identity\IdentityHelper.cs" />
+    <Compile Include="Models\AdDetailsModel.cs" />
     <Compile Include="Models\CreateAdvertisementModel.cs" />
+    <Compile Include="Presenters\AdDetailsPresenter.cs" />
     <Compile Include="Presenters\CreateAdvertisementPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -475,10 +486,12 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\IAdDetailsView.cs" />
     <Compile Include="Views\ICreateAdvertisementView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>

@@ -28,6 +28,11 @@ namespace CourseProject.Services
             this.adsRepository = adsRepository;
         }
 
+        public Advertisement GetAdById(int id)
+        {
+            return this.adsRepository.GetById(id);
+        }
+
         public IEnumerable<Category> GetCategories()
         {
             return this.categoriesRepository.GetAll();

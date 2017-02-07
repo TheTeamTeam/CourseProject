@@ -22,7 +22,6 @@ namespace CourseProject.Web.Presenters
 
         private void OnInit(object sender, System.EventArgs e)
         {
-            //this.adsService.GetUsers();
             this.View.Model.Categories = this.adsService.GetCategories();
             this.View.Model.Cities = this.adsService.GetCities();
         }

@@ -35,7 +35,7 @@ namespace CourseProject.Models
 
         [Required]
         [MinLength(3)]
-        [MaxLength(20)]
+        [MaxLength(500)]
         public string Description { get; set; }
 
         public string ImagePath { get; set; }
