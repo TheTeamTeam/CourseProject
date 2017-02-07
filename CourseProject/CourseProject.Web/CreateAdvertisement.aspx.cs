@@ -12,6 +12,7 @@ using WebFormsMvp;
 using WebFormsMvp.Web;
 using CourseProject.Web.EventArguments;
 using Microsoft.AspNet.Identity;
+using System.IO;
 
 namespace CourseProject.Web
 {
@@ -45,12 +46,28 @@ namespace CourseProject.Web
             var selectedCityId = int.Parse(this.Cities.SelectedValue);
             var city = this.Model.Cities.FirstOrDefault(c => c.Id == selectedCityId);
 
+            string filename = null;
+
+            if (Image.HasFile)
+            {
+                if (Image.PostedFile.ContentType == "image/jpeg" || Image.PostedFile.ContentType == "image/png")
+                {
+                    filename = Path.GetFileName(Image.FileName);
+                    Image.SaveAs(Server.MapPath("~/Images/") + filename);
+                }
+                else
+                {
+                    //TODO: File format shoud be png or jpeg
+                }
+            }
+
             var advertisement = new Advertisement()
             {
                 Name = Name.Text,
                 Description = Description.Text,
                 Places = int.Parse(Places.Text),
                 Price = decimal.Parse(Price.Text),
+                ImagePath = filename != null ? "~/Images/" + filename : null,
                 Category = category,
                 CategoryId = category.Id,
                 City = city,

@@ -38,6 +38,8 @@ namespace CourseProject.Models
         [MaxLength(20)]
         public string Description { get; set; }
 
+        public string ImagePath { get; set; }
+
         public string SellerId { get; set; }
         public virtual User Seller { get; set; }
         public int CategoryId { get; set; }
