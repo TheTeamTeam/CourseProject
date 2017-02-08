@@ -12,7 +12,7 @@ namespace CourseProject.Services
         private readonly IGenericRepository<Category> categoriesRepository;
         private readonly IGenericRepository<City> citiesRepository;
         private readonly IGenericRepository<Advertisement> adsRepository;
-        private readonly IGenericRepository<User> usersRepository;
+
 
 
         public AdvertisementsService(

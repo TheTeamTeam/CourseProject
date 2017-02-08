@@ -27,6 +27,7 @@ namespace CourseProject.Web
 
             this.MyInit?.Invoke(sender, new AdDetailsEventArgs(id));
 
+            // TODO: Bind directly ro the model ??
             this.Ad = this.Model.Advertisement;
 
             Page.DataBind();
