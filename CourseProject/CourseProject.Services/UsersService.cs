@@ -21,12 +21,22 @@ namespace CourseProject.Services
             this.usersRepository = usersRepository;
         }
 
-        public void AddAdToUpcoming(string id, Advertisement Ad)
+        public void AddAdToUpcoming(string id, Advertisement ad)
+        {
+            using (this.unitOfWork)
+            {
+                var user = this.usersRepository.GetById(id);
+                user.UpcomingAds.Add(ad);
+                this.usersRepository.Update(user);
+                this.unitOfWork.Commit();
+            }
+        }
+
+        public bool UserBookedAd(string id, Advertisement ad)
         {
             var user = this.usersRepository.GetById(id);
-            user.UpcomingAds.Add(Ad);
-            this.usersRepository.Update(user);
-            this.unitOfWork.Commit();
+
+            return user.UpcomingAds.Contains(ad);
         }
     }
 }

@@ -10,5 +10,7 @@ namespace CourseProject.Services.Contracts
 
         IEnumerable<City> GetCities();
         void CreateAdvertisement(Advertisement ad);
+
+        void DecrementFreePlaces(Advertisement ad);
     }
 }

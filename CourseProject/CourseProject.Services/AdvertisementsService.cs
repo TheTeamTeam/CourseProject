@@ -3,6 +3,7 @@ using CourseProject.Data.Repositories;
 using CourseProject.Data.UnitsOfWork;
 using CourseProject.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CourseProject.Services
 {
@@ -12,8 +13,6 @@ namespace CourseProject.Services
         private readonly IGenericRepository<Category> categoriesRepository;
         private readonly IGenericRepository<City> citiesRepository;
         private readonly IGenericRepository<Advertisement> adsRepository;
-
-
 
         public AdvertisementsService(
             IUnitOfWork unitOfWork,
@@ -48,6 +47,16 @@ namespace CourseProject.Services
             using (this.unitOfWork)
             {
                 this.adsRepository.Add(ad);
+                this.unitOfWork.Commit();
+            }
+        }
+
+        public void DecrementFreePlaces(Advertisement ad)
+        {
+            using (this.unitOfWork)
+            {
+                ad.Places -= 1;
+                this.adsRepository.Update(ad);
                 this.unitOfWork.Commit();
             }
         }

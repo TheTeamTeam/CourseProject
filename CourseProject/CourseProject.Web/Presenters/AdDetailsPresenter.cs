@@ -33,7 +33,15 @@ namespace CourseProject.Web.Presenters
 
         private void View_Book(object sender, BookAdEventArgs e)
         {
-            this.usersService.AddAdToUpcoming(e.Id, e.Ad);
+            if (!this.usersService.UserBookedAd(e.Id, e.Ad))
+            {
+                this.usersService.AddAdToUpcoming(e.Id, e.Ad);
+                this.adsService.DecrementFreePlaces(e.Ad);
+            }
+            else
+            {
+                //TODO: already booked this ad
+            }
         }
     }
 }
