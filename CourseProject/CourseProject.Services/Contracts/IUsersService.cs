@@ -6,6 +6,10 @@ namespace CourseProject.Services.Contracts
     {
         void AddAdToUpcoming(string id, Advertisement Ad);
 
+        void AddAdToSaved(string id, Advertisement ad);
+
         bool UserBookedAd(string id, Advertisement ad);
+
+        bool UserSavedAd(string id, Advertisement ad);
     }
 }

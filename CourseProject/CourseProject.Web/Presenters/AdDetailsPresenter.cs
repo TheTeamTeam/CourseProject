@@ -23,7 +23,8 @@ namespace CourseProject.Web.Presenters
             this.usersService = usersService;
 
             this.View.MyInit += this.View_MyInit;
-            this.View.Book += View_Book;
+            this.View.BookAd += View_BookAd;
+            this.View.SaveAd += View_SaveAd;
         }
 
         private void View_MyInit(object sender, AdDetailsEventArgs e)
@@ -31,7 +32,7 @@ namespace CourseProject.Web.Presenters
             this.View.Model.Advertisement = this.adsService.GetAdById(e.Id);
         }
 
-        private void View_Book(object sender, BookAdEventArgs e)
+        private void View_BookAd(object sender, BookAdEventArgs e)
         {
             if (!this.usersService.UserBookedAd(e.Id, e.Ad))
             {
@@ -41,6 +42,18 @@ namespace CourseProject.Web.Presenters
             else
             {
                 //TODO: already booked this ad
+            }
+        }
+
+        private void View_SaveAd(object sender, BookAdEventArgs e)
+        {
+            if(!this.usersService.UserSavedAd(e.Id, e.Ad))
+            {
+                this.usersService.AddAdToSaved(e.Id, e.Ad);
+            }
+            else
+            {
+                //TODO: already saved this ad
             }
         }
     }

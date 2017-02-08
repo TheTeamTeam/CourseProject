@@ -19,7 +19,8 @@ namespace CourseProject.Web
     public partial class AdDetails : MvpPage<AdDetailsModel>, IAdDetailsView
     {
         public event EventHandler<AdDetailsEventArgs> MyInit;
-        public event EventHandler<BookAdEventArgs> Book;
+        public event EventHandler<BookAdEventArgs> BookAd;
+        public event EventHandler<BookAdEventArgs> SaveAd;
 
         public Advertisement Ad { get; private set; }
         protected void Page_Load(object sender, EventArgs e)
@@ -39,12 +40,14 @@ namespace CourseProject.Web
         {
             var id = this.Page.User.Identity.GetUserId();
 
-            this.Book?.Invoke(sender, new BookAdEventArgs(id, Model.Advertisement));
+            this.BookAd?.Invoke(sender, new BookAdEventArgs(id, Model.Advertisement));
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
+            var id = this.Page.User.Identity.GetUserId();
 
+            this.SaveAd?.Invoke(sender, new BookAdEventArgs(id, Model.Advertisement));
         }
     }
 }

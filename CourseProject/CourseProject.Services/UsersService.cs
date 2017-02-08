@@ -32,11 +32,29 @@ namespace CourseProject.Services
             }
         }
 
+        public void AddAdToSaved(string id, Advertisement ad)
+        {
+            using (this.unitOfWork)
+            {
+                var user = this.usersRepository.GetById(id);
+                user.SavedAds.Add(ad);
+                this.usersRepository.Update(user);
+                this.unitOfWork.Commit();
+            }
+        }
+
         public bool UserBookedAd(string id, Advertisement ad)
         {
             var user = this.usersRepository.GetById(id);
 
             return user.UpcomingAds.Contains(ad);
+        }
+
+        public bool UserSavedAd(string id, Advertisement ad)
+        {
+            var user = this.usersRepository.GetById(id);
+
+            return user.SavedAds.Contains(ad);
         }
     }
 }
