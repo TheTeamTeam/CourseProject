@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CourseProject.Web.Account
+namespace CourseProject.Web.Users
 {
 
 

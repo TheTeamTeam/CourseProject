@@ -1,8 +1,8 @@
 ﻿using CourseProject.Models;
 
-namespace CourseProject.Web.Account.Models
+namespace CourseProject.Web.Models
 {
-    public class ProfileModel
+    public class PersonalProfileModel
     {
         public User ProfileUser { get; set; }
     }

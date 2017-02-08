@@ -4,6 +4,10 @@ namespace CourseProject.Services.Contracts
 {
     public interface IUsersService
     {
+        User GetUserById(string id);
+
+        User GetUserByUsername(string username);
+
         void AddAdToUpcoming(string id, Advertisement Ad);
 
         void AddAdToSaved(string id, Advertisement ad);

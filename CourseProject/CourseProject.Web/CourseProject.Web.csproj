@@ -192,7 +192,7 @@
     <Content Include="Account\AdditionalFunctionalities\ManageLogins.aspx" />
     <Content Include="Account\AdditionalFunctionalities\ManagePassword.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
-    <Content Include="Account\Profile.aspx" />
+    <Content Include="Users\Profile.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\AdditionalFunctionalities\RegisterExternalLogin.aspx" />
     <Content Include="Account\AdditionalFunctionalities\ResetPassword.aspx" />
@@ -247,6 +247,7 @@
     <Content Include="Site.Master" />
     <Content Include="TestPage.aspx" />
     <Content Include="Test\TestControl.ascx" />
+    <Content Include="Users\UserProfile.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -254,6 +255,7 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Site.Mobile.Master" />
+    <Content Include="Users\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -290,7 +292,7 @@
     <Compile Include="Account\AdditionalFunctionalities\Lockout.aspx.designer.cs">
       <DependentUpon>Lockout.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\EventArguments\GetUserEventArgs.cs" />
+    <Compile Include="EventArguments\GetUserByIdEventArgs.cs" />
     <Compile Include="Account\EventArguments\LoginEventArgs.cs" />
     <Compile Include="Account\EventArguments\RegisterEventArgs.cs" />
     <Compile Include="Account\EventArguments\SignInEventArgs.cs" />
@@ -323,7 +325,9 @@
       <DependentUpon>ManagePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Models\LoginModel.cs" />
-    <Compile Include="Account\Models\ProfileModel.cs" />
+    <Compile Include="EventArguments\GetUserByUsernameEventArgs.cs" />
+    <Compile Include="EventArguments\RoleNameEventArgs.cs" />
+    <Compile Include="Models\PersonalProfileModel.cs" />
     <Compile Include="Account\Models\RegisterModel.cs" />
     <Compile Include="Account\OpenAuthProviders.ascx.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
@@ -333,13 +337,14 @@
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
     </Compile>
     <Compile Include="Account\Presenters\LoginPresenter.cs" />
-    <Compile Include="Account\Presenters\ProfilePresenter.cs" />
+    <Compile Include="Models\UserProfileModel.cs" />
+    <Compile Include="Presenters\PersonalProfilePresenter.cs" />
     <Compile Include="Account\Presenters\RegisterPresenter.cs" />
-    <Compile Include="Account\Profile.aspx.cs">
+    <Compile Include="Users\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Profile.aspx.designer.cs">
+    <Compile Include="Users\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Register.aspx.cs">
@@ -386,7 +391,7 @@
     </Compile>
     <Compile Include="Account\Views\ILoginView.cs" />
     <Compile Include="Account\Views\IRegisterView.cs" />
-    <Compile Include="Account\Views\IProfileView.cs" />
+    <Compile Include="Views\IPersonalProfileView.cs" />
     <Compile Include="AdDetails.aspx.cs">
       <DependentUpon>AdDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -446,6 +451,7 @@
     <Compile Include="Models\CreateAdvertisementModel.cs" />
     <Compile Include="Presenters\AdDetailsPresenter.cs" />
     <Compile Include="Presenters\CreateAdvertisementPresenter.cs" />
+    <Compile Include="Presenters\UserProfilePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -481,6 +487,13 @@
     </Compile>
     <Compile Include="Test\TestModel.cs" />
     <Compile Include="Test\TestPresenter.cs" />
+    <Compile Include="Users\UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -490,6 +503,7 @@
     </Compile>
     <Compile Include="Views\IAdDetailsView.cs" />
     <Compile Include="Views\ICreateAdvertisementView.cs" />
+    <Compile Include="Views\IUserProfileView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

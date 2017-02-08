@@ -1,9 +1,8 @@
-﻿using CourseProject.Services.Contracts;
+﻿using System.Linq;
 using CourseProject.Data.Repositories;
 using CourseProject.Data.UnitsOfWork;
 using CourseProject.Models;
-using System.Collections.Generic;
-using System;
+using CourseProject.Services.Contracts;
 
 namespace CourseProject.Services
 {
@@ -19,6 +18,17 @@ namespace CourseProject.Services
             // TODO: Gaurd
             this.unitOfWork = unitOfWork;
             this.usersRepository = usersRepository;
+        }
+
+        public User GetUserById(string id)
+        {
+            return this.usersRepository.GetById(id);
+        }
+
+        public User GetUserByUsername(string username)
+        {
+            // TODO: Find method in repostory ??
+            return this.usersRepository.GetAll(x => x.UserName == username).FirstOrDefault();
         }
 
         public void AddAdToUpcoming(string id, Advertisement ad)
@@ -38,6 +48,8 @@ namespace CourseProject.Services
             {
                 var user = this.usersRepository.GetById(id);
                 user.SavedAds.Add(ad);
+
+                // TODO: Should it have update?
                 this.usersRepository.Update(user);
                 this.unitOfWork.Commit();
             }

@@ -13,6 +13,10 @@ namespace CourseProject.Web
             var settings = new FriendlyUrlSettings();
             settings.AutoRedirectMode = RedirectMode.Permanent;
             routes.EnableFriendlyUrls(settings);
+
+            routes.MapPageRoute("UsersRoute",
+                "Users/{username}",
+                "~/Users/UserProfile.aspx");
         }
     }
 }
