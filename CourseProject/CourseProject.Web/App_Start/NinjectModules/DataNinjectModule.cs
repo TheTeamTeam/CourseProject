@@ -18,6 +18,7 @@ namespace CourseProject.Web.App_Start.NinjectModules
             this.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>)).InRequestScope();
             this.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             this.Bind<IAdvertisementsService>().To<AdvertisementsService>().InRequestScope();
+            this.Bind<IUsersService>().To<UsersService>().InRequestScope();
         }
     }
 }

@@ -434,6 +434,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="EventArguments\AdDetailsEventArgs.cs" />
+    <Compile Include="EventArguments\BookAdEventArgs.cs" />
     <Compile Include="EventArguments\CreatingAdvertisementEventArgs.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

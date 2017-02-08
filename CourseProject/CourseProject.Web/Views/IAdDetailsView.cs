@@ -11,5 +11,7 @@ namespace CourseProject.Web.Views
     public interface IAdDetailsView : IView<AdDetailsModel>
     {
         event EventHandler<AdDetailsEventArgs> MyInit;
+
+        event EventHandler<BookAdEventArgs> Book;
     }
 }

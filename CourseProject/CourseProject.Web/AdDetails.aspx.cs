@@ -11,6 +11,7 @@ using WebFormsMvp;
 using WebFormsMvp.Web;
 using CourseProject.Web.EventArguments;
 using CourseProject.Models;
+using Microsoft.AspNet.Identity;
 
 namespace CourseProject.Web
 {
@@ -18,6 +19,7 @@ namespace CourseProject.Web
     public partial class AdDetails : MvpPage<AdDetailsModel>, IAdDetailsView
     {
         public event EventHandler<AdDetailsEventArgs> MyInit;
+        public event EventHandler<BookAdEventArgs> Book;
 
         public Advertisement Ad { get; private set; }
         protected void Page_Load(object sender, EventArgs e)
@@ -31,6 +33,18 @@ namespace CourseProject.Web
             this.Ad = this.Model.Advertisement;
 
             Page.DataBind();
+        }
+
+        protected void BookButton_Click(object sender, EventArgs e)
+        {
+            var id = this.Page.User.Identity.GetUserId();
+
+            this.Book?.Invoke(sender, new BookAdEventArgs(id, Model.Advertisement));
+        }
+
+        protected void SaveButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
