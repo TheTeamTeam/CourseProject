@@ -4,36 +4,41 @@
     <div class="form-horizontal">
         <h3>Create your advertisement</h3>
         <hr />
+        <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Name" CssClass="col-md-2 control-label">Title</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Name" CssClass="form-control" />  
-                <asp:RequiredFieldValidator ID="RequiredFieldValidatorName" ControlToValidate="Name" 
-                    runat="server" Display="Dynamic" ErrorMessage="Name field is required!" ForeColor="Red" EnableClientScript="False"/>            
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Name"
+                    CssClass="text-danger" ErrorMessage="The title field is required." />
             </div>
         </div>
          <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Description" CssClass="col-md-2 control-label">Description</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Description" CssClass="form-control" /> 
-                <asp:RequiredFieldValidator ID="RequiredFieldValidatorDescription" ControlToValidate="Description" 
-                    runat="server" ErrorMessage="Description field is required!" ForeColor="Red" EnableClientScript="False"/>             
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Description"
+                    CssClass="text-danger" ErrorMessage="The description field is required." />            
             </div>
         </div>
          <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Places" CssClass="col-md-2 control-label">Free places</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Places" CssClass="form-control" />
-                <asp:RangeValidator runat="server" Type="Integer" MinimumValue="0" MaximumValue="1000" ControlToValidate="Places" 
-                    ForeColor="Red" ErrorMessage="Value must be a whole number between 0 and 1000" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Places"
+                    CssClass="text-danger" ErrorMessage="The places field is required." />
+                <asp:RangeValidator runat="server" ControlToValidate="Places" Type="Integer" MinimumValue="0" MaximumValue="1000" 
+                    CssClass="text-danger" ErrorMessage="Places must be an integer number between 0 and 1000."></asp:RangeValidator>
             </div>
         </div>
          <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Price" CssClass="col-md-2 control-label">Price</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Price" CssClass="form-control" />
-                 <asp:RangeValidator runat="server" Type="Currency" MinimumValue="0" MaximumValue="1000" ControlToValidate="Price" 
-                    ForeColor="Red" ErrorMessage="Value must be a whole number between 0 and 1000" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Places"
+                    CssClass="text-danger" ErrorMessage="The price field is required." />
+                 <asp:RangeValidator runat="server" ControlToValidate="Price" Type="Double" MinimumValue="0" MaximumValue="1000" 
+                    CssClass="text-danger" ErrorMessage="Price must be a number between 0 and 1000."></asp:RangeValidator>
             </div>
         </div>
          <div class="form-group">
