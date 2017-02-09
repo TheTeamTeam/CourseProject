@@ -44,6 +44,7 @@ namespace CourseProject.Services
 
         public void CreateAdvertisement(Advertisement ad)
         {
+            // TODO: Gaurd?
             using (this.unitOfWork)
             {
                 this.adsRepository.Add(ad);

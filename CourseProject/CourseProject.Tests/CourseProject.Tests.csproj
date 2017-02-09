@@ -106,7 +106,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\UnitsOfWork\UnitOfWorkTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdvertisementsServiceTests.cs" />
+    <Compile Include="Services\UsersServiceTests.cs" />
     <Compile Include="Web\Account\Presenters\LoginPresenterTests.cs" />
     <Compile Include="Web\Account\Presenters\Mocks\MockedLoginView.cs" />
   </ItemGroup>
@@ -115,9 +118,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CourseProject.Data\CourseProject.Data.csproj">
+      <Project>{9b188619-2704-4d00-8c75-ef2a42171618}</Project>
+      <Name>CourseProject.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CourseProject.Models\CourseProject.Models.csproj">
       <Project>{da9e8888-beba-4db3-bfea-d9867d4d7ea0}</Project>
       <Name>CourseProject.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CourseProject.Services\CourseProject.Services.csproj">
+      <Project>{b04986bf-c421-440a-906a-741b51bda0bb}</Project>
+      <Name>CourseProject.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\CourseProject.Web\CourseProject.Web.csproj">
       <Project>{bc80c1d3-3733-4c8c-8213-c166929ee08f}</Project>
@@ -126,6 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Repositories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
