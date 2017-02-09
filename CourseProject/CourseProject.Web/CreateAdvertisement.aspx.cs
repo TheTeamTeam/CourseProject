@@ -36,46 +36,49 @@ namespace CourseProject.Web
             }
         }
         protected void CreateAdvertisement_Click(object sender, EventArgs e)
-        { 
-
-            var id = this.Page.User.Identity.GetUserId();
-
-            var selectedCategoryId = int.Parse(this.Categories.SelectedValue);
-            var category = this.Model.Categories.FirstOrDefault(ca => ca.Id == selectedCategoryId);
-
-            var selectedCityId = int.Parse(this.Cities.SelectedValue);
-            var city = this.Model.Cities.FirstOrDefault(c => c.Id == selectedCityId);
-
-            string filename = null;
-
-            if (Image.HasFile)
+        {
+            if (Page.IsValid)
             {
-                if (Image.PostedFile.ContentType == "image/jpeg" || Image.PostedFile.ContentType == "image/png")
+
+                var id = this.Page.User.Identity.GetUserId();
+
+                var selectedCategoryId = int.Parse(this.Categories.SelectedValue);
+                var category = this.Model.Categories.FirstOrDefault(ca => ca.Id == selectedCategoryId);
+
+                var selectedCityId = int.Parse(this.Cities.SelectedValue);
+                var city = this.Model.Cities.FirstOrDefault(c => c.Id == selectedCityId);
+
+                string filename = null;
+
+                if (Image.HasFile)
                 {
-                    filename = Path.GetFileName(Image.FileName);
-                    Image.SaveAs(Server.MapPath("~/Images/") + filename);
+                    if (Image.PostedFile.ContentType == "image/jpeg" || Image.PostedFile.ContentType == "image/png")
+                    {
+                        filename = Path.GetFileName(Image.FileName);
+                        Image.SaveAs(Server.MapPath("~/Images/") + filename);
+                    }
+                    else
+                    {
+                        //TODO: File format shoud be png or jpeg
+                    }
                 }
-                else
+
+                var advertisement = new Advertisement()
                 {
-                    //TODO: File format shoud be png or jpeg
-                }
+                    Name = Name.Text,
+                    Description = Description.Text,
+                    Places = int.Parse(Places.Text),
+                    Price = decimal.Parse(Price.Text),
+                    ImagePath = filename != null ? "/Images/" + filename : null,
+                    Category = category,
+                    CategoryId = category.Id,
+                    City = city,
+                    CityId = city.Id,
+                    SellerId = id
+                };
+
+                this.CreatingAdvertisement?.Invoke(sender, new CreatingAdvertisementEventArgs(advertisement));
             }
-
-            var advertisement = new Advertisement()
-            {
-                Name = Name.Text,
-                Description = Description.Text,
-                Places = int.Parse(Places.Text),
-                Price = decimal.Parse(Price.Text),
-                ImagePath = filename != null ? "/Images/" + filename : null,
-                Category = category,
-                CategoryId = category.Id,
-                City = city,
-                CityId = city.Id,
-                SellerId = id
-            };
-            
-            this.CreatingAdvertisement?.Invoke(sender, new CreatingAdvertisementEventArgs(advertisement));
         }
     }
 }

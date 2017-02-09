@@ -16,6 +16,114 @@ namespace CourseProject.Tests.Services
     public class AdvertisementsServiceTests
     {
         [Test]
+        public void Constructor_ShouldThrowArgumentNullException_WhenUnitOfWorkIsNull()
+        {
+            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
+            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
+            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
+
+            Assert.Throws<ArgumentNullException>(() => new AdvertisementsService(null,
+                                                                                 mockedCategoriesRepo.Object,
+                                                                                 mockedCitiesRepo.Object,
+                                                                                 mockedAdsRepo.Object));
+        }
+
+        [Test]
+        public void Constructor_ShouldThrowExceptionWithCorrectMessage_WhenUnitOfWorkIsNull()
+        {
+            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
+            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
+            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
+
+            Assert.That(() => new AdvertisementsService(null, 
+                                                        mockedCategoriesRepo.Object, 
+                                                        mockedCitiesRepo.Object, 
+                                                        mockedAdsRepo.Object),
+                Throws.ArgumentNullException.With.Message.Contains("Unit of work cannot be null."));
+        }
+
+        [Test]
+        public void Constructor_ShouldThrowArgumentNullException_WhenCategoriesRepoIsNull()
+        {
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
+            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
+
+            Assert.Throws<ArgumentNullException>(() => new AdvertisementsService(mockedUnitOfWork.Object,
+                                                                                 null,
+                                                                                 mockedCitiesRepo.Object,
+                                                                                 mockedAdsRepo.Object));
+        }
+
+        [Test]
+        public void Constructor_ShouldThrowExceptionWithCorrectMessage_WhenCategoriesRepoIsNull()
+        {
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
+            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
+
+            Assert.That(() => new AdvertisementsService(mockedUnitOfWork.Object,
+                                                        null,
+                                                        mockedCitiesRepo.Object,
+                                                        mockedAdsRepo.Object),
+                Throws.ArgumentNullException.With.Message.Contains("Categories repository cannot be null."));
+        }
+
+        [Test]
+        public void Constructor_ShouldThrowArgumentNullException_WhenCitiesRepoIsNull()
+        {
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
+            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
+
+            Assert.Throws<ArgumentNullException>(() => new AdvertisementsService(mockedUnitOfWork.Object,
+                                                                                 mockedCategoriesRepo.Object,
+                                                                                 null,
+                                                                                 mockedAdsRepo.Object));
+        }
+
+        [Test]
+        public void Constructor_ShouldThrowExceptionWithCorrectMessage_WhenCitiesRepoIsNull()
+        {
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
+            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
+
+            Assert.That(() => new AdvertisementsService(mockedUnitOfWork.Object,
+                                                        mockedCategoriesRepo.Object,
+                                                        null,
+                                                        mockedAdsRepo.Object),
+                Throws.ArgumentNullException.With.Message.Contains("Cities repository cannot be null."));
+        }
+
+        [Test]
+        public void Constructor_ShouldThrowArgumentNullException_WhenAdsRepoIsNull()
+        {
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
+            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
+
+            Assert.Throws<ArgumentNullException>(() => new AdvertisementsService(mockedUnitOfWork.Object,
+                                                                                 mockedCategoriesRepo.Object,
+                                                                                 mockedCitiesRepo.Object,
+                                                                                 null));
+        }
+
+        [Test]
+        public void Constructor_ShouldThrowExceptionWithCorrectMessage_WhenAdsRepoIsNull()
+        {
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
+            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
+
+            Assert.That(() => new AdvertisementsService(mockedUnitOfWork.Object,
+                                                        mockedCategoriesRepo.Object,
+                                                        mockedCitiesRepo.Object,
+                                                        null),
+                Throws.ArgumentNullException.With.Message.Contains("Ads repository cannot be null."));
+        }
+
+        [Test]
         public void GetById_ShouldCallAdsRepositoryMethod()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
@@ -263,7 +371,7 @@ namespace CourseProject.Tests.Services
 
 
         // TODO: interfaces for models or ??
-        // [Test]
+        //[Test]
         //public void DecrementFreePlaces_ShouldDecrementAdsPlaces()
         //{
         //    var mockedUnitOfWork = new Mock<IUnitOfWork>();
@@ -275,7 +383,7 @@ namespace CourseProject.Tests.Services
 
         //    mockedAd.SetupGet(x => x.Places).Returns(places);
         //    mockedAd.SetupSet(x => x.Places = It.IsAny<int>()).Verifiable();
-            
+
         //    var service = new AdvertisementsService(
         //        mockedUnitOfWork.Object,
         //        mockedCategoriesRepo.Object,

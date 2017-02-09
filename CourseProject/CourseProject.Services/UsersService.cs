@@ -3,6 +3,7 @@ using CourseProject.Data.Repositories;
 using CourseProject.Data.UnitsOfWork;
 using CourseProject.Models;
 using CourseProject.Services.Contracts;
+using System;
 
 namespace CourseProject.Services
 {
@@ -15,7 +16,16 @@ namespace CourseProject.Services
             IUnitOfWork unitOfWork,
             IGenericRepository<User> usersRepository)
         {
-            // TODO: Gaurd
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException("Unit of work cannot be null.");
+            }
+
+            if (usersRepository == null)
+            {
+                throw new ArgumentNullException("Users repository cannot be null.");
+            }
+
             this.unitOfWork = unitOfWork;
             this.usersRepository = usersRepository;
         }

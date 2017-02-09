@@ -22,16 +22,12 @@ namespace CourseProject.Web
         public event EventHandler<BookAdEventArgs> BookAd;
         public event EventHandler<BookAdEventArgs> SaveAd;
 
-        public Advertisement Ad { get; private set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             string idString = this.Request.QueryString["id"];
             int id = idString != null ? int.Parse(idString) : 1;
 
-            this.MyInit?.Invoke(sender, new AdDetailsEventArgs(id));
-
-            // TODO: Bind directly ro the model ??
-            this.Ad = this.Model.Advertisement;
+            this.MyInit?.Invoke(sender, new AdDetailsEventArgs(id));           
 
             Page.DataBind();
         }
@@ -41,6 +37,7 @@ namespace CourseProject.Web
             var id = this.Page.User.Identity.GetUserId();
 
             this.BookAd?.Invoke(sender, new BookAdEventArgs(id, Model.Advertisement));
+            (sender as Button).Visible = false;
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
@@ -48,6 +45,7 @@ namespace CourseProject.Web
             var id = this.Page.User.Identity.GetUserId();
 
             this.SaveAd?.Invoke(sender, new BookAdEventArgs(id, Model.Advertisement));
+            (sender as Button).Visible = false;
         }
     }
 }

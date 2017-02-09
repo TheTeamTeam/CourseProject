@@ -4,6 +4,7 @@ using CourseProject.Data.UnitsOfWork;
 using CourseProject.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace CourseProject.Services
 {
@@ -20,7 +21,26 @@ namespace CourseProject.Services
             IGenericRepository<City> citiesRepository,
             IGenericRepository<Advertisement> adsRepository)
         {
-            // TODO: Gaurd
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException("Unit of work cannot be null.");
+            }
+
+            if (categoriesRepository == null)
+            {
+                throw new ArgumentNullException("Categories repository cannot be null.");
+            }
+
+            if (citiesRepository == null)
+            {
+                throw new ArgumentNullException("Cities repository cannot be null.");
+            }
+
+            if (adsRepository == null)
+            {
+                throw new ArgumentNullException("Ads repository cannot be null.");
+            }
+
             this.unitOfWork = unitOfWork;
             this.categoriesRepository = categoriesRepository;
             this.citiesRepository = citiesRepository;

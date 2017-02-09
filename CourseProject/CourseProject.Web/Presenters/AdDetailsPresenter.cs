@@ -19,6 +19,16 @@ namespace CourseProject.Web.Presenters
                                   IUsersService usersService)
             : base(view)
         {
+            if (adsService == null)
+            {
+                throw new ArgumentNullException("Ads service cannot be null.");
+            }
+
+            if (usersService == null)
+            {
+                throw new ArgumentNullException("Users service cannot be null.");
+            }
+
             this.adsService = adsService;
             this.usersService = usersService;
 
