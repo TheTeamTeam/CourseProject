@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\UnitsOfWork\UnitOfWorkTests.cs" />
+    <Compile Include="MockedUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdvertisementsServiceTests.cs" />
     <Compile Include="Services\UsersServiceTests.cs" />

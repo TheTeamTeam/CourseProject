@@ -60,6 +60,7 @@
     <Compile Include="Advertisement.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="City.cs" />
+    <Compile Include="IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

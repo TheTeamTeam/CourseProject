@@ -35,7 +35,7 @@ namespace CourseProject.Services
             return this.usersRepository.GetById(id);
         }
 
-        public User GetUserByUsername(string username)
+        public User GetUserByUsername(string username) //Not tested
         {
             // TODO: Find method in repostory ??
             return this.usersRepository.GetAll(x => x.UserName == username).FirstOrDefault();
@@ -47,7 +47,6 @@ namespace CourseProject.Services
             {
                 var user = this.usersRepository.GetById(id);
                 user.UpcomingAds.Add(ad);
-                this.usersRepository.Update(user);
                 this.unitOfWork.Commit();
             }
         }
@@ -58,9 +57,6 @@ namespace CourseProject.Services
             {
                 var user = this.usersRepository.GetById(id);
                 user.SavedAds.Add(ad);
-
-                // TODO: Should it have update?
-                this.usersRepository.Update(user);
                 this.unitOfWork.Commit();
             }
         }

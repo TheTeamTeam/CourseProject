@@ -11,7 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace CourseProject.Models
 {
-    public class User : IdentityUser
+    public class User : IdentityUser, IUser
     {
         private ICollection<Advertisement> savedAds;
         private ICollection<Advertisement> upcomingAds;
