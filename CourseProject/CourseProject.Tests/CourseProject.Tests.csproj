@@ -114,6 +114,8 @@
     <Compile Include="Services\UsersServiceTests.cs" />
     <Compile Include="Web\Account\Presenters\LoginPresenterTests.cs" />
     <Compile Include="Web\Account\Presenters\Mocks\MockedLoginView.cs" />
+    <Compile Include="Web\Presenters\Mocks\MockedPersonalProfileView.cs" />
+    <Compile Include="Web\Presenters\PersonalProfilePresenterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
