@@ -52,6 +52,11 @@ namespace CourseProject.Services
             return this.adsRepository.GetById(id);
         }
 
+        public IEnumerable<Advertisement> GetAdvertisements()
+        {
+            return this.adsRepository.GetAll();
+        }
+
         public IEnumerable<Category> GetCategories()
         {
             return this.categoriesRepository.GetAll();
@@ -80,6 +85,13 @@ namespace CourseProject.Services
                 this.adsRepository.Update(ad);
                 this.unitOfWork.Commit();
             }
+        }
+
+        public IEnumerable<Advertisement> SearchAds(string word)
+        {
+            // TODO: not only name??
+            // TODO: Should it throw argument null exc
+            return this.adsRepository.GetAll(x => x.Name.Contains(word));
         }
     }
 }

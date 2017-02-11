@@ -192,6 +192,7 @@
     <Content Include="Account\AdditionalFunctionalities\ManageLogins.aspx" />
     <Content Include="Account\AdditionalFunctionalities\ManagePassword.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
+    <Content Include="Search.aspx" />
     <Content Include="Users\Profile.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\AdditionalFunctionalities\RegisterExternalLogin.aspx" />
@@ -327,6 +328,7 @@
     <Compile Include="Account\Models\LoginModel.cs" />
     <Compile Include="EventArguments\GetUserByUsernameEventArgs.cs" />
     <Compile Include="EventArguments\RoleNameEventArgs.cs" />
+    <Compile Include="EventArguments\SearchEventArgs.cs" />
     <Compile Include="Models\PersonalProfileModel.cs" />
     <Compile Include="Account\Models\RegisterModel.cs" />
     <Compile Include="Account\OpenAuthProviders.ascx.cs">
@@ -337,9 +339,18 @@
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
     </Compile>
     <Compile Include="Account\Presenters\LoginPresenter.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Presenters\PersonalProfilePresenter.cs" />
     <Compile Include="Account\Presenters\RegisterPresenter.cs" />
+    <Compile Include="Presenters\SearchPresenter.cs" />
+    <Compile Include="Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Users\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -503,6 +514,7 @@
     </Compile>
     <Compile Include="Views\IAdDetailsView.cs" />
     <Compile Include="Views\ICreateAdvertisementView.cs" />
+    <Compile Include="Views\ISearchView.cs" />
     <Compile Include="Views\IUserProfileView.cs" />
   </ItemGroup>
   <ItemGroup>

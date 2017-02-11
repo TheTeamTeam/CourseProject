@@ -9,6 +9,7 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    margin-top: 30px;
 }
 
 .details-description {
@@ -39,4 +40,8 @@ input[type="select"] {
     .body-content {
         padding: 0;
     }
+}
+
+.inline-block{
+    display: inline-block;
 }
