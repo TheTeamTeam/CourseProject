@@ -14,13 +14,19 @@ namespace CourseProject.Data.Repositories
             this.Context = context;
             this.DbSet = this.Context.Set<T>();
         }
+        
+
+        // TODO: Make readonly field ??
+
+        private IAdsHubDbContext Context { get; set; }
+
+        private IDbSet<T> DbSet { get; set; }
 
         public IQueryable<T> All
         {
             get { return this.DbSet; }
         }
-
-
+        
         public T GetById(object id)
         {
             return this.DbSet.Find(id);
@@ -69,10 +75,6 @@ namespace CourseProject.Data.Repositories
         {
             return this.DbSet.Select(selectExpression).ToList();
         }
-
-        public IAdsHubDbContext Context { get; set; }
-
-        protected IDbSet<T> DbSet { get; set; }
 
         public void Add(T entity)
         {
