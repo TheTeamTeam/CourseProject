@@ -21,6 +21,12 @@ namespace CourseProject.Web.Presenters
             this.usersService = usersService;
 
             this.View.GettingUser += OnGettingUser;
+            this.View.RemovingSavedAd += OnRemovingSavedAd;
+        }
+
+        private void OnRemovingSavedAd(object sender, IdEventArgs e)
+        {
+            this.usersService.RemoveAdFromSaved(e.Id, this.View.Model.ProfileUser);
         }
 
         private void OnGettingUser(object sender, GetUserByIdEventArgs e)

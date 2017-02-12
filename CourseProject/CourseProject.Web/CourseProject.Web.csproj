@@ -293,6 +293,7 @@
     <Compile Include="Account\AdditionalFunctionalities\Lockout.aspx.designer.cs">
       <DependentUpon>Lockout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EventArguments\Contracts\IIdEventArgs.cs" />
     <Compile Include="EventArguments\GetUserByIdEventArgs.cs" />
     <Compile Include="Account\EventArguments\LoginEventArgs.cs" />
     <Compile Include="Account\EventArguments\RegisterEventArgs.cs" />
@@ -334,6 +335,7 @@
     <Compile Include="EventArguments\Contracts\IGetUserByUsernameEventArgs.cs" />
     <Compile Include="EventArguments\Contracts\IRoleNameEventArgs.cs" />
     <Compile Include="EventArguments\Contracts\ISearchEventArgs.cs" />
+    <Compile Include="EventArguments\IdEventArgs.cs" />
     <Compile Include="EventArguments\RoleNameEventArgs.cs" />
     <Compile Include="EventArguments\SearchEventArgs.cs" />
     <Compile Include="Models\PersonalProfileModel.cs" />

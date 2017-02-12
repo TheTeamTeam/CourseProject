@@ -74,5 +74,15 @@ namespace CourseProject.Services
 
             return user.SavedAds.Contains(ad);
         }
+
+        public void RemoveAdFromSaved(int adId, User user)
+        {
+            using (this.unitOfWork)
+            {
+                var ad = user.SavedAds.SingleOrDefault(x => x.Id == adId);
+                user.SavedAds.Remove(ad);
+                this.unitOfWork.Commit();
+            }
+        }
     }
 }

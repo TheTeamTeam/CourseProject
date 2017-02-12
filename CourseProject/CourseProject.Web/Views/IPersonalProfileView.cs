@@ -8,5 +8,7 @@ namespace CourseProject.Web.Views
     public interface IPersonalProfileView : IView<PersonalProfileModel>
     {
         event EventHandler<GetUserByIdEventArgs> GettingUser;
+
+        event EventHandler<IdEventArgs> RemovingSavedAd;
     }
 }

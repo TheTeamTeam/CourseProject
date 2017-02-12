@@ -39,6 +39,7 @@
                     <img class="col-md-3" src="<%# Item.ImagePath%>" alt="<%#: Item.Name %>" />
                 </div>
                 <p>Price: <%#: Item.Price %>lv.</p>
+                <asp:Button runat="server" ID="RemoveFromSaved" Text="Remove From Saved" data-id="<%# Item.Id %>" onclick="RemoveFromSaved_Click" CssClass="btn btn-default" />
             </ItemTemplate>
         </asp:ListView>
     </div>

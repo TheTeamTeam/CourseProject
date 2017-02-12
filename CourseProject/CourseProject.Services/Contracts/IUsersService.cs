@@ -15,5 +15,7 @@ namespace CourseProject.Services.Contracts
         bool UserBookedAd(string id, Advertisement ad);
 
         bool UserSavedAd(string id, Advertisement ad);
+
+        void RemoveAdFromSaved(int id, User user);
     }
 }

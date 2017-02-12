@@ -12,6 +12,7 @@ namespace CourseProject.Tests.Web.Presenters.Mocks
     public class MockedPersonalProfileView : IPersonalProfileView
     {
         private event EventHandler<GetUserByIdEventArgs> gettingUser;
+        public event EventHandler<IdEventArgs> RemovingSavedAd;
 
         private HashSet<string> gettingUserInvocationlist;
 
@@ -25,7 +26,7 @@ namespace CourseProject.Tests.Web.Presenters.Mocks
         public bool ThrowExceptionIfNoPresenterBound { get; }
 
         public event EventHandler Load;
-        
+
         public event EventHandler<GetUserByIdEventArgs> GettingUser
         {
             add
