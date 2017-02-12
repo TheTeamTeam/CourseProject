@@ -1,8 +1,9 @@
 ﻿using System;
+using CourseProject.Web.EventArguments.Contracts;
 
 namespace CourseProject.Web.EventArguments
 {
-    public class SearchEventArgs : EventArgs
+    public class SearchEventArgs : EventArgs, ISearchEventArgs
     {
         public SearchEventArgs(string searchWord)
         {

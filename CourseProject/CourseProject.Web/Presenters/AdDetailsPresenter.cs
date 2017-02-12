@@ -1,11 +1,8 @@
-﻿using CourseProject.Services.Contracts;
+﻿using System;
+using WebFormsMvp;
+using CourseProject.Services.Contracts;
 using CourseProject.Web.EventArguments;
 using CourseProject.Web.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using WebFormsMvp;
 
 namespace CourseProject.Web.Presenters
 {

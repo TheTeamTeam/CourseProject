@@ -1,12 +1,11 @@
-﻿using CourseProject.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System;
+using CourseProject.Models;
+using CourseProject.Web.EventArguments.Contracts;
+
 
 namespace CourseProject.Web.EventArguments
 {
-    public class CreatingAdvertisementEventArgs : EventArgs
+    public class CreatingAdvertisementEventArgs : EventArgs, ICreatingAdvertisementEventArgs
     {
         public CreatingAdvertisementEventArgs(Advertisement advertisement)
         {

@@ -1,8 +1,10 @@
 ﻿using System;
+using CourseProject.Web.EventArguments.Contracts;
 
 namespace CourseProject.Web.EventArguments
 {
-    public class GetUserByIdEventArgs : EventArgs
+    // TODO: maybe combine the other id event args
+    public class GetUserByIdEventArgs : EventArgs, IGetUserByIdEventArgs
     {
         public GetUserByIdEventArgs(string id)
         {

@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
+using CourseProject.Web.EventArguments.Contracts;
 
 namespace CourseProject.Web.EventArguments
 {
-    public class RoleNameEventArgs :EventArgs
+    public class RoleNameEventArgs : EventArgs, IRoleNameEventArgs
     {
         public RoleNameEventArgs(string roleName, HttpContext context)
         {

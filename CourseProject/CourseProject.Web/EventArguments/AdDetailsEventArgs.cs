@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using CourseProject.Web.EventArguments.Contracts;
+
 
 namespace CourseProject.Web.EventArguments
 {
-    public class AdDetailsEventArgs : EventArgs
+    public class AdDetailsEventArgs : EventArgs, IAdDetailsEventArgs
     {
         public int Id { get; private set; }
 

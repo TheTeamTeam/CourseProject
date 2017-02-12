@@ -327,6 +327,13 @@
     </Compile>
     <Compile Include="Account\Models\LoginModel.cs" />
     <Compile Include="EventArguments\GetUserByUsernameEventArgs.cs" />
+    <Compile Include="EventArguments\Contracts\IAdDetailsEventArgs.cs" />
+    <Compile Include="EventArguments\Contracts\IBookAdEventArgs.cs" />
+    <Compile Include="EventArguments\Contracts\ICreatingAdvertisementEventArgs.cs" />
+    <Compile Include="EventArguments\Contracts\IGetUserByIdEventArgs.cs" />
+    <Compile Include="EventArguments\Contracts\IGetUserByUsernameEventArgs.cs" />
+    <Compile Include="EventArguments\Contracts\IRoleNameEventArgs.cs" />
+    <Compile Include="EventArguments\Contracts\ISearchEventArgs.cs" />
     <Compile Include="EventArguments\RoleNameEventArgs.cs" />
     <Compile Include="EventArguments\SearchEventArgs.cs" />
     <Compile Include="Models\PersonalProfileModel.cs" />
