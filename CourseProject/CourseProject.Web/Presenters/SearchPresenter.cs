@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using WebFormsMvp;
 using CourseProject.Web.Views;
 using CourseProject.Services.Contracts;
+using CourseProject.Web.EventArguments;
 
 namespace CourseProject.Web.Presenters
 {
@@ -16,23 +18,24 @@ namespace CourseProject.Web.Presenters
             }
 
             this.adsService = adsService;
-
-            this.View.Initializing += OnInit;
+            
             this.View.Searching += OnSearching;
+            this.View.Initializing += OnInitializing;
         }
 
-        private void OnSearching(object sender, EventArguments.SearchEventArgs e)
+        private void OnInitializing(object sender, EventArgs e)
+        {
+            this.View.Model.Count = this.adsService.GetAdsCount();
+        }
+
+        private void OnSearching(object sender, SearchEventArgs e)
         {
             // TODO: paging
 
-            this.View.Model.Advertisements = this.adsService.SearchAds(e.SearchWord);
-        }
+            this.View.Model.Advertisements = this.adsService.SearchAds(e.SearchWord, e.Page, e.PageSize, e.OrderBy);
 
-        private void OnInit(object sender, System.EventArgs e)
-        {
-            // TODO: paging
-
-            this.View.Model.Advertisements = this.adsService.GetAdvertisements();
+            // TODO: Optimize this - iteration
+            this.View.Model.Count = this.adsService.GetAdsCount(e.SearchWord);
         }
     }
 }

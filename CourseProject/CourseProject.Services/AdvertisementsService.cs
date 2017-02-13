@@ -1,10 +1,12 @@
-﻿using CourseProject.Services.Contracts;
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Reflection;
 using CourseProject.Data.Repositories;
 using CourseProject.Data.UnitsOfWork;
 using CourseProject.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System;
+using CourseProject.Services.Contracts;
 
 namespace CourseProject.Services
 {
@@ -87,11 +89,31 @@ namespace CourseProject.Services
             }
         }
 
-        public IEnumerable<Advertisement> SearchAds(string word)
+
+        // So not optimized....
+        public IEnumerable<Advertisement> SearchAds(string word, int page, int pageSize, string order)
         {
-            // TODO: not only name??
             // TODO: Should it throw argument null exc
-            return this.adsRepository.GetAll(x => x.Name.Contains(word));
+            // TODO: Query here ?
+            // TODO: Dynamic order by
+            PropertyDescriptor prop = TypeDescriptor.GetProperties(typeof(Advertisement)).Find(order,true);
+            var skip = (page - 1) * pageSize;
+            var result = this.adsRepository.All
+                .Where(x => x.Name.Contains(word) || x.Description.Contains(word))
+                .OrderBy(x=>x.Name)
+                .Skip(skip)
+                .Take(pageSize);
+
+            return result.ToList();
+        }
+
+        public int GetAdsCount(string word = "")
+        {
+            var result = this.adsRepository.All
+               .Where(x => x.Name.Contains(word) || x.Description.Contains(word))
+               .Count();
+
+            return result;
         }
     }
 }
