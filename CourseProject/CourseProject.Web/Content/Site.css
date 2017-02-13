@@ -45,3 +45,7 @@ input[type="select"] {
 .inline-block{
     display: inline-block;
 }
+
+.top-margin{
+    margin-top: 20px;
+}

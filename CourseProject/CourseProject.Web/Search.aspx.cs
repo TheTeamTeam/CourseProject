@@ -28,19 +28,24 @@ namespace CourseProject.Web
                 this.CitiesDropDown.DataSource = this.Model.Cities;
                 // this.CitiesDropDown.DataBind();
                 //this.CitiesDropDown.Items.Insert(0, new ListItem("All", "-1"));
-                this.CitiesDropDown.SelectedIndex = 0;
+                var cityId = this.Request.QueryString["cityId"] ?? "-1";
+                this.CitiesDropDown.SelectedValue = cityId;
 
                 this.CategoriesDropDown.DataSource = this.Model.Categories;
                 // this.CategoriesDropDown.DataBind();
                 //this.CategoriesDropDown.Items.Insert(0, new ListItem("All", "-1"));
-                this.CategoriesDropDown.SelectedIndex = 0;
+                var categoryId = this.Request.QueryString["categoryId"] ?? "-1";
+                this.CategoriesDropDown.SelectedValue = categoryId;
 
                 var pageSize = int.Parse(this.PageSize.Text);
-                this.Searching?.Invoke(sender, new SearchEventArgs(string.Empty, 1, pageSize, "Name",-1,-1));
+                this.Searching?.Invoke(sender, new SearchEventArgs(string.Empty, 1, pageSize, "Name",int.Parse(cityId), int.Parse(categoryId)));
                 FillPager();
             }
         }
 
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+        }
 
 
         //protected void MainList_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)

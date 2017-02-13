@@ -54,7 +54,9 @@
         </div>
     </div>
 
-
+    <div class="row top-margin">
+        <p class="lead">Results: <%# this.Model.Count %></p>
+    </div>
     <div class="jumbotron">
         <%--DataSourceID="ListData" --%>
 
@@ -65,7 +67,7 @@
                 <hr />
             </ItemSeparatorTemplate>
             <ItemTemplate>
-                <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>               
+                <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
                 <div>
                     <img height="50px" class="col-md-3" src="<%# Item.ImagePath %>" alt="<%#: Item.Name %>" />
                 </div>
