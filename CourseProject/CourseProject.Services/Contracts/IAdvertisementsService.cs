@@ -17,7 +17,8 @@ namespace CourseProject.Services.Contracts
 
         void DecrementFreePlaces(Advertisement ad);
 
-        IEnumerable<Advertisement> SearchAds(string word, int page, int pageSize, string order);
-        int GetAdsCount(string word = "");
+        // TODO: should ids be optional
+        IEnumerable<Advertisement> SearchAds(string word, int page, int pageSize, string order, int categoryId, int cityId);
+        int GetAdsCount(string word, int categoryId, int cityId);
     }
 }

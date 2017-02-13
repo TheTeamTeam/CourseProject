@@ -25,17 +25,19 @@ namespace CourseProject.Web.Presenters
 
         private void OnInitializing(object sender, EventArgs e)
         {
-            this.View.Model.Count = this.adsService.GetAdsCount();
+            // TODO: should they be in a different service
+            this.View.Model.Cities = this.adsService.GetCities();
+            this.View.Model.Categories = this.adsService.GetCategories();
         }
 
         private void OnSearching(object sender, SearchEventArgs e)
         {
             // TODO: paging
 
-            this.View.Model.Advertisements = this.adsService.SearchAds(e.SearchWord, e.Page, e.PageSize, e.OrderBy);
+            this.View.Model.Advertisements = this.adsService.SearchAds(e.SearchWord, e.Page, e.PageSize, e.OrderBy, e.CategoryId, e.CityId);
 
             // TODO: Optimize this - iteration
-            this.View.Model.Count = this.adsService.GetAdsCount(e.SearchWord);
+            this.View.Model.Count = this.adsService.GetAdsCount(e.SearchWord, e.CategoryId, e.CityId);
         }
     }
 }

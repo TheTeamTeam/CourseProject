@@ -91,27 +91,49 @@ namespace CourseProject.Services
 
 
         // So not optimized....
-        public IEnumerable<Advertisement> SearchAds(string word, int page, int pageSize, string order)
+        public IEnumerable<Advertisement> SearchAds(string word, int page, int pageSize, string order, int categoryId, int cityId)
         {
             // TODO: Should it throw argument null exc
             // TODO: Query here ?
             // TODO: Dynamic order by
-            PropertyDescriptor prop = TypeDescriptor.GetProperties(typeof(Advertisement)).Find(order,true);
+            // PropertyDescriptor prop = TypeDescriptor.GetProperties(typeof(Advertisement)).Find(order,true);
             var skip = (page - 1) * pageSize;
-            var result = this.adsRepository.All
-                .Where(x => x.Name.Contains(word) || x.Description.Contains(word))
-                .OrderBy(x=>x.Name)
+            var query = this.adsRepository.All
+                .Where(x => x.Name.Contains(word) || x.Description.Contains(word));
+
+            if(categoryId > 0)
+            {
+                query = query.Where(x => x.CategoryId == categoryId);
+            }
+
+            if (cityId > 0)
+            {
+                query = query.Where(x => x.CityId == cityId);
+            }
+
+            query = query.OrderBy(x => x.Name)
                 .Skip(skip)
                 .Take(pageSize);
 
-            return result.ToList();
+            return query.ToList();
         }
 
-        public int GetAdsCount(string word = "")
+        public int GetAdsCount(string word, int categoryId, int cityId)
         {
-            var result = this.adsRepository.All
-               .Where(x => x.Name.Contains(word) || x.Description.Contains(word))
-               .Count();
+            var query = this.adsRepository.All
+                .Where(x => x.Name.Contains(word) || x.Description.Contains(word));
+
+            if (categoryId > 0)
+            {
+                query = query.Where(x => x.CategoryId == categoryId);
+            }
+
+            if (cityId > 0)
+            {
+                query = query.Where(x => x.CityId == cityId);
+            }
+
+             var result = query.Count();
 
             return result;
         }

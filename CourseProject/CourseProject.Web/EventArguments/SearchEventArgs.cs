@@ -5,12 +5,14 @@ namespace CourseProject.Web.EventArguments
 {
     public class SearchEventArgs : EventArgs, ISearchEventArgs
     {
-        public SearchEventArgs(string searchWord, int page, int pageSize, string orderBy)
+        public SearchEventArgs(string searchWord, int page, int pageSize, string orderBy,int categoryId, int cityId)
         {
             this.SearchWord = searchWord;
             this.Page = page;
             this.PageSize = pageSize;
             this.OrderBy = orderBy;
+            this.CategoryId = categoryId;
+            this.CityId = cityId;
         }
 
         public int Page { get; set; }
@@ -20,5 +22,9 @@ namespace CourseProject.Web.EventArguments
         public string SearchWord { get; set; }
 
         public string OrderBy { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public int CityId { get;  set; }
     }
 }

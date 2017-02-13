@@ -21,23 +21,27 @@ namespace CourseProject.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var pageSize = int.Parse(this.PageSize.Text);
-            this.Searching?.Invoke(sender, new SearchEventArgs("", 1, pageSize, "Name"));
-            FillPager();
+            if (!this.Page.IsPostBack)
+            {
+                this.Initializing?.Invoke(this, new EventArgs());
+
+                this.CitiesDropDown.DataSource = this.Model.Cities;
+                // this.CitiesDropDown.DataBind();
+                //this.CitiesDropDown.Items.Insert(0, new ListItem("All", "-1"));
+                //this.CitiesDropDown.SelectedIndex = 0;
+
+                this.CategoriesDropDown.DataSource = this.Model.Categories;
+                // this.CategoriesDropDown.DataBind();
+                //this.CategoriesDropDown.Items.Insert(0, new ListItem("All", "-1"));
+                //this.CategoriesDropDown.SelectedIndex = 0;
+
+                var pageSize = int.Parse(this.PageSize.Text);
+                this.Searching?.Invoke(sender, new SearchEventArgs(string.Empty, 1, pageSize, "Name",-1,-1));
+                FillPager();
+            }
         }
 
-        protected void SearchBtn_Click(object sender, EventArgs e)
-        {
-            var searchWord = this.SearchWord.Text;
-            this.Session["SearchWord"] = searchWord;
 
-            var order = this.OrderProperties.SelectedValue;
-            var pageSize = int.Parse(this.PageSize.Text);
-
-            this.Searching?.Invoke(this, new SearchEventArgs(searchWord,1, pageSize, order));
-
-            FillPager();
-        }
 
         //protected void MainList_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
         //{
@@ -48,15 +52,35 @@ namespace CourseProject.Web
         //    this.Searching?.Invoke(sender, new SearchEventArgs(searchWord, currentPage + 1, this.PagerControl.PageSize, order));
         //}
 
+        // TODO: Repeating code
+
+        protected void SearchBtn_Click(object sender, EventArgs e)
+        {
+            var searchWord = this.SearchWord.Text;
+            this.Session["SearchWord"] = searchWord;
+
+            var order = this.OrderProperties.SelectedValue;
+            var cityId = int.Parse(this.CitiesDropDown.SelectedValue);
+            var categoryId = int.Parse(this.CategoriesDropDown.SelectedValue);
+            var pageSize = int.Parse(this.PageSize.Text);
+
+            this.Searching?.Invoke(this, new SearchEventArgs(searchWord, 1, pageSize, order, categoryId, cityId));
+
+            FillPager();
+        }
+
         protected void ChangePage_Click(object sender, EventArgs e)
         {
             var searchWord = (string)this.Session["SearchWord"] ?? "";
 
             var order = this.OrderProperties.SelectedValue;
+            var cityId = int.Parse(this.CitiesDropDown.SelectedValue);
+            var categoryId = int.Parse(this.CategoriesDropDown.SelectedValue);
+
             var pageSize = int.Parse(this.PageSize.Text);
             var page = int.Parse((sender as Button).Text);
 
-            this.Searching?.Invoke(this, new SearchEventArgs(searchWord, page, pageSize, order));
+            this.Searching?.Invoke(this, new SearchEventArgs(searchWord, page, pageSize, order, categoryId, cityId));
             this.FillPager();
         }
 
@@ -68,6 +92,20 @@ namespace CourseProject.Web
 
             this.PageControl.DataSource = new int[number];
             this.PageControl.DataBind();
+        }
+
+        protected void Options_Changed(object sender, EventArgs e)
+        {
+            var searchWord = (string)this.Session["SearchWord"] ?? "";
+
+            var order = this.OrderProperties.SelectedValue;
+            var cityId = int.Parse(this.CitiesDropDown.SelectedValue);
+            var categoryId = int.Parse(this.CategoriesDropDown.SelectedValue);
+
+            var pageSize = int.Parse(this.PageSize.Text);
+
+            this.Searching?.Invoke(this, new SearchEventArgs(searchWord, 1, pageSize, order, categoryId, cityId));
+            this.FillPager();
         }
     }
 }
