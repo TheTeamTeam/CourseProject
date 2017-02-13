@@ -28,12 +28,12 @@ namespace CourseProject.Web
                 this.CitiesDropDown.DataSource = this.Model.Cities;
                 // this.CitiesDropDown.DataBind();
                 //this.CitiesDropDown.Items.Insert(0, new ListItem("All", "-1"));
-                //this.CitiesDropDown.SelectedIndex = 0;
+                this.CitiesDropDown.SelectedIndex = 0;
 
                 this.CategoriesDropDown.DataSource = this.Model.Categories;
                 // this.CategoriesDropDown.DataBind();
                 //this.CategoriesDropDown.Items.Insert(0, new ListItem("All", "-1"));
-                //this.CategoriesDropDown.SelectedIndex = 0;
+                this.CategoriesDropDown.SelectedIndex = 0;
 
                 var pageSize = int.Parse(this.PageSize.Text);
                 this.Searching?.Invoke(sender, new SearchEventArgs(string.Empty, 1, pageSize, "Name",-1,-1));

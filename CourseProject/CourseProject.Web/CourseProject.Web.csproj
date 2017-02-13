@@ -193,6 +193,7 @@
     <Content Include="Account\AdditionalFunctionalities\ManageLogins.aspx" />
     <Content Include="Account\AdditionalFunctionalities\ManagePassword.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
+    <Content Include="Grids.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="Users\Profile.aspx" />
     <Content Include="Account\Register.aspx" />
@@ -339,6 +340,13 @@
     <Compile Include="EventArguments\IdEventArgs.cs" />
     <Compile Include="EventArguments\RoleNameEventArgs.cs" />
     <Compile Include="EventArguments\SearchEventArgs.cs" />
+    <Compile Include="Grids.aspx.cs">
+      <DependentUpon>Grids.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Grids.aspx.designer.cs">
+      <DependentUpon>Grids.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\PersonalProfileModel.cs" />
     <Compile Include="Account\Models\RegisterModel.cs" />
     <Compile Include="Account\OpenAuthProviders.ascx.cs">
