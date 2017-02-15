@@ -11,14 +11,14 @@ using CourseProject.Web.EventArguments;
 using CourseProject.Web.Presenters;
 using CourseProject.Web.Models;
 using CourseProject.Web.Views;
-
+using CourseProject.Web.EventArguments.Contracts;
 
 namespace CourseProject.Web.Users
 {
     [PresenterBinding(typeof(PersonalProfilePresenter))]
     public partial class Profile : MvpPage<PersonalProfileModel>, IPersonalProfileView
     {
-        public event EventHandler<GetUserByIdEventArgs> GettingUser;
+        public event EventHandler<IGetUserByIdEventArgs> GettingUser;
         public event EventHandler<IdEventArgs> RemovingSavedAd;
 
         protected void Page_Load(object sender, EventArgs e)

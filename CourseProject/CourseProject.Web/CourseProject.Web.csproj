@@ -247,7 +247,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Default.aspx" />
+    <Content Include="Home.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
@@ -320,6 +320,7 @@
       <DependentUpon>500.aspx</DependentUpon>
     </Compile>
     <Compile Include="EventArguments\Contracts\IIdEventArgs.cs" />
+    <Compile Include="EventArguments\CountEventArgs.cs" />
     <Compile Include="EventArguments\GetUserByIdEventArgs.cs" />
     <Compile Include="Account\EventArguments\LoginEventArgs.cs" />
     <Compile Include="Account\EventArguments\RegisterEventArgs.cs" />
@@ -371,6 +372,7 @@
     <Compile Include="Grids.aspx.designer.cs">
       <DependentUpon>Grids.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\PersonalProfileModel.cs" />
     <Compile Include="Account\Models\RegisterModel.cs" />
     <Compile Include="Account\OpenAuthProviders.ascx.cs">
@@ -383,6 +385,7 @@
     <Compile Include="Account\Presenters\LoginPresenter.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\UserProfileModel.cs" />
+    <Compile Include="Presenters\HomePresenter.cs" />
     <Compile Include="Presenters\PersonalProfilePresenter.cs" />
     <Compile Include="Account\Presenters\RegisterPresenter.cs" />
     <Compile Include="Presenters\SearchPresenter.cs" />
@@ -444,6 +447,7 @@
     </Compile>
     <Compile Include="Account\Views\ILoginView.cs" />
     <Compile Include="Account\Views\IRegisterView.cs" />
+    <Compile Include="Views\IHomeView.cs" />
     <Compile Include="Views\IPersonalProfileView.cs" />
     <Compile Include="AdDetails.aspx.cs">
       <DependentUpon>AdDetails.aspx</DependentUpon>
@@ -484,12 +488,12 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="EventArguments\AdDetailsEventArgs.cs" />
     <Compile Include="EventArguments\BookAdEventArgs.cs" />

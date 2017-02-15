@@ -7,6 +7,7 @@ using CourseProject.Services.Contracts;
 using CourseProject.Web.EventArguments;
 using CourseProject.Web.Views;
 using CourseProject.Web.Identity;
+using CourseProject.Web.EventArguments.Contracts;
 
 namespace CourseProject.Web.Presenters
 {

@@ -3,6 +3,7 @@ using WebFormsMvp;
 using CourseProject.Web.Views;
 using CourseProject.Web.EventArguments;
 using CourseProject.Services.Contracts;
+using CourseProject.Web.EventArguments.Contracts;
 
 namespace CourseProject.Web.Presenters
 {
@@ -29,7 +30,7 @@ namespace CourseProject.Web.Presenters
             this.usersService.RemoveAdFromSaved(e.Id, this.View.Model.ProfileUser);
         }
 
-        private void OnGettingUser(object sender, GetUserByIdEventArgs e)
+        private void OnGettingUser(object sender, IGetUserByIdEventArgs e)
         {
             var user = this.usersService.GetUserById(e.Id);
             this.View.Model.ProfileUser = user;

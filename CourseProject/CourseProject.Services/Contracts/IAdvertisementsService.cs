@@ -20,5 +20,6 @@ namespace CourseProject.Services.Contracts
         // TODO: should ids be optional
         IEnumerable<Advertisement> SearchAds(string word, int page, int pageSize, string order, int categoryId, int cityId);
         int GetAdsCount(string word, int categoryId, int cityId);
+        IEnumerable<Advertisement> GetTopAds(int count);
     }
 }
