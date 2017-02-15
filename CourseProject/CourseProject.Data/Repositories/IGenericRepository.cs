@@ -18,8 +18,12 @@ namespace CourseProject.Data.Repositories
         IEnumerable<T> GetAll<T1>(Expression<Func<T, bool>> filterExpression, Expression<Func<T, T1>> sortExpression);
 
         IEnumerable<T2> GetAll<T1, T2>(Expression<Func<T, bool>> filterExpression, Expression<Func<T, T1>> sortExpression, Expression<Func<T, T2>> selectExpression);
-
+        IEnumerable<T> GetAll(Expression<Func<T, bool>> filterExpression, string sortProperty, int skip, int take);
+        
         IEnumerable<T1> Select<T1>(Expression<Func<T, T1>> selectExpression);
+
+        int GetCount(Expression<Func<T, bool>> filterExpression);
+
 
         void Add(T entity);
 

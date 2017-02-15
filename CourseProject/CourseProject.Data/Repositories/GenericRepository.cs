@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Linq.Dynamic;
 
 namespace CourseProject.Data.Repositories
 {
@@ -70,10 +71,41 @@ namespace CourseProject.Data.Repositories
                 return result.OfType<T2>().ToList();
             }
         }
-        
+
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filterExpression, string sortProperty, int skip, int take)
+        {
+            IQueryable<T> result = this.DbSet;
+
+            if (filterExpression != null)
+            {
+                result = result.Where(filterExpression);
+            }
+
+            if (sortProperty != null)
+            {
+                result = result.OrderBy(sortProperty);
+            }
+
+            result = result.Skip(skip).Take(take);
+            return result.ToList();
+        }
+
+        // TODO: should this stay
         public IEnumerable<T1> Select<T1>(Expression<Func<T, T1>> selectExpression)
         {
             return this.DbSet.Select(selectExpression).ToList();
+        }
+
+        public int GetCount(Expression<Func<T, bool>> filterExpression)
+        {
+            IQueryable<T> result = this.DbSet;
+
+            if(filterExpression != null)
+            {
+                result = result.Where(filterExpression);
+            }
+
+            return result.Count();
         }
 
         public void Add(T entity)

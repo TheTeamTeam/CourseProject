@@ -16,6 +16,7 @@
             <asp:DropDownList runat="server" ID="CitiesDropDown"
                 DataValueField="Id"
                 DataTextField="Name"
+                DataSource="<%# this.Model.Cities %>"
                 AppendDataBoundItems="true"
                 AutoPostBack="true"
                 OnSelectedIndexChanged="Options_Changed"
@@ -28,6 +29,7 @@
             <asp:DropDownList runat="server" ID="CategoriesDropDown"
                 DataValueField="Id"
                 DataTextField="Name"
+                DataSource="<%# this.Model.Categories %>"
                 AppendDataBoundItems="true"
                 AutoPostBack="true"
                 OnSelectedIndexChanged="Options_Changed"
@@ -40,7 +42,9 @@
     <div class="row">
         <div class="col-md-6">
             <asp:Label runat="server" AssociatedControlID="OrderProperties" Text="Order by: "></asp:Label>
-            <asp:DropDownList runat="server" ID="OrderProperties" CssClass="form-control">
+            <asp:DropDownList runat="server" ID="OrderProperties" CssClass="form-control"
+                AutoPostBack="true"
+                OnSelectedIndexChanged="Options_Changed">
                 <asp:ListItem Selected="True" Value="Name"> Name </asp:ListItem>
                 <asp:ListItem Value="Price"> Price </asp:ListItem>
                 <asp:ListItem Value="Places"> Places </asp:ListItem>
@@ -61,7 +65,7 @@
         <%--DataSourceID="ListData" --%>
 
         <asp:ListView runat="server" ID="MainList"
-            DataSource="<%# this.Model.Advertisements %>"
+            DataSource="<%# this.Model.Advertisements %>"  
             ItemType="CourseProject.Models.Advertisement">
             <ItemSeparatorTemplate>
                 <hr />
@@ -69,10 +73,10 @@
             <ItemTemplate>
                 <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
                 <div>
-                    <img height="50px" class="col-md-3" src="<%# Item.ImagePath %>" alt="<%#: Item.Name %>" />
+                    <img height="50px" class="col-md-3" src="<%#: Item.ImagePath %>" alt="<%#: Item.Name %>" />
                 </div>
                 <p>Price: <%#: Item.Price %>lv.</p>
-                <p>Places: <%#: Item.Places %>lv. City <%# Item.City.Name %> Category <%# Item.Category.Name %></p>
+                <p>Places: <%#: Item.Places %>, City: <%#: Item.City.Name %>, Category: <%#: Item.Category.Name %></p>
             </ItemTemplate>
         </asp:ListView>
 

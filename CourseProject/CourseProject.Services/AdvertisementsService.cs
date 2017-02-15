@@ -7,6 +7,8 @@ using CourseProject.Data.Repositories;
 using CourseProject.Data.UnitsOfWork;
 using CourseProject.Models;
 using CourseProject.Services.Contracts;
+using System.Linq.Expressions;
+using System.Linq.Dynamic;
 
 namespace CourseProject.Services
 {
@@ -91,51 +93,111 @@ namespace CourseProject.Services
 
 
         // So not optimized....
-        public IEnumerable<Advertisement> SearchAds(string word, int page, int pageSize, string order, int categoryId, int cityId)
+        public IEnumerable<Advertisement> TestSearchAds(string word, int page, int pageSize, string order, int categoryId, int cityId)
         {
             // TODO: Should it throw argument null exc
             // TODO: Query here ?
             // TODO: Dynamic order by
             // PropertyDescriptor prop = TypeDescriptor.GetProperties(typeof(Advertisement)).Find(order,true);
             var skip = (page - 1) * pageSize;
-            var query = this.adsRepository.All
-                .Where(x => x.Name.Contains(word) || x.Description.Contains(word));
+            var query = this.adsRepository.All;
+            // .Where(x => x.Name.Contains(word) || x.Description.Contains(word));
+            string filterExprString = "";
+            //const string exp = @"(Person.Age > 3 AND Person.Weight > 50) OR Person.Age < 3";
+            //var p = Expression.Parameter(typeof(Person), "Person");
+            //var e = DynamicExpression.ParseLambda(new[] { p }, null, exp)
 
-            if(categoryId > 0)
+            if (!string.IsNullOrEmpty(word))
             {
-                query = query.Where(x => x.CategoryId == categoryId);
+                filterExprString += "(x.Name.Contains(@0) OR x.Description.Contains(@0))";
+            }
+            if (categoryId > 0)
+            {
+                // query = query.Where(x => x.CategoryId == categoryId);
+                filterExprString += "AND x.CategoryId == @1";
             }
 
             if (cityId > 0)
             {
-                query = query.Where(x => x.CityId == cityId);
+                // query = query.Where(x => x.CityId == cityId);
+                filterExprString += "AND x.CityId == @2";
             }
 
-            query = query.OrderBy(x => x.Name)
+            Expression<Func<Advertisement, bool>> filter;
+            Expression<Func<Advertisement, bool>> filter2 = x => x.Name.Contains(word) || x.Description.Contains(word);
+            Expression<Func<Advertisement, bool>> filter3 = x => x.CategoryId == categoryId;
+            var body = Expression.AndAlso(filter2.Body, filter3.Body);
+            var lambda = Expression.Lambda<Func<Advertisement, bool>>(body, filter2.Parameters[0]);
+            if (filterExprString != "")
+            {
+                var p = Expression.Parameter(typeof(Advertisement), "x");
+                var parameters = new object[]
+                {
+                word, categoryId, cityId
+                };
+                filter = (Expression<Func<Advertisement, bool>>)System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { p }, typeof(bool), filterExprString, parameters);
+            }
+            else
+            {
+                filter = null;
+            }
+            var orderP = Expression.Parameter(typeof(Advertisement), "x");
+
+            var orderExpr = (Expression<Func<Advertisement, object>>)System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { orderP }, typeof(object), "x.@0", order);
+            // var result = this.adsRepository.GetAll<object, Advertisement>(filter, orderExpr, null, skip, pageSize);
+            query = query.OrderBy(order)
                 .Skip(skip)
                 .Take(pageSize);
 
             return query.ToList();
         }
 
+        public IEnumerable<Advertisement> SearchAds(string word, int page, int pageSize, string order, int categoryId, int cityId)
+        {
+            var skip = (page - 1) * pageSize;
+            var filterExpression = this.BuildFilterExpression(word, categoryId, cityId);
+
+            var result = this.adsRepository.GetAll(filterExpression, order, skip, pageSize);
+
+            return result.ToList();
+        }
+
         public int GetAdsCount(string word, int categoryId, int cityId)
         {
-            var query = this.adsRepository.All
-                .Where(x => x.Name.Contains(word) || x.Description.Contains(word));
+            var filterExpression = this.BuildFilterExpression(word, categoryId, cityId);
+
+            var result = this.adsRepository.GetCount(filterExpression);
+
+            return result;
+        }
+
+        private Expression<Func<Advertisement, bool>> BuildFilterExpression(string word, int categoryId, int cityId)
+        {
+            // TODO: if empty   
+            string filterExprStr = "(x.Name.Contains(@0) OR x.Description.Contains(@0))";
 
             if (categoryId > 0)
             {
-                query = query.Where(x => x.CategoryId == categoryId);
+                filterExprStr += " AND x.CategoryId == @1";
             }
 
             if (cityId > 0)
             {
-                query = query.Where(x => x.CityId == cityId);
+                filterExprStr += " AND x.CityId == @2";
             }
 
-             var result = query.Count();
-
-            return result;
+            Expression<Func<Advertisement, bool>> finalExpression;
+            if (filterExprStr != "")
+            {
+                var p = Expression.Parameter(typeof(Advertisement), "x");
+                var parameters = new object[] { word, categoryId, cityId };
+                finalExpression = (Expression<Func<Advertisement, bool>>)System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { p }, typeof(bool), filterExprStr, parameters);
+            }
+            else
+            {
+                finalExpression = null;
+            }
+            return finalExpression;
         }
     }
 }
