@@ -9,5 +9,7 @@ namespace CourseProject.Web.Models
 
         public bool IsSeller { get; set; }
         public bool IsAdmin { get; set; }
+
+        public IEnumerable<Advertisement> SellerAds { get; set; }
     }
 }

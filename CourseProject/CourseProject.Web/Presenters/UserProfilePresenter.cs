@@ -8,14 +8,16 @@ using CourseProject.Web.EventArguments;
 using CourseProject.Web.Views;
 using CourseProject.Web.Identity;
 using CourseProject.Web.EventArguments.Contracts;
+using System.Collections.Generic;
 
 namespace CourseProject.Web.Presenters
 {
     public class UserProfilePresenter : Presenter<IUserProfileView>
     {
         private IUsersService usersService;
+        private IAdvertisementsService adsService;
 
-        public UserProfilePresenter(IUserProfileView view, IUsersService usersService)
+        public UserProfilePresenter(IUserProfileView view, IUsersService usersService, IAdvertisementsService adsService)
             : base(view)
         {
             if (usersService == null)
@@ -23,7 +25,13 @@ namespace CourseProject.Web.Presenters
                 throw new ArgumentNullException("Users service cannot be null.");
             }
 
+            if (adsService == null)
+            {
+                throw new ArgumentNullException("Advertisement service cannot be null.");
+            }
+
             this.usersService = usersService;
+            this.adsService = adsService;
 
             this.View.GettingUser += this.OnGettingUser;
             this.View.AddingRole += this.OnAddingRole;
@@ -67,9 +75,18 @@ namespace CourseProject.Web.Presenters
             {
                 var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var roles = manager.GetRoles(user.Id);
-                this.View.Model.IsSeller = roles.Contains("Seller");
+
                 this.View.Model.IsAdmin = roles.Contains("Admin");
+                var isSeller = roles.Contains("Seller");
+                this.View.Model.IsSeller = isSeller;
+
+                if (isSeller)
+                {
+                    this.View.Model.SellerAds = this.adsService.GetSellerAds(user.Id);
+                }
             }
+
+            
         }
     }
 }
