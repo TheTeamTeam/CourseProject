@@ -193,6 +193,9 @@
     <Content Include="Account\AdditionalFunctionalities\ManageLogins.aspx" />
     <Content Include="Account\AdditionalFunctionalities\ManagePassword.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
+    <Content Include="ErrorPages\400.aspx" />
+    <Content Include="ErrorPages\404.aspx" />
+    <Content Include="ErrorPages\500.aspx" />
     <Content Include="Grids.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="Users\Profile.aspx" />
@@ -294,6 +297,27 @@
     </Compile>
     <Compile Include="Account\AdditionalFunctionalities\Lockout.aspx.designer.cs">
       <DependentUpon>Lockout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPages\400.aspx.cs">
+      <DependentUpon>400.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\400.aspx.designer.cs">
+      <DependentUpon>400.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPages\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPages\500.aspx.cs">
+      <DependentUpon>500.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\500.aspx.designer.cs">
+      <DependentUpon>500.aspx</DependentUpon>
     </Compile>
     <Compile Include="EventArguments\Contracts\IIdEventArgs.cs" />
     <Compile Include="EventArguments\GetUserByIdEventArgs.cs" />
