@@ -10,26 +10,31 @@ using CourseProject.Services.Contracts;
 using CourseProject.Web.Presenters;
 using CourseProject.Web.EventArguments;
 using CourseProject.Models;
+using CourseProject.Web.EventArguments.Contracts;
 
 namespace CourseProject.Tests.Web.Presenters
 {
     [TestFixture]
     public class PersonalProfilePresenterTests
     {    
+        // TODO: Fix tests
+
         [Test]
         public void Constructor_ShouldThrowArgumentNullException_WhenUserServiceIsNull()
         {
             var mockedView = new MockedPersonalProfileView();
+            var mockedAdsService = new Mock<IAdvertisementsService>();
 
-            Assert.Throws<ArgumentNullException>(() => new PersonalProfilePresenter(mockedView, null));
+            Assert.Throws<ArgumentNullException>(() => new PersonalProfilePresenter(mockedView, null, mockedAdsService.Object));
         }
 
         [Test]
         public void Constructor_ShouldThrowExceptionWithCorrectMessage_WhenUserServiceIsNull()
         {
             var mockedView = new MockedPersonalProfileView();
+            var mockedAdsService = new Mock<IAdvertisementsService>();
 
-            Assert.That(() => new PersonalProfilePresenter(mockedView, null),
+            Assert.That(() => new PersonalProfilePresenter(mockedView, null, mockedAdsService.Object),
                     Throws.ArgumentNullException.With.Message.Contains("Users service cannot be null."));
         }
 
@@ -38,7 +43,9 @@ namespace CourseProject.Tests.Web.Presenters
         {
             var mockedView = new MockedPersonalProfileView();
             var mockedService = new Mock<IUsersService>();
-            var presenter = new PersonalProfilePresenter(mockedView, mockedService.Object);
+            var mockedAdsService = new Mock<IAdvertisementsService>();
+
+            var presenter = new PersonalProfilePresenter(mockedView, mockedService.Object, mockedAdsService.Object);
 
             Assert.IsTrue(mockedView.IsSubscribedGettingUser("OnGettingUser"));
         }
@@ -48,10 +55,12 @@ namespace CourseProject.Tests.Web.Presenters
         {
             var mockedView = new MockedPersonalProfileView();
             var mockedService = new Mock<IUsersService>();
-            mockedService.Setup(x => x.GetUserById(It.IsAny<string>())).Verifiable();
-            var presenter = new PersonalProfilePresenter(mockedView, mockedService.Object);
+            var mockedAdsService = new Mock<IAdvertisementsService>();
 
-            mockedView.InvokeGettingUser(mockedView, new Mock<GetUserByIdEventArgs>("id").Object);
+            mockedService.Setup(x => x.GetUserById(It.IsAny<string>())).Verifiable();
+            var presenter = new PersonalProfilePresenter(mockedView, mockedService.Object, mockedAdsService.Object);
+
+            mockedView.InvokeGettingUser(mockedView, new Mock<GetUserByIdEventArgs>("id", false).Object);
 
             mockedService.Verify(x=>x.GetUserById(It.IsAny<string>()), Times.Once);            
         }
@@ -62,12 +71,15 @@ namespace CourseProject.Tests.Web.Presenters
         public void OnGettingUser_ShouldCallGetUserByIdWithCorrectParameter(string id)
         {
             var mockedView = new MockedPersonalProfileView();
+            var mockedAdsService = new Mock<IAdvertisementsService>();
+
             var mockedService = new Mock<IUsersService>();
             mockedService.Setup(x => x.GetUserById(It.IsAny<string>())).Verifiable();
-            var presenter = new PersonalProfilePresenter(mockedView, mockedService.Object);
-            var eventArgs = new Mock<GetUserByIdEventArgs>(id);
+            var presenter = new PersonalProfilePresenter(mockedView, mockedService.Object, mockedAdsService.Object);
+            // TODO: interface mock
+            var eventArgs = new GetUserByIdEventArgs(id, false);
 
-            mockedView.InvokeGettingUser(mockedView, eventArgs.Object);
+            mockedView.InvokeGettingUser(mockedView, eventArgs);
 
             mockedService.Verify(x => x.GetUserById(id), Times.Once);
         }
@@ -76,11 +88,13 @@ namespace CourseProject.Tests.Web.Presenters
         public void OnGettingUser_ShouldSetModelUserCorrectly()
         {
             var mockedView = new MockedPersonalProfileView();
+            var mockedAdsService = new Mock<IAdvertisementsService>();
+
             var mockedService = new Mock<IUsersService>();
             var mockedUser = new Mock<User>();
             mockedService.Setup(x => x.GetUserById(It.IsAny<string>())).Returns(mockedUser.Object);
-            var presenter = new PersonalProfilePresenter(mockedView, mockedService.Object);
-            var eventArgs = new Mock<GetUserByIdEventArgs>("id");
+            var presenter = new PersonalProfilePresenter(mockedView, mockedService.Object, mockedAdsService.Object);
+            var eventArgs = new Mock<GetUserByIdEventArgs>("id", false);
 
             mockedView.InvokeGettingUser(mockedView, eventArgs.Object);
 

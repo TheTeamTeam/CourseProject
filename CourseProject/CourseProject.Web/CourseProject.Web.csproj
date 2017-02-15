@@ -193,6 +193,9 @@
     <Content Include="Account\AdditionalFunctionalities\ManageLogins.aspx" />
     <Content Include="Account\AdditionalFunctionalities\ManagePassword.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
+    <Content Include="Content\back.jpg" />
+    <Content Include="Content\background.jpg" />
+    <Content Include="Content\Untitled.png" />
     <Content Include="ErrorPages\400.aspx" />
     <Content Include="ErrorPages\404.aspx" />
     <Content Include="ErrorPages\500.aspx" />
