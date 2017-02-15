@@ -25,14 +25,37 @@ namespace CourseProject.Web.Presenters
 
             this.usersService = usersService;
 
-            this.View.GettingUser += OnGettingUser;
-            this.View.ChangingRole += OnChangingRole;
+            this.View.GettingUser += this.OnGettingUser;
+            this.View.AddingRole += this.OnAddingRole;
+            this.View.RemovingRole += this.OnRemovingRole;
         }
 
-        private void OnChangingRole(object sender, RoleNameEventArgs e)
+        private void OnAddingRole(object sender, RoleNameEventArgs e)
         {
             var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             manager.AddToRole(this.View.Model.ProfileUser.Id, e.RoleName);
+            if(e.RoleName == "Admin")
+            {
+                this.View.Model.IsAdmin = true;
+            }
+            else
+            {
+                this.View.Model.IsSeller = true;
+            }
+        }
+
+        private void OnRemovingRole(object sender, RoleNameEventArgs e)
+        {
+            var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            manager.RemoveFromRole(this.View.Model.ProfileUser.Id, e.RoleName);
+            if (e.RoleName == "Admin")
+            {
+                this.View.Model.IsAdmin = false;
+            }
+            else
+            {
+                this.View.Model.IsSeller = false;
+            }
         }
 
         private void OnGettingUser(object sender, GetUserByUsernameEventArgs e)
@@ -40,8 +63,13 @@ namespace CourseProject.Web.Presenters
             var user = this.usersService.GetUserByUsername(e.Username);
             this.View.Model.ProfileUser = user;
 
-            var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            this.View.Model.UserRoles = manager.GetRoles(user.Id);
+            if (user != null)
+            {
+                var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var roles = manager.GetRoles(user.Id);
+                this.View.Model.IsSeller = roles.Contains("Seller");
+                this.View.Model.IsAdmin = roles.Contains("Admin");
+            }
         }
     }
 }

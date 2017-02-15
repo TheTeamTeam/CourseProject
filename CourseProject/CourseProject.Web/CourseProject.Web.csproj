@@ -197,6 +197,7 @@
     <Content Include="Content\background.jpg" />
     <Content Include="Content\Untitled.png" />
     <Content Include="ErrorPages\400.aspx" />
+    <Content Include="ErrorPages\401.aspx" />
     <Content Include="ErrorPages\404.aspx" />
     <Content Include="ErrorPages\500.aspx" />
     <Content Include="Grids.aspx" />
@@ -307,6 +308,13 @@
     </Compile>
     <Compile Include="ErrorPages\400.aspx.designer.cs">
       <DependentUpon>400.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPages\401.aspx.cs">
+      <DependentUpon>401.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\401.aspx.designer.cs">
+      <DependentUpon>401.aspx</DependentUpon>
     </Compile>
     <Compile Include="ErrorPages\404.aspx.cs">
       <DependentUpon>404.aspx</DependentUpon>

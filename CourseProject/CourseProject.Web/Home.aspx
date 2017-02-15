@@ -5,7 +5,7 @@
         <div class="text-center home-description">
             <h1>Welcome to Adshub!</h1>
             <p class="lead">
-                Here you ca find the best offers in town! Just register and you are ready to book and buy awesome things and go to awesome events. Hurry up, the free places for the best offers' places are limited!
+                Here you can find the best offers in town! Just register and you are ready to book and buy awesome things and go to awesome events. Hurry up, the free places for the best offers' places are limited!
             </p>
         </div>
     <%--<div class="home-line"></div>--%>

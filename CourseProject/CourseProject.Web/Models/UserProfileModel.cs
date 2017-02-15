@@ -7,6 +7,7 @@ namespace CourseProject.Web.Models
     {
         public User ProfileUser { get; set; }
 
-        public IEnumerable<string> UserRoles { get; set; }
+        public bool IsSeller { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }
