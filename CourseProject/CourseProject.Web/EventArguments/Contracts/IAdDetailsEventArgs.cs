@@ -2,6 +2,8 @@
 {
     public interface IAdDetailsEventArgs
     {
-        int Id { get; }
+        int AdId { get; }
+
+        string UserId { get; }
     }
 }

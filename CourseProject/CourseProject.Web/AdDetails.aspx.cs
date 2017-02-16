@@ -18,26 +18,27 @@ namespace CourseProject.Web
     [PresenterBinding(typeof(AdDetailsPresenter))]
     public partial class AdDetails : MvpPage<AdDetailsModel>, IAdDetailsView
     {
-        public event EventHandler<AdDetailsEventArgs> MyInit;
+        public event EventHandler<AdDetailsEventArgs> Initializing;
         public event EventHandler<BookAdEventArgs> BookAd;
         public event EventHandler<SaveAdEventArgs> SaveAd;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string idString = this.Request.QueryString["id"];
-            int id = idString != null ? int.Parse(idString) : 1;
+            string adIdString = this.Request.QueryString["id"];
+            int adId = adIdString != null ? int.Parse(adIdString) : 1;
+            string userId = this.Page.User.Identity.GetUserId();
 
-            this.MyInit?.Invoke(sender, new AdDetailsEventArgs(id));           
+            this.Initializing?.Invoke(sender, new AdDetailsEventArgs(adId, userId));           
 
             Page.DataBind();
         }
 
         protected void BookButton_Click(object sender, EventArgs e)
         {
-            var id = this.Page.User.Identity.GetUserId();
+            string id = this.Page.User.Identity.GetUserId();
            // int bookCount = int.Parse(this.BookCount.Text);
             this.BookAd?.Invoke(sender, new BookAdEventArgs(id, Model.Advertisement));
-            (sender as Button).Visible = false;
+            //(sender as Button).Visible = false;
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
@@ -45,7 +46,7 @@ namespace CourseProject.Web
             var id = this.Page.User.Identity.GetUserId();
 
             this.SaveAd?.Invoke(sender, new SaveAdEventArgs(id, Model.Advertisement));
-            (sender as Button).Visible = false;
+            //(sender as Button).Visible = false;
         }
     }
 }

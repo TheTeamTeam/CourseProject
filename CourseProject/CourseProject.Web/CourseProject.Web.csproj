@@ -305,24 +305,28 @@
     </Compile>
     <Compile Include="ErrorPages\400.aspx.cs">
       <DependentUpon>400.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ErrorPages\400.aspx.designer.cs">
       <DependentUpon>400.aspx</DependentUpon>
     </Compile>
     <Compile Include="ErrorPages\401.aspx.cs">
       <DependentUpon>401.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ErrorPages\401.aspx.designer.cs">
       <DependentUpon>401.aspx</DependentUpon>
     </Compile>
     <Compile Include="ErrorPages\404.aspx.cs">
       <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ErrorPages\404.aspx.designer.cs">
       <DependentUpon>404.aspx</DependentUpon>
     </Compile>
     <Compile Include="ErrorPages\500.aspx.cs">
       <DependentUpon>500.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ErrorPages\500.aspx.designer.cs">
       <DependentUpon>500.aspx</DependentUpon>

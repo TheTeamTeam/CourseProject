@@ -3,6 +3,7 @@ using WebFormsMvp;
 using CourseProject.Services.Contracts;
 using CourseProject.Web.EventArguments;
 using CourseProject.Web.Views;
+using CourseProject.Models;
 
 namespace CourseProject.Web.Presenters
 {
@@ -29,17 +30,19 @@ namespace CourseProject.Web.Presenters
             this.adsService = adsService;
             this.usersService = usersService;
 
-            this.View.MyInit += this.View_MyInit;
-            this.View.BookAd += View_BookAd;
-            this.View.SaveAd += View_SaveAd;
+            this.View.Initializing += this.OnInitializing;
+            this.View.BookAd += OnBookAd;
+            this.View.SaveAd += OnSaveAd;
         }
 
-        private void View_MyInit(object sender, AdDetailsEventArgs e)
+        private void OnInitializing(object sender, AdDetailsEventArgs e)
         {
-            this.View.Model.Advertisement = this.adsService.GetAdById(e.Id);
+            Advertisement ad = this.adsService.GetAdById(e.AdId);
+            this.View.Model.Advertisement = ad;
+            this.View.Model.IsSaved = this.usersService.UserSavedAd(e.UserId, ad);
         }
 
-        private void View_BookAd(object sender, BookAdEventArgs e)
+        private void OnBookAd(object sender, BookAdEventArgs e)
         {
             if (!this.usersService.UserBookedAd(e.Id, e.Ad))
             {
@@ -52,11 +55,12 @@ namespace CourseProject.Web.Presenters
             }
         }
 
-        private void View_SaveAd(object sender, SaveAdEventArgs e)
+        private void OnSaveAd(object sender, SaveAdEventArgs e)
         {
             if(!this.usersService.UserSavedAd(e.Id, e.Ad))
             {
                 this.usersService.AddAdToSaved(e.Id, e.Ad);
+                this.View.Model.IsSaved = true;
             }
             else
             {

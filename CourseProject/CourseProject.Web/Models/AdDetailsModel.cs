@@ -9,5 +9,7 @@ namespace CourseProject.Web.Models
     public class AdDetailsModel
     {
         public Advertisement Advertisement { get; set; }
+
+        public bool IsSaved { get; set; }
     }
 }

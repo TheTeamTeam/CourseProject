@@ -16,5 +16,5 @@
     </asp:TextBox> places 
     <asp:Button runat="server" ID="BookButton" Text="Book" OnClick="BookButton_Click" />
     </p> 
-    <asp:Button runat="server" ID="SaveButton" Text="Save Ad" OnClick="SaveButton_Click"/>
+    <asp:Button runat="server" ID="SaveButton" Text="Save Ad" Visible="<%# !this.Model.IsSaved %>" OnClick="SaveButton_Click"/>
 </asp:Content>

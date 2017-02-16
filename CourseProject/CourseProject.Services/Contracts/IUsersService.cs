@@ -4,18 +4,18 @@ namespace CourseProject.Services.Contracts
 {
     public interface IUsersService
     {
-        User GetUserById(string id);
+        User GetUserById(string userId);
 
         User GetUserByUsername(string username);
 
-        void AddAdToUpcoming(string id, Advertisement Ad);
+        void AddAdToUpcoming(string userId, Advertisement Ad);
 
-        void AddAdToSaved(string id, Advertisement ad);
+        void AddAdToSaved(string userId, Advertisement ad);
 
-        bool UserBookedAd(string id, Advertisement ad);
+        bool UserBookedAd(string userId, Advertisement ad);
 
-        bool UserSavedAd(string id, Advertisement ad);
+        bool UserSavedAd(string userId, Advertisement ad);
 
-        void RemoveAdFromSaved(int id, User user);
+        void RemoveAdFromSaved(int adId, User user);
     }
 }

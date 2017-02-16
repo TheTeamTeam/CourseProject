@@ -30,9 +30,9 @@ namespace CourseProject.Services
             this.usersRepository = usersRepository;
         }
 
-        public User GetUserById(string id)
+        public User GetUserById(string userId)
         {
-            return this.usersRepository.GetById(id);
+            return this.usersRepository.GetById(userId);
         }
 
         public User GetUserByUsername(string username) //Not tested
@@ -41,36 +41,36 @@ namespace CourseProject.Services
             return this.usersRepository.GetAll(x => x.UserName == username).FirstOrDefault();
         }
 
-        public void AddAdToUpcoming(string id, Advertisement ad)
+        public void AddAdToUpcoming(string userId, Advertisement ad)
         {
             using (this.unitOfWork)
             {
-                var user = this.usersRepository.GetById(id);
+                var user = this.usersRepository.GetById(userId);
                 user.UpcomingAds.Add(ad);
                 this.unitOfWork.Commit();
             }
         }
 
-        public void AddAdToSaved(string id, Advertisement ad)
+        public void AddAdToSaved(string userId, Advertisement ad)
         {
             using (this.unitOfWork)
             {
-                var user = this.usersRepository.GetById(id);
+                var user = this.usersRepository.GetById(userId);
                 user.SavedAds.Add(ad);
                 this.unitOfWork.Commit();
             }
         }
 
-        public bool UserBookedAd(string id, Advertisement ad)
+        public bool UserBookedAd(string userId, Advertisement ad)
         {
-            var user = this.usersRepository.GetById(id);
+            var user = this.usersRepository.GetById(userId);
 
             return user.UpcomingAds.Contains(ad);
         }
 
-        public bool UserSavedAd(string id, Advertisement ad)
+        public bool UserSavedAd(string userId, Advertisement ad)
         {
-            var user = this.usersRepository.GetById(id);
+            var user = this.usersRepository.GetById(userId);
 
             return user.SavedAds.Contains(ad);
         }
