@@ -3,21 +3,18 @@ using CourseProject.Models;
 using CourseProject.Web.EventArguments.Contracts;
 
 
-namespace CourseProject.Web.EventArguments 
+namespace CourseProject.Web.EventArguments
 {
-    public class BookAdEventArgs : EventArgs, IBookAdEventArgs
+    public class SaveAdEventArgs : EventArgs, ISaveAdEventArgs
     {
-        public BookAdEventArgs(string userId, Advertisement ad) //int count
+        public SaveAdEventArgs(string userId, Advertisement ad)
         {
             this.Id = userId;
             this.Ad = ad;
-           // this.Count = count;
         }
 
         public string Id { get; private set; }
 
         public Advertisement Ad { get; private set; }
-
-       // public int Count { get; private set; }
     }
 }

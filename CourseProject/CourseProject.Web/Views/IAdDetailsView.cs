@@ -14,6 +14,6 @@ namespace CourseProject.Web.Views
 
         event EventHandler<BookAdEventArgs> BookAd;
 
-        event EventHandler<BookAdEventArgs> SaveAd;
+        event EventHandler<SaveAdEventArgs> SaveAd;
     }
 }

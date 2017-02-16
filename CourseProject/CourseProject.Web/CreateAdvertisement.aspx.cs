@@ -69,6 +69,7 @@ namespace CourseProject.Web
                     Description = Description.Text,
                     Places = int.Parse(Places.Text),
                     Price = decimal.Parse(Price.Text),
+                    ExpireDate = DateTime.Parse(ExpireDate.Text),
                     ImagePath = filename != null ? "/Images/" + filename : null,
                     Category = category,
                     CategoryId = category.Id,

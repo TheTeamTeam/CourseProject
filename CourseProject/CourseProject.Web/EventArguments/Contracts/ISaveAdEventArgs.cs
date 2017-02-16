@@ -2,11 +2,9 @@
 
 namespace CourseProject.Web.EventArguments.Contracts
 {
-    public interface IBookAdEventArgs
+    public interface ISaveAdEventArgs
     {
         Advertisement Ad { get; }
         string Id { get; }
-
-       // int Count { get; }
     }
 }

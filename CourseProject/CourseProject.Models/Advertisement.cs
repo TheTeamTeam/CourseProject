@@ -38,6 +38,8 @@ namespace CourseProject.Models
         [MaxLength(500)]
         public string Description { get; set; }
 
+        public DateTime ExpireDate { get; set; }
+
         public string ImagePath { get; set; }
 
         public string SellerId { get; set; }

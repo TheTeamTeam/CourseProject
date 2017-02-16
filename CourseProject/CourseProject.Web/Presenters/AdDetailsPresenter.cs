@@ -52,7 +52,7 @@ namespace CourseProject.Web.Presenters
             }
         }
 
-        private void View_SaveAd(object sender, BookAdEventArgs e)
+        private void View_SaveAd(object sender, SaveAdEventArgs e)
         {
             if(!this.usersService.UserSavedAd(e.Id, e.Ad))
             {

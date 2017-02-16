@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="CreateAdvertisement" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateAdvertisement.aspx.cs" Inherits="CourseProject.Web.CreateAdvertisement" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="form-horizontal">
         <h3>Create your advertisement</h3>
@@ -39,6 +41,15 @@
                     CssClass="text-danger" ErrorMessage="The price field is required." />
                  <asp:RangeValidator runat="server" ControlToValidate="Price" Type="Double" MinimumValue="0" MaximumValue="1000" 
                     CssClass="text-danger" ErrorMessage="Price must be a number between 0 and 1000."></asp:RangeValidator>
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="ExpireDate" CssClass="col-md-2 control-label">ExpireDate</asp:Label>
+            <div class="col-md-3">
+                <asp:TextBox runat="server" ID="ExpireDate" CssClass="form-control" />
+                <ajaxToolkit:CalendarExtender ID="CalendarExtender" runat="server" TargetControlID="ExpireDate" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="ExpireDate"
+                    CssClass="text-danger" ErrorMessage="The date field is required." />
             </div>
         </div>
          <div class="form-group">
