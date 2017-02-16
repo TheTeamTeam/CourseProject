@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ExpireDate" CssClass="col-md-2 control-label">ExpireDate</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="ExpireDate" CssClass="col-md-2 control-label">Expire Date</asp:Label>
             <div class="col-md-3">
                 <asp:TextBox runat="server" ID="ExpireDate" CssClass="form-control" />
                 <ajaxToolkit:CalendarExtender ID="CalendarExtender" runat="server" TargetControlID="ExpireDate" />

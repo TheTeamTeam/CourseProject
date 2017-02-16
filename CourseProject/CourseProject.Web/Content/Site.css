@@ -20,6 +20,20 @@ body {
     width: 50px;
 }
 
+.confirm-popup {
+    width: 400px;
+    background-color: white;
+    border-width: 2px;
+    border-color: lightcoral;
+    border-style: solid;
+    padding: 20px;
+    position: fixed;
+    z-index: 100001;
+    left: 53.5px;
+    top: 59.5px;
+
+}
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */

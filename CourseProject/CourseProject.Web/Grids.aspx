@@ -25,7 +25,7 @@ FROM Cities c"></asp:SqlDataSource>
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                 <asp:BoundField DataField="CountAds" HeaderText="All ads in category" SortExpression="CountAds" />
                 <asp:HyperLinkField Text="See all ads" DataNavigateUrlFields="Id"
-                    DataNavigateUrlFormatString="~/Search?categoryId={0}" />
+                    DataNavigateUrlFormatString="~/search?categoryId={0}" />
             </Columns>
         </asp:GridView>
     </div>
@@ -41,7 +41,7 @@ FROM Cities c"></asp:SqlDataSource>
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                 <asp:BoundField DataField="CountAds" HeaderText="All ads in city" SortExpression="CountAds" />
                 <asp:HyperLinkField Text="See all ads" DataNavigateUrlFields="Id"
-                    DataNavigateUrlFormatString="~/Search?cityId={0}" />
+                    DataNavigateUrlFormatString="~/search?cityId={0}" />
             </Columns>
         </asp:GridView>
     </div>

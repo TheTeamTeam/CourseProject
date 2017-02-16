@@ -73,7 +73,6 @@
                         <LoggedInTemplate>
                             
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/CreateAdvertisement.aspx">Create Advertisement</a></li>
                                 <li><a runat="server" href="~/users/profile" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
                                 <li>
                                     <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
@@ -92,7 +91,7 @@
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Seller<span class="caret"></span></a>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Create advertisement</a></li>
+                                                <li><a href="/createAdvertisement">Create advertisement</a></li>
                                             </ul>
                                         </li>
                                         <li class="dropdown">
@@ -112,7 +111,7 @@
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Seller<span class="caret"></span></a>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Create advertisement</a></li>
+                                                <li><a href="/createAdvertisement">Create advertisement</a></li>
                                             </ul>
                                         </li>
                                     </ul>

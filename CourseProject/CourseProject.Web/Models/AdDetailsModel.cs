@@ -10,7 +10,7 @@ namespace CourseProject.Web.Models
     {
         public Advertisement Advertisement { get; set; }
 
-        public bool IsBooked { get; set; }
-        public bool IsSaved { get; set; }
+        public bool BookButtonVisible { get; set; }
+        public bool SaveButtonVisible { get; set; }
     }
 }
