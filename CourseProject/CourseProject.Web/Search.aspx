@@ -75,7 +75,7 @@
                 <div>
                     <img height="50px" class="col-md-3" src="<%#: Item.ImagePath %>" alt="<%#: Item.Name %>" />
                 </div>
-                <p>Price: <%#: Item.Price %>lv.</p>
+                <p>Price: <%#: Item.Price %>lv. Expire date: <%#: Item.ExpireDate %></p>
                 <p>Places: <%#: Item.Places %>, City: <%#: Item.City.Name %>, Category: <%#: Item.Category.Name %></p>
             </ItemTemplate>
         </asp:ListView>

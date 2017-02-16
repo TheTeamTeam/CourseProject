@@ -199,5 +199,17 @@ namespace CourseProject.Services
             }
             return finalExpression;
         }
+
+        public IEnumerable<Advertisement> GetTopAds(int count)
+        {
+            // TODO: Should it be in another method, without the string
+            var result = this.adsRepository.GetAll(null, "Name", 0, count);
+            return result.ToList();
+        }
+
+        public IEnumerable<Advertisement> GetSellerAds(string id)
+        {
+            return this.adsRepository.GetAll(x => x.SellerId == id).ToList();
+        }
     }
 }

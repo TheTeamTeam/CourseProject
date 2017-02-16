@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CourseProject.Web
+namespace CourseProject.Web.ErrorPages
 {
 
 
-    public partial class _Default
+    public partial class _500
     {
     }
 }
