@@ -39,7 +39,8 @@ namespace CourseProject.Web.Presenters
         {
             Advertisement ad = this.adsService.GetAdById(e.AdId);
             this.View.Model.Advertisement = ad;
-            this.View.Model.IsSaved = this.usersService.UserSavedAd(e.UserId, ad);
+            this.View.Model.IsBooked = this.usersService.UserBookedAd(e.UserId, ad);
+            this.View.Model.IsSaved = this.usersService.UserSavedAd(e.UserId, ad);          
         }
 
         private void OnBookAd(object sender, BookAdEventArgs e)
@@ -48,10 +49,7 @@ namespace CourseProject.Web.Presenters
             {
                 this.usersService.AddAdToUpcoming(e.Id, e.Ad);
                 this.adsService.DecrementFreePlaces(e.Ad);
-            }
-            else
-            {
-                //TODO: already booked this ad
+                this.View.Model.IsBooked = true;
             }
         }
 
@@ -61,10 +59,6 @@ namespace CourseProject.Web.Presenters
             {
                 this.usersService.AddAdToSaved(e.Id, e.Ad);
                 this.View.Model.IsSaved = true;
-            }
-            else
-            {
-                //TODO: already saved this ad
             }
         }
     }

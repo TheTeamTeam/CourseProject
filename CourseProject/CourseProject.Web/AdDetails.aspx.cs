@@ -36,9 +36,8 @@ namespace CourseProject.Web
         protected void BookButton_Click(object sender, EventArgs e)
         {
             string id = this.Page.User.Identity.GetUserId();
-           // int bookCount = int.Parse(this.BookCount.Text);
-            this.BookAd?.Invoke(sender, new BookAdEventArgs(id, Model.Advertisement));
-            //(sender as Button).Visible = false;
+
+            this.BookAd?.Invoke(sender, new BookAdEventArgs(id, Model.Advertisement));     
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
@@ -46,7 +45,6 @@ namespace CourseProject.Web
             var id = this.Page.User.Identity.GetUserId();
 
             this.SaveAd?.Invoke(sender, new SaveAdEventArgs(id, Model.Advertisement));
-            //(sender as Button).Visible = false;
         }
     }
 }
