@@ -24,7 +24,7 @@
                             <ItemTemplate>
                                 <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
                                 <div>
-                                    <img class="col-md-3" src="<%# Item.ImagePath%>" alt="<%#: Item.Name %>" />
+                                    <img class="col-md-3" src="<%# Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
                                 </div>
                                 <p>Price: <%#: Item.Price %>lv.</p>
                             </ItemTemplate>
@@ -50,7 +50,7 @@
                 <ItemTemplate>
                     <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
                     <div>
-                        <img class="col-md-3" src="<%# Item.ImagePath%>" alt="<%#: Item.Name %>" />
+                        <img class="col-md-3" src="<%# Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
                     </div>
                     <p>Price: <%#: Item.Price %>lv.</p>
                 </ItemTemplate>
@@ -73,7 +73,7 @@
                         <ItemTemplate>
                             <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
                             <div>
-                                <img class="col-md-3" src="<%# Item.ImagePath%>" alt="<%#: Item.Name %>" />
+                                <img class="col-md-3" src="<%# Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
                             </div>
                             <p>Price: <%#: Item.Price %>lv.</p>
                             <asp:Button runat="server" ID="RemoveFromSaved" Text="Remove From Saved" data-id="<%# Item.Id %>" OnClick="RemoveFromSaved_Click" CssClass="btn btn-default" />

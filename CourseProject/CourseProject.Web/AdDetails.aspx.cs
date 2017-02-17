@@ -29,7 +29,10 @@ namespace CourseProject.Web
             string userId = this.Page.User.Identity.GetUserId();
 
             this.Initializing?.Invoke(sender, new AdDetailsEventArgs(adId, userId));           
-
+            if (this.Model.Advertisement == null)
+            {
+                this.Response.Redirect("~/errorPages/404");
+            }
             Page.DataBind();
         }
 

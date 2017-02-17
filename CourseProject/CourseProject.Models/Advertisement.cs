@@ -40,7 +40,9 @@ namespace CourseProject.Models
 
         public DateTime ExpireDate { get; set; }
 
-        public string ImagePath { get; set; }
+        public string ImagePathSmall { get; set; }
+
+        public string ImagePathBig { get; set; }
 
         public string SellerId { get; set; }
         public virtual User Seller { get; set; }
