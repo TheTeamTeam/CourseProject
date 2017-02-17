@@ -50,23 +50,16 @@
                 <asp:ListItem Value="Places"> Places </asp:ListItem>
             </asp:DropDownList>
         </div>
-        <div class="col-md-3 col-md-offset-3">
-            <%-- TODO: Mask --%>
-
-            <asp:Label runat="server" AssociatedControlID="PageSize" Text="Items on page:"></asp:Label>
-            <asp:TextBox runat="server" ID="PageSize" CssClass="form-control" TextMode="Number" Text="5" AutoPostBack="true" OnTextChanged="Options_Changed"></asp:TextBox>
-        </div>
     </div>
 
-    <div class="row top-margin">
-        <p class="lead">Results: <%# this.Model.Count %></p>
-    </div>
     <div class="jumbotron">
-        <%--DataSourceID="ListData" --%>
-
         <asp:ListView runat="server" ID="MainList"
-            DataSource="<%# this.Model.Advertisements %>"  
+            SelectMethod="MainList_GetData"
             ItemType="CourseProject.Models.Advertisement">
+            <LayoutTemplate>
+                <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
+
+            </LayoutTemplate>
             <ItemSeparatorTemplate>
                 <hr />
             </ItemSeparatorTemplate>
@@ -78,20 +71,16 @@
                 <p>Price: <%#: Item.Price %>lv. Expire date: <%#: Item.ExpireDate %></p>
                 <p>Places: <%#: Item.Places %>, City: <%#: Item.City.Name %>, Category: <%#: Item.Category.Name %></p>
             </ItemTemplate>
+            <EmptyDataTemplate>
+                <p class="lead">There are no results to your search!</p>
+            </EmptyDataTemplate>
         </asp:ListView>
 
-
-        <%--<asp:DataPager runat="server" ID="PagerControl" PageSize="5" PagedControlID="MainList">
+        <asp:DataPager runat="server" ID="PagerControl" PageSize="5" PagedControlID="MainList">
             <Fields>
                 <asp:NumericPagerField />
             </Fields>
-        </asp:DataPager>--%>
-
-        <asp:Repeater runat="server" ID="PageControl">
-            <ItemTemplate>
-                <asp:Button Text="<%# Container.ItemIndex + 1 %>" runat="server" OnClick="ChangePage_Click" CssClass="btn btn-success" />
-            </ItemTemplate>
-        </asp:Repeater>
+        </asp:DataPager>
     </div>
 
 </asp:Content>

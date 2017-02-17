@@ -1,5 +1,6 @@
 ﻿using CourseProject.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CourseProject.Services.Contracts
 {
@@ -18,8 +19,8 @@ namespace CourseProject.Services.Contracts
         void DecrementFreePlaces(Advertisement ad);
 
         // TODO: should ids be optional
-        IEnumerable<Advertisement> SearchAds(string word, int page, int pageSize, string order, int categoryId, int cityId);
-        int GetAdsCount(string word, int categoryId, int cityId);
+        IQueryable<Advertisement> SearchAds(string word, string order, int categoryId, int cityId);
+
         IEnumerable<Advertisement> GetTopAds(int count);
 
         IEnumerable<Advertisement> GetSellerAds(string id);

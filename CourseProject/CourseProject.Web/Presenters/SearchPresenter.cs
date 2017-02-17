@@ -34,10 +34,10 @@ namespace CourseProject.Web.Presenters
         {
             // TODO: paging
 
-            this.View.Model.Advertisements = this.adsService.SearchAds(e.SearchWord, e.Page, e.PageSize, e.OrderBy, e.CategoryId, e.CityId);
+            this.View.Model.Advertisements = this.adsService.SearchAds(e.SearchWord, e.OrderBy, e.CategoryId, e.CityId);
 
             // TODO: Optimize this - iteration
-            this.View.Model.Count = this.adsService.GetAdsCount(e.SearchWord, e.CategoryId, e.CityId);
+            // this.View.Model.Count = this.adsService.GetAdsCount(e.SearchWord, e.CategoryId, e.CityId);
         }
     }
 }

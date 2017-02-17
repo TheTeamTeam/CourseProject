@@ -10,7 +10,7 @@ using CourseProject.Web.Views;
 using CourseProject.Web.EventArguments;
 using CourseProject.Data;
 using System.Data.Entity.Infrastructure;
-
+using CourseProject.Models;
 
 namespace CourseProject.Web
 {
@@ -30,49 +30,23 @@ namespace CourseProject.Web
 
                 var categoryId = this.Request.QueryString["categoryId"] ?? "-1";
                 this.CategoriesDropDown.SelectedValue = categoryId;
-
-                var pageSize = int.Parse(this.PageSize.Text);
-                this.Searching?.Invoke(sender, new SearchEventArgs(string.Empty, 1, pageSize, "Name", int.Parse(cityId), int.Parse(categoryId)));
-                this.FillPager();
             }
         }
-
-        protected void Page_PreRender(object sender, EventArgs e)
-        {
-        }
-
-
-        //protected void MainList_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
-        //{
-        //    var searchWord = (string)this.Session["SearchWord"] ?? "";
-        //    var order = this.OrderProperties.SelectedValue;
-        //    int currentPage = (e.StartRowIndex / this.PagerControl.PageSize) + 1;
-
-        //    this.Searching?.Invoke(sender, new SearchEventArgs(searchWord, currentPage + 1, this.PagerControl.PageSize, order));
-        //}
-
-        // TODO: Repeating code
 
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
             var searchWord = this.SearchWord.Text;
             this.Session["SearchWord"] = searchWord;
 
-            this.ExecuteSearch(1);
-        }
-
-        protected void ChangePage_Click(object sender, EventArgs e)
-        {
-            var page = int.Parse((sender as Button).Text);
-            this.ExecuteSearch(page);
+            this.PagerControl.SetPageProperties(0, this.PagerControl.MaximumRows, false);
         }
 
         protected void Options_Changed(object sender, EventArgs e)
         {
-            this.ExecuteSearch(1);
+            this.PagerControl.SetPageProperties(0, this.PagerControl.MaximumRows, false);
         }
 
-        protected void ExecuteSearch(int page)
+        public IQueryable<Advertisement> MainList_GetData()
         {
             var searchWord = (string)this.Session["SearchWord"] ?? "";
 
@@ -80,20 +54,9 @@ namespace CourseProject.Web
             var cityId = int.Parse(this.CitiesDropDown.SelectedValue);
             var categoryId = int.Parse(this.CategoriesDropDown.SelectedValue);
 
-            var pageSize = int.Parse(this.PageSize.Text);
+            this.Searching?.Invoke(this, new SearchEventArgs(searchWord, order, categoryId, cityId));
 
-            this.Searching?.Invoke(this, new SearchEventArgs(searchWord, page, pageSize, order, categoryId, cityId));
-            this.FillPager();
-        }
-
-        protected void FillPager()
-        {
-            var pageSize = int.Parse(this.PageSize.Text);
-
-            var number = (int)Math.Ceiling(this.Model.Count / (double)pageSize);
-
-            this.PageControl.DataSource = new int[number];
-            this.PageControl.DataBind();
+            return this.Model.Advertisements;
         }
     }
 }

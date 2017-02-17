@@ -58,15 +58,6 @@ namespace CourseProject.Web {
         protected global::System.Web.UI.WebControls.DropDownList OrderProperties;
         
         /// <summary>
-        /// PageSize control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PageSize;
-        
-        /// <summary>
         /// MainList control.
         /// </summary>
         /// <remarks>
@@ -76,12 +67,12 @@ namespace CourseProject.Web {
         protected global::System.Web.UI.WebControls.ListView MainList;
         
         /// <summary>
-        /// PageControl control.
+        /// PagerControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater PageControl;
+        protected global::System.Web.UI.WebControls.DataPager PagerControl;
     }
 }
