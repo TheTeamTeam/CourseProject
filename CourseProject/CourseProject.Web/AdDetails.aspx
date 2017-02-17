@@ -3,7 +3,7 @@
     <h3> <%#: this.Model.Advertisement.Name %></h3>
     <div>
         <p class="details-description col-md-6"> <%#: this.Model.Advertisement.Description %> </p> 
-        <img class="col-md-6" src="<%#this.Model.Advertisement.ImagePath%>" alt="<%#: this.Model.Advertisement.Name %>"/>
+        <img class="col-md-6" src="<%#this.Model.Advertisement.ImagePathBig%>" alt="<%#: this.Model.Advertisement.Name %>"/>
     </div>
     <p>by <a href="/users/<%#: this.Model.Advertisement.Seller.UserName %>"><%#: this.Model.Advertisement.Seller.UserName %></a></p>
     <p>Price: <strong><%#: this.Model.Advertisement.Price %>lv.</strong></p>

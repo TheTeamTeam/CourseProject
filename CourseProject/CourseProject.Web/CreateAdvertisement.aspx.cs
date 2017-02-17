@@ -13,6 +13,7 @@ using WebFormsMvp.Web;
 using CourseProject.Web.EventArguments;
 using Microsoft.AspNet.Identity;
 using System.IO;
+using ImageResizer;
 
 namespace CourseProject.Web
 {
@@ -54,8 +55,21 @@ namespace CourseProject.Web
                 {
                     if (Image.PostedFile.ContentType == "image/jpeg" || Image.PostedFile.ContentType == "image/png")
                     {
+                        HttpPostedFile file = Image.PostedFile;
                         filename = Path.GetFileName(Image.FileName);
-                        Image.SaveAs(Server.MapPath("~/Images/") + filename);
+
+                        //The resizing settings can specify any of 30 commands.. See http://imageresizing.net for details.
+                        //Destination paths can have variables like <guid> and <ext>, or 
+                        //even a santizied version of the original filename, like <filename:A-Za-z0-9>
+                        ImageJob i = new ImageJob(file, $"~/images/small/{filename}", 
+                            new Instructions("width=200;height=200;format=jpg;mode=max"));
+                        i.CreateParentDirectory = true; //Auto-create the uploads directory.
+                        i.Build();
+
+                        ImageJob j = new ImageJob(file, $"~/images/big/{filename}",
+                            new Instructions("width=500;height=500;format=jpg;mode=max"));
+                        j.CreateParentDirectory = true; //Auto-create the uploads directory.
+                        j.Build();
                     }
                     else
                     {
@@ -70,7 +84,8 @@ namespace CourseProject.Web
                     Places = int.Parse(Places.Text),
                     Price = decimal.Parse(Price.Text),
                     ExpireDate = DateTime.Parse(ExpireDate.Text),
-                    ImagePath = filename != null ? "/Images/" + filename : null,
+                    ImagePathSmall = filename != null ? "/images/small/" + filename : null,
+                    ImagePathBig = filename != null ? "/images/big" + filename : null,
                     Category = category,
                     CategoryId = category.Id,
                     City = city,
