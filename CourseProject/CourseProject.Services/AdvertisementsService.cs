@@ -90,120 +90,69 @@ namespace CourseProject.Services
                 this.unitOfWork.Commit();
             }
         }
-
-
-        // So not optimized....
-        public IEnumerable<Advertisement> TestSearchAds(string word, int page, int pageSize, string order, int categoryId, int cityId)
+        
+        public IQueryable<Advertisement> SearchAds(string word, string order, int categoryId, int cityId)
         {
-            // TODO: Should it throw argument null exc
-            // TODO: Query here ?
-            // TODO: Dynamic order by
-            // PropertyDescriptor prop = TypeDescriptor.GetProperties(typeof(Advertisement)).Find(order,true);
-            var skip = (page - 1) * pageSize;
-            var query = this.adsRepository.All;
-            // .Where(x => x.Name.Contains(word) || x.Description.Contains(word));
-            string filterExprString = "";
-            //const string exp = @"(Person.Age > 3 AND Person.Weight > 50) OR Person.Age < 3";
-            //var p = Expression.Parameter(typeof(Person), "Person");
-            //var e = DynamicExpression.ParseLambda(new[] { p }, null, exp)
+            var filterExpression = this.BuildFilterExpressions(word, categoryId, cityId);
 
-            if (!string.IsNullOrEmpty(word))
+            var orderProps = new List<string> { "Name", "Places", "Price" };
+            if (!orderProps.Contains(order))
             {
-                filterExprString += "(x.Name.Contains(@0) OR x.Description.Contains(@0))";
-            }
-            if (categoryId > 0)
-            {
-                // query = query.Where(x => x.CategoryId == categoryId);
-                filterExprString += "AND x.CategoryId == @1";
+                order = "Id";
             }
 
-            if (cityId > 0)
+            bool ascending = false;
+            if (order == "Name")
             {
-                // query = query.Where(x => x.CityId == cityId);
-                filterExprString += "AND x.CityId == @2";
+                ascending = true;
             }
 
-            Expression<Func<Advertisement, bool>> filter;
-            Expression<Func<Advertisement, bool>> filter2 = x => x.Name.Contains(word) || x.Description.Contains(word);
-            Expression<Func<Advertisement, bool>> filter3 = x => x.CategoryId == categoryId;
-            var body = Expression.AndAlso(filter2.Body, filter3.Body);
-            var lambda = Expression.Lambda<Func<Advertisement, bool>>(body, filter2.Parameters[0]);
-            if (filterExprString != "")
-            {
-                var p = Expression.Parameter(typeof(Advertisement), "x");
-                var parameters = new object[]
-                {
-                word, categoryId, cityId
-                };
-                filter = (Expression<Func<Advertisement, bool>>)System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { p }, typeof(bool), filterExprString, parameters);
-            }
-            else
-            {
-                filter = null;
-            }
-            var orderP = Expression.Parameter(typeof(Advertisement), "x");
+            var result = this.adsRepository.GetAllWithMultipleFilters(filterExpression, order, ascending);
 
-            var orderExpr = (Expression<Func<Advertisement, object>>)System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { orderP }, typeof(object), "x.@0", order);
-            // var result = this.adsRepository.GetAll<object, Advertisement>(filter, orderExpr, null, skip, pageSize);
-            query = query.OrderBy(order)
-                .Skip(skip)
-                .Take(pageSize);
-
-            return query.ToList();
-        }
-
-        public IEnumerable<Advertisement> SearchAds(string word, int page, int pageSize, string order, int categoryId, int cityId)
-        {
-            var skip = (page - 1) * pageSize;
-            var filterExpression = this.BuildFilterExpression(word, categoryId, cityId);
-
-            var result = this.adsRepository.GetAll(filterExpression, order, skip, pageSize);
-
-            return result.ToList();
-        }
-
-        public int GetAdsCount(string word, int categoryId, int cityId)
-        {
-            var filterExpression = this.BuildFilterExpression(word, categoryId, cityId);
-
-            var result = this.adsRepository.GetCount(filterExpression);
+            var includes = this.BuildSearchIncludes();
+            result = this.adsRepository.IncludeMultiple(result, includes);
 
             return result;
         }
 
-        private Expression<Func<Advertisement, bool>> BuildFilterExpression(string word, int categoryId, int cityId)
+        private IEnumerable<Expression<Func<Advertisement, object>>> BuildSearchIncludes()
         {
+            var includes = new List<Expression<Func<Advertisement, object>>>();
+
+            includes.Add(x => x.City);          
+            includes.Add(x => x.Category);
+
+            return includes;
+        }
+
+        private IEnumerable<Expression<Func<Advertisement, bool>>> BuildFilterExpressions(string word, int categoryId, int cityId)
+        {
+            var filterExpressions = new List<Expression<Func<Advertisement, bool>>>();
             // TODO: if empty   
-            string filterExprStr = "(x.Name.Contains(@0) OR x.Description.Contains(@0))";
+            if (!string.IsNullOrEmpty(word))
+            {
+                filterExpressions.Add(x => x.Name.Contains(word) || x.Description.Contains(word));
+            }
 
             if (categoryId > 0)
             {
-                filterExprStr += " AND x.CategoryId == @1";
+                filterExpressions.Add(x => x.CategoryId == categoryId);
             }
 
             if (cityId > 0)
             {
-                filterExprStr += " AND x.CityId == @2";
+                filterExpressions.Add(x => x.CityId  == cityId);
             }
 
-            Expression<Func<Advertisement, bool>> finalExpression;
-            if (filterExprStr != "")
-            {
-                var p = Expression.Parameter(typeof(Advertisement), "x");
-                var parameters = new object[] { word, categoryId, cityId };
-                finalExpression = (Expression<Func<Advertisement, bool>>)System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { p }, typeof(bool), filterExprStr, parameters);
-            }
-            else
-            {
-                finalExpression = null;
-            }
-            return finalExpression;
+            return filterExpressions;
         }
-
+        
         public IEnumerable<Advertisement> GetTopAds(int count)
         {
-            // TODO: Should it be in another method, without the string
-            var result = this.adsRepository.GetAll(null, "Name", 0, count);
+            // TODO: Should it be in another method
+            //var filterExpressions = new List<Expression<Func<Advertisement, bool>>>();
+            //filterExpressions.Add(x => x.ExpireDate.CompareTo(DateTime.Now) > 0);
+            var result = this.adsRepository.GetAll(null, x => x.ExpireDate).Take(count);
             return result.ToList();
         }
 

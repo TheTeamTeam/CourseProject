@@ -15,7 +15,7 @@ namespace CourseProject.Data.Repositories
             this.Context = context;
             this.DbSet = this.Context.Set<T>();
         }
-        
+
 
         // TODO: Make readonly field ??
 
@@ -27,7 +27,7 @@ namespace CourseProject.Data.Repositories
         {
             get { return this.DbSet; }
         }
-        
+
         public T GetById(object id)
         {
             return this.DbSet.Find(id);
@@ -72,41 +72,61 @@ namespace CourseProject.Data.Repositories
             }
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filterExpression, string sortProperty, int skip, int take)
+        public IQueryable<T> GetAllWithMultipleFilters(IEnumerable<Expression<Func<T, bool>>> filterExpressions, string orderProperty, bool ascending)
         {
             IQueryable<T> result = this.DbSet;
 
-            if (filterExpression != null)
+            if (filterExpressions != null)
             {
-                result = result.Where(filterExpression);
+                foreach (var filterExpr in filterExpressions)
+                {
+                    result = result.Where(filterExpr);
+                }
             }
 
-            if (sortProperty != null)
+            if (orderProperty != null)
             {
-                result = result.OrderBy(sortProperty);
+                if (ascending)
+                {
+                    result = result.OrderBy(orderProperty);
+                }
+                else
+                {
+                    result = result.OrderBy(orderProperty + " descending");
+                }
             }
 
-            result = result.Skip(skip).Take(take);
-            return result.ToList();
+            return result;
         }
 
+        // TODO: Should it be combined with other method
+        public IQueryable<T> IncludeMultiple(IQueryable<T> query, IEnumerable<Expression<Func<T, object>>> includes)
+        {
+            if (includes != null)
+            {
+                query = includes.Aggregate(query,
+                          (current, include) => current.Include(include));
+            }
+
+            return query;
+        }
         // TODO: should this stay
-        public IEnumerable<T1> Select<T1>(Expression<Func<T, T1>> selectExpression)
-        {
-            return this.DbSet.Select(selectExpression).ToList();
-        }
+        //public IEnumerable<T1> Select<T1>(Expression<Func<T, T1>> selectExpression)
+        //{
+        //    return this.DbSet.Select(selectExpression).ToList();
+        //}
 
-        public int GetCount(Expression<Func<T, bool>> filterExpression)
-        {
-            IQueryable<T> result = this.DbSet;
+        //public int GetCount(Expression<Func<T, bool>> filterExpression)
+        //{
+        //    IQueryable<T> result = this.DbSet;
 
-            if(filterExpression != null)
-            {
-                result = result.Where(filterExpression);
-            }
+        //    if(filterExpression != null)
+        //    {
+        //        result = result.Where(filterExpression);
+        //    }
 
-            return result.Count();
-        }
+        //    return result.Count();
+        //}
 
         public void Add(T entity)
         {
