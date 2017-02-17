@@ -251,3 +251,5 @@ paket-files/
 .idea/
 *.sln.iml
 /CourseProject/CourseProject.Web/Images
+
+*.StyleCop

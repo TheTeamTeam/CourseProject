@@ -2,7 +2,7 @@
 
 namespace CourseProject.Web.EventArguments.Contracts
 {
-    public interface IRoleNameEventArgs
+    public interface IRoleEventArgs
     {
         HttpContext Context { get; set; }
         string RoleName { get; set; }

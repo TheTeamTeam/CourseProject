@@ -8,7 +8,6 @@ namespace CourseProject.Web.Models
         public User ProfileUser { get; set; }
 
         public bool IsSeller { get; set; }
-        public bool IsAdmin { get; set; }
 
         public IEnumerable<Advertisement> SellerAds { get; set; }
     }

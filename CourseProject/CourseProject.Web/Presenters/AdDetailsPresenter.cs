@@ -39,6 +39,7 @@ namespace CourseProject.Web.Presenters
         {
             Advertisement ad = this.adsService.GetAdById(e.AdId);
             this.View.Model.Advertisement = ad;
+
             this.View.Model.BookButtonVisible = e.UserId != null ? !this.usersService.UserBookedAd(e.UserId, ad) : false;
             this.View.Model.SaveButtonVisible = e.UserId != null ? !this.usersService.UserSavedAd(e.UserId, ad) : false;      
         }

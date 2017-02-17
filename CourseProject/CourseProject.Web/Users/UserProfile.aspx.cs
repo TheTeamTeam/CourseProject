@@ -10,8 +10,8 @@ namespace CourseProject.Web.Users
     public partial class UserProfile : MvpPage<UserProfileModel>, IUserProfileView
     {
         public event EventHandler<GetUserByUsernameEventArgs> GettingUser;
-        public event EventHandler<RoleNameEventArgs> AddingRole;
-        public event EventHandler<RoleNameEventArgs> RemovingRole;
+        public event EventHandler<RoleEventArgs> AddingRole;
+        public event EventHandler<RoleEventArgs> RemovingRole;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,26 +44,9 @@ namespace CourseProject.Web.Users
             {
                 this.Server.Transfer("~/ErrorPages/401.aspx");
             }
-        }
 
-        protected void MakeSellerBtn_Click(object sender, EventArgs e)
-        {
-            this.AddingRole?.Invoke(this, new RoleNameEventArgs("Seller", this.Context));
-        }
-
-        protected void MakeAdminBtn_Click(object sender, EventArgs e)
-        {
-            this.AddingRole?.Invoke(this, new RoleNameEventArgs("Admin", this.Context));
-        }
-
-        protected void RemoveSellerBtn_Click(object sender, EventArgs e)
-        {
-            this.RemovingRole?.Invoke(this, new RoleNameEventArgs("Seller", this.Context));
-        }
-
-        protected void RemoveAdminBtn_Click(object sender, EventArgs e)
-        {
-            this.RemovingRole?.Invoke(this, new RoleNameEventArgs("Admin", this.Context));
+            // Calling data bind here because otherwise the admin control does not receive the user id
+            this.DataBind();
         }
     }
 }

@@ -4,15 +4,19 @@ using CourseProject.Web.EventArguments.Contracts;
 
 namespace CourseProject.Web.EventArguments
 {
-    public class RoleNameEventArgs : EventArgs, IRoleNameEventArgs
+    public class RoleEventArgs : EventArgs, IRoleEventArgs
     {
-        public RoleNameEventArgs(string roleName, HttpContext context)
+        public RoleEventArgs(string roleName, HttpContext context, string userId)
         {
             this.RoleName = roleName;
             this.Context = context;
+            this.UserId = userId;
         }
 
         public string RoleName { get; set; }
+
         public HttpContext Context { get; set; }
+
+        public string UserId { get; set; }
     }
 }

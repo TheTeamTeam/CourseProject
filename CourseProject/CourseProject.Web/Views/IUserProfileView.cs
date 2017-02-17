@@ -8,7 +8,7 @@ namespace CourseProject.Web.Views
     public interface IUserProfileView : IView<UserProfileModel>
     {
         event EventHandler<GetUserByUsernameEventArgs> GettingUser;
-        event EventHandler<RoleNameEventArgs> AddingRole;
-        event EventHandler<RoleNameEventArgs> RemovingRole;
+        event EventHandler<RoleEventArgs> AddingRole;
+        event EventHandler<RoleEventArgs> RemovingRole;
     }
 }

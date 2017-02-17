@@ -32,36 +32,6 @@ namespace CourseProject.Web.Presenters
             this.adsService = adsService;
 
             this.View.GettingUser += this.OnGettingUser;
-            this.View.AddingRole += this.OnAddingRole;
-            this.View.RemovingRole += this.OnRemovingRole;
-        }
-
-        private void OnAddingRole(object sender, RoleNameEventArgs e)
-        {
-            var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            manager.AddToRole(this.View.Model.ProfileUser.Id, e.RoleName);
-            if(e.RoleName == "Admin")
-            {
-                this.View.Model.IsAdmin = true;
-            }
-            else
-            {
-                this.View.Model.IsSeller = true;
-            }
-        }
-
-        private void OnRemovingRole(object sender, RoleNameEventArgs e)
-        {
-            var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            manager.RemoveFromRole(this.View.Model.ProfileUser.Id, e.RoleName);
-            if (e.RoleName == "Admin")
-            {
-                this.View.Model.IsAdmin = false;
-            }
-            else
-            {
-                this.View.Model.IsSeller = false;
-            }
         }
 
         private void OnGettingUser(object sender, GetUserByUsernameEventArgs e)
@@ -73,8 +43,7 @@ namespace CourseProject.Web.Presenters
             {
                 var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var roles = manager.GetRoles(user.Id);
-
-                this.View.Model.IsAdmin = roles.Contains("Admin");
+                
                 var isSeller = roles.Contains("Seller");
                 this.View.Model.IsSeller = isSeller;
 
@@ -82,9 +51,7 @@ namespace CourseProject.Web.Presenters
                 {
                     this.View.Model.SellerAds = this.adsService.GetSellerAds(user.Id);
                 }
-            }
-
-            
+            }            
         }
     }
 }

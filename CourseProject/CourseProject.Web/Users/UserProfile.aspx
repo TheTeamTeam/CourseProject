@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserProfile.aspx.cs" Inherits="CourseProject.Web.Users.UserProfile" %>
 
+<%@ Register Src="~/Users/AdminControls/ChangeRolesControl.ascx" TagPrefix="uc" TagName="ChangeRolesControl" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="container col-md-8">
@@ -14,17 +15,7 @@
             <RoleGroups>
                 <asp:RoleGroup Roles="Admin">
                     <ContentTemplate>
-                        <asp:UpdatePanel runat="server" UpdateMode="Conditional" ChildrenAsTriggers="true">
-                            <ContentTemplate>
-                                <div class="col-md-4">
-                                    <%-- TODO: Have one button for change --%>
-                                    <asp:Button runat="server" Visible="<%# !this.Model.IsSeller %>" ID="MakeSellerBtn" Text="Make seller" OnClick="MakeSellerBtn_Click" CssClass="btn btn-primary" />
-                                    <asp:Button runat="server" Visible="<%# this.Model.IsSeller %>" ID="RemoveSellerBtn" Text="Remove as seller" OnClick="RemoveSellerBtn_Click" CssClass="btn btn-danger" />
-                                    <asp:Button runat="server" Visible="<%# !this.Model.IsAdmin %>" ID="MakeAdminBtn" Text="Make admin" OnClick="MakeAdminBtn_Click" CssClass="btn btn-primary" />
-                                    <asp:Button runat="server" Visible="<%# this.Model.IsAdmin %>" ID="RemoveAdminBtn" Text="Remove as admin" OnClick="RemoveAdminBtn_Click" CssClass="btn btn-danger" />
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
+                        <uc:ChangeRolesControl runat="server" ID="AdminControl" UserId="<%# this.Model.ProfileUser.Id %>"></uc:ChangeRolesControl>
                     </ContentTemplate>
                 </asp:RoleGroup>
             </RoleGroups>
