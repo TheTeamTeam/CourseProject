@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace CourseProject.Web.Account.EventArguments
+namespace CourseProject.Mvp.Account.Login
 {
     public class LoginEventArgs : EventArgs
     {

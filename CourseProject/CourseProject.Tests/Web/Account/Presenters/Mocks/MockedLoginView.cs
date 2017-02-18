@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CourseProject.Web.Account.EventArguments;
-using CourseProject.Web.Account.Views;
-using CourseProject.Web.Account.Models;
+using CourseProject.Mvp.Account.Login;
 
 namespace CourseProject.Tests.Web.Account.Presenters.Mocks
 {

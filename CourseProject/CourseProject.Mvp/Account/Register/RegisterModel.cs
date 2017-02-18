@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 
-namespace CourseProject.Web.Account.Models
+namespace CourseProject.Mvp.Account.Register
 {
     public class RegisterModel
     {

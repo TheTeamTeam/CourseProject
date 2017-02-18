@@ -1,11 +1,9 @@
 ﻿using System.Web;
 using Microsoft.AspNet.Identity.Owin;
 using WebFormsMvp;
-using CourseProject.Web.Account.Views;
-using CourseProject.Web.Account.EventArguments;
-using CourseProject.Web.Identity;
+using CourseProject.Mvp.Identity;
 
-namespace CourseProject.Web.Account.Presenters
+namespace CourseProject.Mvp.Account.Login
 {
     public class LoginPresenter : Presenter<ILoginView>
     {

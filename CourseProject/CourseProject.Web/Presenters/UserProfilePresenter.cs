@@ -6,7 +6,7 @@ using WebFormsMvp;
 using CourseProject.Services.Contracts;
 using CourseProject.Web.EventArguments;
 using CourseProject.Web.Views;
-using CourseProject.Web.Identity;
+using CourseProject.Mvp.Identity;
 
 namespace CourseProject.Web.Presenters
 {

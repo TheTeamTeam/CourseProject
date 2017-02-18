@@ -1,9 +1,7 @@
 ﻿using System;
 using WebFormsMvp;
-using CourseProject.Web.Account.Models;
-using CourseProject.Web.Account.EventArguments;
 
-namespace CourseProject.Web.Account.Views
+namespace CourseProject.Mvp.Account.Login
 {
     public interface ILoginView : IView<LoginModel>
     {

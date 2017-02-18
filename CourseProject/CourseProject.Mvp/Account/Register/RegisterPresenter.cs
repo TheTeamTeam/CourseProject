@@ -3,12 +3,10 @@ using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using WebFormsMvp;
-using CourseProject.Web.Account.EventArguments;
-using CourseProject.Web.Account.Views;
-using CourseProject.Web.Identity;
 using CourseProject.Models;
+using CourseProject.Mvp.Identity;
 
-namespace CourseProject.Web.Account.Presenters
+namespace CourseProject.Mvp.Account.Register
 {
     public class RegisterPresenter : Presenter<IRegisterView>
     {

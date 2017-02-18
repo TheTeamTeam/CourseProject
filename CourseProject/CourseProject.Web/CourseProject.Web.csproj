@@ -306,9 +306,6 @@
     <Compile Include="EventArguments\Contracts\ISaveAdEventArgs.cs" />
     <Compile Include="EventArguments\CountEventArgs.cs" />
     <Compile Include="EventArguments\GetUserByIdEventArgs.cs" />
-    <Compile Include="Account\EventArguments\LoginEventArgs.cs" />
-    <Compile Include="Account\EventArguments\RegisterEventArgs.cs" />
-    <Compile Include="Account\EventArguments\SignInEventArgs.cs" />
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -316,7 +313,6 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Models\LoginModel.cs" />
     <Compile Include="EventArguments\GetUserByUsernameEventArgs.cs" />
     <Compile Include="EventArguments\Contracts\IAdDetailsEventArgs.cs" />
     <Compile Include="EventArguments\Contracts\IBookAdEventArgs.cs" />
@@ -347,7 +343,6 @@
     <Compile Include="Models\ChangeRolesModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\PersonalProfileModel.cs" />
-    <Compile Include="Account\Models\RegisterModel.cs" />
     <Compile Include="Account\OpenAuthProviders.ascx.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -355,13 +350,11 @@
     <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Presenters\LoginPresenter.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Presenters\ChangeRolesPresenter.cs" />
     <Compile Include="Presenters\HomePresenter.cs" />
     <Compile Include="Presenters\PersonalProfilePresenter.cs" />
-    <Compile Include="Account\Presenters\RegisterPresenter.cs" />
     <Compile Include="Presenters\SearchPresenter.cs" />
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
@@ -391,8 +384,6 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Views\ILoginView.cs" />
-    <Compile Include="Account\Views\IRegisterView.cs" />
     <Compile Include="Views\IChangeRolesView.cs" />
     <Compile Include="Views\IHomeView.cs" />
     <Compile Include="Views\IPersonalProfileView.cs" />
@@ -421,7 +412,6 @@
     <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\Factories\ICustomPresenterFactory.cs" />
     <Compile Include="App_Start\Factories\MvpPresenterFactory.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectModules\DataNinjectModule.cs" />
     <Compile Include="App_Start\NinjectModules\MvpNinjectModule.cs" />
     <Compile Include="App_Start\NinjectWeb.cs" />
@@ -497,6 +487,10 @@
     <ProjectReference Include="..\CourseProject.Models\CourseProject.Models.csproj">
       <Project>{da9e8888-beba-4db3-bfea-d9867d4d7ea0}</Project>
       <Name>CourseProject.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CourseProject.Mvp\CourseProject.Mvp.csproj">
+      <Project>{cc1d5c98-910e-4d7e-83d6-0559b7f7d6cb}</Project>
+      <Name>CourseProject.Mvp</Name>
     </ProjectReference>
     <ProjectReference Include="..\CourseProject.Services\CourseProject.Services.csproj">
       <Project>{b04986bf-c421-440a-906a-741b51bda0bb}</Project>

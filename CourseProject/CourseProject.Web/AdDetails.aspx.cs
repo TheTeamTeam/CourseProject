@@ -39,6 +39,7 @@ namespace CourseProject.Web
         // TODO: Decide where to leave logic
         public Advertisement AdForm_GetItem([QueryString] int? id)
         {         
+            // If initializing event is called here, on button click, the model.advertisement is null.
             return this.Model.Advertisement;
         }
 

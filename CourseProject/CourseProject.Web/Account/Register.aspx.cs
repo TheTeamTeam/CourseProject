@@ -3,11 +3,8 @@ using System.Linq;
 using WebFormsMvp;
 using WebFormsMvp.Web;
 using CourseProject.Models;
-using CourseProject.Web.Identity;
-using CourseProject.Web.Account.Models;
-using CourseProject.Web.Account.Views;
-using CourseProject.Web.Account.EventArguments;
-using CourseProject.Web.Account.Presenters;
+using CourseProject.Mvp.Identity;
+using CourseProject.Mvp.Account.Register;
 
 namespace CourseProject.Web.Account
 {
@@ -15,9 +12,7 @@ namespace CourseProject.Web.Account
     public partial class Register : MvpPage<RegisterModel>, IRegisterView
     {
         public event EventHandler<RegisterEventArgs> Registering;
-
-        public event EventHandler<SignInEventArgs> SigningIn;
-
+        
         protected void CreateUser_Click(object sender, EventArgs e)
         {
             var userName = this.UserName.Text;

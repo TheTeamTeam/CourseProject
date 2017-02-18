@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 
-namespace CourseProject.Web.Account.Models
+namespace CourseProject.Mvp.Account.Login
 {
     public class LoginModel
     {

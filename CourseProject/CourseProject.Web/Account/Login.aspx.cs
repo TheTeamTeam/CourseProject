@@ -3,11 +3,8 @@ using System.Web;
 using Microsoft.AspNet.Identity.Owin;
 using WebFormsMvp;
 using WebFormsMvp.Web;
-using CourseProject.Web.Identity;
-using CourseProject.Web.Account.Views;
-using CourseProject.Web.Account.Models;
-using CourseProject.Web.Account.EventArguments;
-using CourseProject.Web.Account.Presenters;
+using CourseProject.Mvp.Identity;
+using CourseProject.Mvp.Account.Login;
 
 namespace CourseProject.Web.Account
 {

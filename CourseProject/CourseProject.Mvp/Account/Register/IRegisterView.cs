@@ -1,9 +1,7 @@
 ﻿using System;
 using WebFormsMvp;
-using CourseProject.Web.Account.EventArguments;
-using CourseProject.Web.Account.Models;
 
-namespace CourseProject.Web.Account.Views
+namespace CourseProject.Mvp.Account.Register
 {
     public interface IRegisterView : IView<RegisterModel>
     {

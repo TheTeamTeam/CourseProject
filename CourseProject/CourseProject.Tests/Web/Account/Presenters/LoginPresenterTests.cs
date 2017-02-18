@@ -6,10 +6,8 @@ using NUnit.Framework;
 using Moq;
 using CourseProject.Models;
 using CourseProject.Tests.Web.Account.Presenters.Mocks;
-using CourseProject.Web.Account.Views;
-using CourseProject.Web.Account.Presenters;
-using CourseProject.Web.Account.EventArguments;
-using CourseProject.Web.Identity;
+using CourseProject.Mvp.Account.Login;
+using CourseProject.Mvp.Identity;
 
 namespace CourseProject.Tests.Web.Account.Presenters
 {

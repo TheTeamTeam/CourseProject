@@ -1,7 +1,6 @@
 ﻿using System.Web;
-using CourseProject.Models;
 
-namespace CourseProject.Web.Account.EventArguments
+namespace CourseProject.Mvp.Account.Register
 {
     public class RegisterEventArgs
     {

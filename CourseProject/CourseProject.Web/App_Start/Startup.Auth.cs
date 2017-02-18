@@ -9,7 +9,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using CourseProject.Data;
 using CourseProject.Models;
-using CourseProject.Web.Identity;
+using CourseProject.Mvp.Identity;
 
 namespace CourseProject.Web
 {

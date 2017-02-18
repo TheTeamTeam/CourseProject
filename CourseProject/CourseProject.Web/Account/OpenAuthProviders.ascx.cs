@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using CourseProject.Web.Identity;
+using CourseProject.Mvp.Identity;
 
 namespace CourseProject.Web.Account
 {

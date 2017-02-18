@@ -2,7 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using WebFormsMvp;
-using CourseProject.Web.Identity;
+using CourseProject.Mvp.Identity;
 using CourseProject.Web.EventArguments;
 using CourseProject.Web.Views;
 
