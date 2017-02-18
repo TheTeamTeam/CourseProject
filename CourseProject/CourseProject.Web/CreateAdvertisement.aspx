@@ -47,7 +47,7 @@
             <asp:Label runat="server" AssociatedControlID="ExpireDate" CssClass="col-md-2 control-label">Expire Date</asp:Label>
             <div class="col-md-3">
                 <asp:TextBox runat="server" ID="ExpireDate" CssClass="form-control" />
-                <ajaxToolkit:CalendarExtender ID="CalendarExtender" runat="server" TargetControlID="ExpireDate" />
+                <ajaxToolkit:CalendarExtender ID="CalendarExtender" runat="server" TargetControlID="ExpireDate"  Format="MM/dd/yyyy"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ExpireDate"
                     CssClass="text-danger" ErrorMessage="The date field is required." />
             </div>

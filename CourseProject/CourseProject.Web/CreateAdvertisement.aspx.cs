@@ -14,6 +14,7 @@ using CourseProject.Web.EventArguments;
 using Microsoft.AspNet.Identity;
 using System.IO;
 using ImageResizer;
+using System.Globalization;
 
 namespace CourseProject.Web
 {
@@ -77,15 +78,17 @@ namespace CourseProject.Web
                     }
                 }
 
+                var date = DateTime.ParseExact(ExpireDate.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
                 var advertisement = new Advertisement()
                 {
                     Name = Name.Text,
                     Description = Description.Text,
                     Places = int.Parse(Places.Text),
                     Price = decimal.Parse(Price.Text),
-                    ExpireDate = DateTime.Parse(ExpireDate.Text),
+                    ExpireDate = date,
                     ImagePathSmall = filename != null ? "/images/small/" + filename : null,
-                    ImagePathBig = filename != null ? "/images/big" + filename : null,
+                    ImagePathBig = filename != null ? "/images/big/" + filename : null,
                     Category = category,
                     CategoryId = category.Id,
                     City = city,

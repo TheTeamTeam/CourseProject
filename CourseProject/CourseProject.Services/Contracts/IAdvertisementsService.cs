@@ -24,5 +24,9 @@ namespace CourseProject.Services.Contracts
         IEnumerable<Advertisement> GetTopAds(int count);
 
         IEnumerable<Advertisement> GetSellerAds(string id);
+
+        void DeleteAd(int ad);
+
+        void UpdateAd(Advertisement ad);
     }
 }

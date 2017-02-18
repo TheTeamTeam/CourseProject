@@ -31,8 +31,33 @@ namespace CourseProject.Web.Presenters
             this.usersService = usersService;
 
             this.View.Initializing += this.OnInitializing;
-            this.View.BookAd += OnBookAd;
-            this.View.SaveAd += OnSaveAd;
+            this.View.BookAd += this.OnBookAd;
+            this.View.SaveAd += this.OnSaveAd;
+            this.View.DeleteAd += this.OnDeleteAd;
+            this.View.UpdateAd += this.OnUpdateAd;
+        }
+
+        private void OnUpdateAd(object sender, IdEventArgs e)
+        {
+            Advertisement ad = this.adsService.GetAdById(e.Id);
+            if (ad == null)
+            {
+                // The item wasn't found
+                this.View.ModelState.AddModelError("", String.Format("Item with id {0} was not found", e.Id));
+                return;
+            }
+
+            this.View.TryUpdateModel(ad);
+            if (this.View.ModelState.IsValid)
+            {
+                this.adsService.UpdateAd(ad);
+            }
+        }
+
+        private void OnDeleteAd(object sender, IdEventArgs e)
+        {
+            this.adsService.DeleteAd(e.Id);
+            this.View.Response.Redirect("~/");
         }
 
         private void OnInitializing(object sender, AdDetailsEventArgs e)

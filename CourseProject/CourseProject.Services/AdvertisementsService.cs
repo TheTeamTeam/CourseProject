@@ -160,5 +160,24 @@ namespace CourseProject.Services
         {
             return this.adsRepository.GetAll(x => x.SellerId == id).ToList();
         }
+
+        public void DeleteAd(int id)
+        {
+            using (this.unitOfWork)
+            {
+                var ad = this.adsRepository.GetById(id);
+                this.adsRepository.Delete(ad);
+                this.unitOfWork.Commit();
+            }
+        }
+
+        public void UpdateAd(Advertisement ad)
+        {
+            using (this.unitOfWork)
+            {
+                this.adsRepository.Update(ad);
+                unitOfWork.Commit();
+            }
+        }
     }
 }
