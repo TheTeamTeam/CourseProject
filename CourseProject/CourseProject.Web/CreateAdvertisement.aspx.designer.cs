@@ -13,6 +13,15 @@ namespace CourseProject.Web {
     public partial class CreateAdvertisement {
         
         /// <summary>
+        /// ErrorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
+        
+        /// <summary>
         /// Name control.
         /// </summary>
         /// <remarks>

@@ -19,6 +19,8 @@ namespace CourseProject.Web.App_Start.NinjectModules
             this.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             this.Bind<IAdvertisementsService>().To<AdvertisementsService>().InRequestScope();
             this.Bind<IUsersService>().To<UsersService>().InRequestScope();
+            this.Bind<ICategoriesService>().To<CategoriesService>().InRequestScope();
+            this.Bind<ICitiesService>().To<CitiesService>().InRequestScope();
         }
     }
 }

@@ -47,7 +47,7 @@ namespace CourseProject.Web.Account
             }
             else
             {
-                ErrorMessage.Text = this.Model.IdentityResult.Errors.FirstOrDefault();
+                this.ErrorMessage.Text = this.Model.IdentityResult.Errors.FirstOrDefault();
             }
         }
     }

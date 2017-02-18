@@ -1,9 +1,18 @@
-﻿using CourseProject.Models;
+﻿using System;
+using System.Web;
 
 namespace CourseProject.Web.EventArguments.Contracts
 {
     public interface ICreatingAdvertisementEventArgs
     {
-        Advertisement Advertisement { get; }
+        int CategoryId { get; }
+        int CityId { get; }
+        string Description { get; }
+        DateTime ExpireDate { get; }
+        HttpPostedFile Image { get; }
+        string Name { get; }
+        int Places { get; }
+        decimal Price { get; }
+        string SellerId { get; }
     }
 }

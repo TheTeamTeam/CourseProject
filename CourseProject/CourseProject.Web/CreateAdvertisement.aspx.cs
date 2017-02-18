@@ -26,10 +26,10 @@ namespace CourseProject.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.MyInit?.Invoke(sender, e);
-
             if (!IsPostBack)
-            {             
+            {
+                this.MyInit?.Invoke(sender, e);
+                
                 this.Categories.DataSource = this.Model.Categories;
                 this.Categories.DataBind();
 
@@ -40,65 +40,37 @@ namespace CourseProject.Web
         protected void CreateAdvertisement_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
-            {
-
-                var id = this.Page.User.Identity.GetUserId();
-
-                var selectedCategoryId = int.Parse(this.Categories.SelectedValue);
-                var category = this.Model.Categories.FirstOrDefault(ca => ca.Id == selectedCategoryId);
-
-                var selectedCityId = int.Parse(this.Cities.SelectedValue);
-                var city = this.Model.Cities.FirstOrDefault(c => c.Id == selectedCityId);
-
-                string filename = null;
-
-                if (Image.HasFile)
-                {
-                    if (Image.PostedFile.ContentType == "image/jpeg" || Image.PostedFile.ContentType == "image/png")
-                    {
-                        HttpPostedFile file = Image.PostedFile;
-                        filename = Path.GetFileName(Image.FileName);
-
-                        //The resizing settings can specify any of 30 commands.. See http://imageresizing.net for details.
-                        //Destination paths can have variables like <guid> and <ext>, or 
-                        //even a santizied version of the original filename, like <filename:A-Za-z0-9>
-                        ImageJob i = new ImageJob(file, $"~/images/small/{filename}", 
-                            new Instructions("width=200;height=200;format=jpg;mode=max"));
-                        i.CreateParentDirectory = true; //Auto-create the uploads directory.
-                        i.Build();
-
-                        ImageJob j = new ImageJob(file, $"~/images/big/{filename}",
-                            new Instructions("width=500;height=500;format=jpg;mode=max"));
-                        j.CreateParentDirectory = true; //Auto-create the uploads directory.
-                        j.Build();
-                    }
-                    else
-                    {
-                        //TODO: File format shoud be png or jpeg
-                    }
-                }
-
+            {           
+                var name = this.Name.Text;
+                var description = this.Description.Text;
+                var places = int.Parse(this.Places.Text);
+                var price = decimal.Parse(this.Price.Text);
                 var date = DateTime.ParseExact(ExpireDate.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                var userId = this.Page.User.Identity.GetUserId();
+                var categoryId = int.Parse(this.Categories.SelectedValue);
+                var cityId = int.Parse(this.Cities.SelectedValue);
 
-                var advertisement = new Advertisement()
+                if (Image.HasFile && (Image.PostedFile.ContentType == "image/jpeg" || Image.PostedFile.ContentType == "image/png"))
                 {
-                    Name = Name.Text,
-                    Description = Description.Text,
-                    Places = int.Parse(Places.Text),
-                    Price = decimal.Parse(Price.Text),
-                    ExpireDate = date,
-                    ImagePathSmall = filename != null ? "/images/small/" + filename : null,
-                    ImagePathBig = filename != null ? "/images/big/" + filename : null,
-                    Category = category,
-                    CategoryId = category.Id,
-                    City = city,
-                    CityId = city.Id,
-                    SellerId = id
-                };
+                    HttpPostedFile file = Image.PostedFile;
 
-                this.CreatingAdvertisement?.Invoke(sender, new CreatingAdvertisementEventArgs(advertisement));
+                    this.CreatingAdvertisement?.Invoke(sender, new CreatingAdvertisementEventArgs(
+                        name,
+                        description,
+                        places,
+                        price,
+                        date,
+                        file,
+                        cityId,
+                        categoryId,
+                        userId));
 
-                this.Response.Redirect("~/users/profile");
+                    this.Response.Redirect("~/users/profile");
+                }
+                else
+                {
+                    this.ErrorMessage.Text = "Please choose an image file for your ad.";
+                }
             }
         }
     }

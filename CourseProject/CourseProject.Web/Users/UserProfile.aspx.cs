@@ -17,35 +17,21 @@ namespace CourseProject.Web.Users
         {
             var username = (string)this.Page.RouteData.Values["username"];
 
-            // TODO: maybe remove checks
             if (username == null)
             {
                 // TODO: redirect to not found
                 this.Server.Transfer("~/ErrorPages/404.aspx");
+                return;
             }
 
-            if(username == this.User.Identity.GetUserName())
+            if (username == this.User.Identity.GetUserName())
             {
                 this.Response.Redirect("~/users/profile");
+                return;
             }
             
             this.GettingUser?.Invoke(this, new GetUserByUsernameEventArgs(username, this.Context));
-
-            if (this.Model.ProfileUser == null)
-            {
-                // TODO: redirect to not found
-                this.Server.Transfer("~/ErrorPages/404.aspx");
-            }
-
-            // TODO: allow for all users and check for sellers
-
-            // Only admins can view all users profiles. Regular users can view only profile of sellers
-            if (!this.User.IsInRole("Admin") && !this.Model.IsSeller)
-            {
-                this.Server.Transfer("~/ErrorPages/401.aspx");
-            }
-
-            // Calling data bind here because otherwise the admin control does not receive the user id
+            
             this.DataBind();
         }
     }

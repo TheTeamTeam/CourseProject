@@ -37,21 +37,32 @@ namespace CourseProject.Web.Presenters
         private void OnGettingUser(object sender, GetUserByUsernameEventArgs e)
         {
             var user = this.usersService.GetUserByUsername(e.Username);
-            this.View.Model.ProfileUser = user;
 
-            if (user != null)
+            if (user == null)
             {
-                var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                var roles = manager.GetRoles(user.Id);
-                
-                var isSeller = roles.Contains("Seller");
-                this.View.Model.IsSeller = isSeller;
+                this.View.Server.Transfer("~/ErrorPages/404.aspx");
+                return;
+            }
 
-                if (isSeller)
-                {
-                    this.View.Model.SellerAds = this.adsService.GetSellerAds(user.Id);
-                }
-            }            
+            var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var roles = manager.GetRoles(user.Id);
+
+            var isSeller = roles.Contains("Seller");
+
+            // Only admins can view all users profiles. Regular users can view only profile of sellers
+            if (!this.View.User.IsInRole("Admin") && !isSeller)
+            {
+                this.View.Server.Transfer("~/ErrorPages/401.aspx");
+                return;
+            }
+
+            this.View.Model.ProfileUser = user;
+            this.View.Model.IsSeller = isSeller;
+            
+            if (isSeller)
+            {
+                this.View.Model.SellerAds = this.adsService.GetSellerAds(user.Id);
+            }
         }
     }
 }

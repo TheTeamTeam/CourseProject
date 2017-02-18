@@ -6,6 +6,9 @@
     <div class="form-horizontal">
         <h3>Create your advertisement</h3>
         <hr />
+        <p class="text-danger">
+            <asp:Literal runat="server" ID="ErrorMessage" />
+        </p>
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Name" CssClass="col-md-2 control-label">Title</asp:Label>
