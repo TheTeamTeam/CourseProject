@@ -322,10 +322,8 @@
     <Compile Include="EventArguments\Contracts\ISearchEventArgs.cs" />
     <Compile Include="EventArguments\Contracts\ICreatingAdvertisementEventArgs.cs" />
     <Compile Include="EventArguments\IdEventArgs.cs" />
-    <Compile Include="EventArguments\RoleEventArgs.cs" />
     <Compile Include="EventArguments\SaveAdEventArgs.cs" />
     <Compile Include="EventArguments\SearchEventArgs.cs" />
-    <Compile Include="EventArguments\StringIdEventArgs.cs" />
     <Compile Include="Grids.aspx.cs">
       <DependentUpon>Grids.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -340,9 +338,7 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ChangeRolesModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
-    <Compile Include="Models\PersonalProfileModel.cs" />
     <Compile Include="Account\OpenAuthProviders.ascx.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -351,10 +347,7 @@
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
     </Compile>
     <Compile Include="Models\SearchModel.cs" />
-    <Compile Include="Models\UserProfileModel.cs" />
-    <Compile Include="Presenters\ChangeRolesPresenter.cs" />
     <Compile Include="Presenters\HomePresenter.cs" />
-    <Compile Include="Presenters\PersonalProfilePresenter.cs" />
     <Compile Include="Presenters\SearchPresenter.cs" />
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
@@ -384,9 +377,7 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\IChangeRolesView.cs" />
     <Compile Include="Views\IHomeView.cs" />
-    <Compile Include="Views\IPersonalProfileView.cs" />
     <Compile Include="AdDetails.aspx.cs">
       <DependentUpon>AdDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -431,14 +422,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Identity\ApplicationSignInManager.cs" />
-    <Compile Include="Identity\ApplicationUserManager.cs" />
-    <Compile Include="Identity\IdentityHelper.cs" />
     <Compile Include="Models\AdDetailsModel.cs" />
     <Compile Include="Models\CreateAdvertisementModel.cs" />
     <Compile Include="Presenters\AdDetailsPresenter.cs" />
     <Compile Include="Presenters\CreateAdvertisementPresenter.cs" />
-    <Compile Include="Presenters\UserProfilePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -472,7 +459,6 @@
     <Compile Include="Views\IAdDetailsView.cs" />
     <Compile Include="Views\ICreateAdvertisementView.cs" />
     <Compile Include="Views\ISearchView.cs" />
-    <Compile Include="Views\IUserProfileView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

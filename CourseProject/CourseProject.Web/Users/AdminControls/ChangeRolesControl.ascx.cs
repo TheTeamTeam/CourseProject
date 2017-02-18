@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Web;
 using WebFormsMvp.Web;
-using CourseProject.Web.EventArguments;
 using WebFormsMvp;
-using CourseProject.Web.Models;
-using CourseProject.Web.Presenters;
-using CourseProject.Web.Views;
+using CourseProject.Mvp.CommonEventArguments;
+using CourseProject.Mvp.Users.AdminControls.ChangeRoles;
 
 namespace CourseProject.Web.Users.AdminControls
 {

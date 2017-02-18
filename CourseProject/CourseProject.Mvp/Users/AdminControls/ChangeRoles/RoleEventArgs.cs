@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Web;
-using CourseProject.Web.EventArguments.Contracts;
 
-namespace CourseProject.Web.EventArguments
+namespace CourseProject.Mvp.Users.AdminControls.ChangeRoles
 {
-    public class RoleEventArgs : EventArgs, IRoleEventArgs
+    public class RoleEventArgs : EventArgs
     {
         public RoleEventArgs(string roleName, HttpContext context, string userId)
         {

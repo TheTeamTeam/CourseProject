@@ -102,12 +102,26 @@
     <Compile Include="Account\Register\RegisterEventArgs.cs" />
     <Compile Include="Account\Register\RegisterModel.cs" />
     <Compile Include="Account\Register\RegisterPresenter.cs" />
+    <Compile Include="CommonEventArguments\IdEventArgs.cs" />
+    <Compile Include="CommonEventArguments\StringIdEventArgs.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Identity\EmailService.cs" />
     <Compile Include="Identity\IdentityHelper.cs" />
     <Compile Include="Identity\SmsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\AdminControls\ChangeRoles\ChangeRolesModel.cs" />
+    <Compile Include="Users\AdminControls\ChangeRoles\ChangeRolesPresenter.cs" />
+    <Compile Include="Users\AdminControls\ChangeRoles\IChangeRolesView.cs" />
+    <Compile Include="Users\AdminControls\ChangeRoles\RoleEventArgs.cs" />
+    <Compile Include="Users\PersonalProfile\GetUserByIdEventArgs.cs" />
+    <Compile Include="Users\PersonalProfile\IPersonalProfileView.cs" />
+    <Compile Include="Users\PersonalProfile\PersonalProfileModel.cs" />
+    <Compile Include="Users\PersonalProfile\PersonalProfilePresenter.cs" />
+    <Compile Include="Users\UserProfile\GetUserByUsernameEventArgs.cs" />
+    <Compile Include="Users\UserProfile\IUserProfileView.cs" />
+    <Compile Include="Users\UserProfile\UserProfileModel.cs" />
+    <Compile Include="Users\UserProfile\UserProfilePresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

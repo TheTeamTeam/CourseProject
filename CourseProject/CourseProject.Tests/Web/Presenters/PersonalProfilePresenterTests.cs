@@ -7,10 +7,8 @@ using NUnit.Framework;
 using Moq;
 using CourseProject.Tests.Web.Presenters.Mocks;
 using CourseProject.Services.Contracts;
-using CourseProject.Web.Presenters;
-using CourseProject.Web.EventArguments;
+using CourseProject.Mvp.Users.PersonalProfile;
 using CourseProject.Models;
-using CourseProject.Web.EventArguments.Contracts;
 
 namespace CourseProject.Tests.Web.Presenters
 {

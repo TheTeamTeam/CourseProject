@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace CourseProject.Web.EventArguments
+namespace CourseProject.Mvp.CommonEventArguments
 {
     public class StringIdEventArgs : EventArgs
     {

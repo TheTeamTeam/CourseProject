@@ -1,11 +1,8 @@
 ﻿using System;
 using Microsoft.AspNet.Identity;
-using WebFormsMvp.Web;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Models;
-using CourseProject.Web.Views;
 using WebFormsMvp;
-using CourseProject.Web.Presenters;
+using WebFormsMvp.Web;
+using CourseProject.Mvp.Users.UserProfile;
 
 namespace CourseProject.Web.Users
 {

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Web;
 using WebFormsMvp;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Models;
+using CourseProject.Mvp.CommonEventArguments;
 
-namespace CourseProject.Web.Views
+namespace CourseProject.Mvp.Users.AdminControls.ChangeRoles
 {
     public interface IChangeRolesView : IView<ChangeRolesModel>
     {

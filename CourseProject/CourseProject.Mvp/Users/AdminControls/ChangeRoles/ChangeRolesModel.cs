@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace CourseProject.Web.Models
+namespace CourseProject.Mvp.Users.AdminControls.ChangeRoles
 {
     public class ChangeRolesModel
     {

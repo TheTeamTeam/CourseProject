@@ -3,12 +3,10 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using WebFormsMvp;
-using CourseProject.Services.Contracts;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Views;
 using CourseProject.Mvp.Identity;
+using CourseProject.Services.Contracts;
 
-namespace CourseProject.Web.Presenters
+namespace CourseProject.Mvp.Users.UserProfile
 {
     public class UserProfilePresenter : Presenter<IUserProfileView>
     {

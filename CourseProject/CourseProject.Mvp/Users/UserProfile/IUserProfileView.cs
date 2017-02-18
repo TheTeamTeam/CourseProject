@@ -2,10 +2,8 @@
 using System.Web;
 using System.Security.Principal;
 using WebFormsMvp;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Models;
 
-namespace CourseProject.Web.Views
+namespace CourseProject.Mvp.Users.UserProfile
 {
     public interface IUserProfileView : IView<UserProfileModel>
     {

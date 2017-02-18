@@ -3,10 +3,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using WebFormsMvp;
 using CourseProject.Mvp.Identity;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Views;
+using CourseProject.Mvp.CommonEventArguments;
 
-namespace CourseProject.Web.Presenters
+namespace CourseProject.Mvp.Users.AdminControls.ChangeRoles
 {
     public class ChangeRolesPresenter : Presenter<IChangeRolesView>
     {

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Models;
-using CourseProject.Web.EventArguments.Contracts;
-using CourseProject.Web.Views;
+using CourseProject.Mvp.Users.PersonalProfile;
+using CourseProject.Mvp.CommonEventArguments;
+
 
 namespace CourseProject.Tests.Web.Presenters.Mocks
 {
@@ -12,7 +11,7 @@ namespace CourseProject.Tests.Web.Presenters.Mocks
         private HashSet<string> gettingUserInvocationlist;
         
         public event EventHandler<IdEventArgs> RemovingSavedAd;
-        private event EventHandler<IGetUserByIdEventArgs> gettingUser;
+        private event EventHandler<GetUserByIdEventArgs> gettingUser;
 
         public MockedPersonalProfileView()
         {
@@ -25,7 +24,7 @@ namespace CourseProject.Tests.Web.Presenters.Mocks
 
         public event EventHandler Load;
 
-        public event EventHandler<IGetUserByIdEventArgs> GettingUser
+        public event EventHandler<GetUserByIdEventArgs> GettingUser
         {
             add
             {
