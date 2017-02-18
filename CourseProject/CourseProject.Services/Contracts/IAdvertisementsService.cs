@@ -10,10 +10,6 @@ namespace CourseProject.Services.Contracts
 
         IEnumerable<Advertisement> GetAdvertisements();
 
-        IEnumerable<Category> GetCategories();
-
-        IEnumerable<City> GetCities();
-
         void CreateAdvertisement(Advertisement ad);
 
         void DecrementFreePlaces(Advertisement ad);

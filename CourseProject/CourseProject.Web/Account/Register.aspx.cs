@@ -19,29 +19,33 @@ namespace CourseProject.Web.Account
 
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-            var user = new User()
-            {
-                UserName = UserName.Text,
-                Email = Email.Text,
-                FirstName = FirstName.Text,
-                LastName = LastName.Text,
-                Age = int.Parse(Age.Text)
-            };
 
-            this.Registering?.Invoke(this, new RegisterEventArgs(this.Context, user, this.Password.Text));
+            var userName = UserName.Text;
+            var email = Email.Text;
+            var firstName = FirstName.Text;
+            var lastName = LastName.Text;
+            var age = int.Parse(Age.Text);
+            var password = this.Password.Text;
+
+            this.Registering?.Invoke(this, new RegisterEventArgs(
+                this.Context, 
+                userName,
+                email,
+                firstName,
+                lastName,
+                age, 
+                password));
 
             if (this.Model.IdentityResult.Succeeded)
             {
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 //string code = manager.GenerateEmailConfirmationToken(user.Id);
                 //string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
-                //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
-
-                this.SigningIn?.Invoke(this, new SignInEventArgs(this.Context, user));
+                //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");              
 
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
             }
-            else 
+            else
             {
                 ErrorMessage.Text = this.Model.IdentityResult.Errors.FirstOrDefault();
             }

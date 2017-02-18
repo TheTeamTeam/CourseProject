@@ -11,8 +11,14 @@ namespace CourseProject.Web.Presenters
     public class CreateAdvertisementPresenter : Presenter<ICreateAdvertisementView>
     {
         private IAdvertisementsService adsService;
+        private readonly ICitiesService citiesService;
+        private readonly ICategoriesService categoriesService;
 
-        public CreateAdvertisementPresenter(ICreateAdvertisementView view, IAdvertisementsService adsService) 
+        public CreateAdvertisementPresenter(
+            ICreateAdvertisementView view, 
+            IAdvertisementsService adsService,
+            ICitiesService citiesService,
+            ICategoriesService categoriesService) 
             : base(view)
         {
             if (adsService == null)
@@ -20,16 +26,28 @@ namespace CourseProject.Web.Presenters
                 throw new ArgumentNullException("Ads service cannot be null.");
             }
 
+            if (citiesService == null)
+            {
+                throw new ArgumentNullException("Cities service cannot be null.");
+            }
+
+            if (categoriesService == null)
+            {
+                throw new ArgumentNullException("Categories service cannot be null.");
+            }
+
             this.adsService = adsService;
+            this.citiesService = citiesService;
+            this.categoriesService = categoriesService;
 
             this.View.MyInit += OnInit;
             this.View.CreatingAdvertisement += OnCreatingAdvertisement;
         }
 
-        private void OnInit(object sender, System.EventArgs e)
+        private void OnInit(object sender, EventArgs e)
         {
-            this.View.Model.Categories = this.adsService.GetCategories();
-            this.View.Model.Cities = this.adsService.GetCities();
+            this.View.Model.Categories = this.categoriesService.GetCategories();
+            this.View.Model.Cities = this.citiesService.GetCities();
         }
 
         private void OnCreatingAdvertisement(object sender, CreatingAdvertisementEventArgs e)

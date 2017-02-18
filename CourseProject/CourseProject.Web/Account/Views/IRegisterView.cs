@@ -8,7 +8,6 @@ namespace CourseProject.Web.Account.Views
     public interface IRegisterView : IView<RegisterModel>
     {
         event EventHandler<RegisterEventArgs> Registering;
-
-        event EventHandler<SignInEventArgs> SigningIn;
+        
     }
 }

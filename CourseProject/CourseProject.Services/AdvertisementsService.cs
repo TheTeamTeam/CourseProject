@@ -15,30 +15,16 @@ namespace CourseProject.Services
     public class AdvertisementsService : IAdvertisementsService
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IGenericRepository<Category> categoriesRepository;
-        private readonly IGenericRepository<City> citiesRepository;
         private readonly IGenericRepository<Advertisement> adsRepository;
 
         public AdvertisementsService(
             IUnitOfWork unitOfWork,
-            IGenericRepository<Category> categoriesRepository,
-            IGenericRepository<City> citiesRepository,
             IGenericRepository<Advertisement> adsRepository)
         {
             if (unitOfWork == null)
             {
                 throw new ArgumentNullException("Unit of work cannot be null.");
-            }
-
-            if (categoriesRepository == null)
-            {
-                throw new ArgumentNullException("Categories repository cannot be null.");
-            }
-
-            if (citiesRepository == null)
-            {
-                throw new ArgumentNullException("Cities repository cannot be null.");
-            }
+            }          
 
             if (adsRepository == null)
             {
@@ -46,8 +32,6 @@ namespace CourseProject.Services
             }
 
             this.unitOfWork = unitOfWork;
-            this.categoriesRepository = categoriesRepository;
-            this.citiesRepository = citiesRepository;
             this.adsRepository = adsRepository;
         }
 
@@ -59,16 +43,6 @@ namespace CourseProject.Services
         public IEnumerable<Advertisement> GetAdvertisements()
         {
             return this.adsRepository.GetAll();
-        }
-
-        public IEnumerable<Category> GetCategories()
-        {
-            return this.categoriesRepository.GetAll();
-        }
-
-        public IEnumerable<City> GetCities()
-        {
-            return this.citiesRepository.GetAll();
         }
 
         public void CreateAdvertisement(Advertisement ad)

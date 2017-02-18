@@ -19,94 +19,28 @@ namespace CourseProject.Tests.Services
         [Test]
         public void Constructor_ShouldThrowArgumentNullException_WhenUnitOfWorkIsNull()
         {
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
             Assert.Throws<ArgumentNullException>(() => new AdvertisementsService(null,
-                                                                                 mockedCategoriesRepo.Object,
-                                                                                 mockedCitiesRepo.Object,
                                                                                  mockedAdsRepo.Object));
         }
 
         [Test]
         public void Constructor_ShouldThrowExceptionWithCorrectMessage_WhenUnitOfWorkIsNull()
         {
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
             Assert.That(() => new AdvertisementsService(null,
-                                                        mockedCategoriesRepo.Object,
-                                                        mockedCitiesRepo.Object,
                                                         mockedAdsRepo.Object),
                 Throws.ArgumentNullException.With.Message.Contains("Unit of work cannot be null."));
         }
-
-        [Test]
-        public void Constructor_ShouldThrowArgumentNullException_WhenCategoriesRepoIsNull()
-        {
-            var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
-            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
-
-            Assert.Throws<ArgumentNullException>(() => new AdvertisementsService(mockedUnitOfWork.Object,
-                                                                                 null,
-                                                                                 mockedCitiesRepo.Object,
-                                                                                 mockedAdsRepo.Object));
-        }
-
-        [Test]
-        public void Constructor_ShouldThrowExceptionWithCorrectMessage_WhenCategoriesRepoIsNull()
-        {
-            var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
-            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
-
-            Assert.That(() => new AdvertisementsService(mockedUnitOfWork.Object,
-                                                        null,
-                                                        mockedCitiesRepo.Object,
-                                                        mockedAdsRepo.Object),
-                Throws.ArgumentNullException.With.Message.Contains("Categories repository cannot be null."));
-        }
-
-        [Test]
-        public void Constructor_ShouldThrowArgumentNullException_WhenCitiesRepoIsNull()
-        {
-            var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
-
-            Assert.Throws<ArgumentNullException>(() => new AdvertisementsService(mockedUnitOfWork.Object,
-                                                                                 mockedCategoriesRepo.Object,
-                                                                                 null,
-                                                                                 mockedAdsRepo.Object));
-        }
-
-        [Test]
-        public void Constructor_ShouldThrowExceptionWithCorrectMessage_WhenCitiesRepoIsNull()
-        {
-            var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
-
-            Assert.That(() => new AdvertisementsService(mockedUnitOfWork.Object,
-                                                        mockedCategoriesRepo.Object,
-                                                        null,
-                                                        mockedAdsRepo.Object),
-                Throws.ArgumentNullException.With.Message.Contains("Cities repository cannot be null."));
-        }
-
+ 
         [Test]
         public void Constructor_ShouldThrowArgumentNullException_WhenAdsRepoIsNull()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
 
             Assert.Throws<ArgumentNullException>(() => new AdvertisementsService(mockedUnitOfWork.Object,
-                                                                                 mockedCategoriesRepo.Object,
-                                                                                 mockedCitiesRepo.Object,
                                                                                  null));
         }
 
@@ -114,12 +48,8 @@ namespace CourseProject.Tests.Services
         public void Constructor_ShouldThrowExceptionWithCorrectMessage_WhenAdsRepoIsNull()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
 
             Assert.That(() => new AdvertisementsService(mockedUnitOfWork.Object,
-                                                        mockedCategoriesRepo.Object,
-                                                        mockedCitiesRepo.Object,
                                                         null),
                 Throws.ArgumentNullException.With.Message.Contains("Ads repository cannot be null."));
         }
@@ -128,16 +58,12 @@ namespace CourseProject.Tests.Services
         public void GetById_ShouldCallAdsRepositoryMethod()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
             mockedAdsRepo.Setup(x => x.GetById(It.IsAny<int>())).Verifiable();
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             service.GetAdById(1);
@@ -150,16 +76,12 @@ namespace CourseProject.Tests.Services
         public void GetById_ShouldCallAdsRepositoryMethodWithCorrectId(int id)
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
             mockedAdsRepo.Setup(x => x.GetById(It.IsAny<int>())).Verifiable();
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             service.GetAdById(id);
@@ -171,8 +93,6 @@ namespace CourseProject.Tests.Services
         public void GetById_ShouldReturnTheResultFromTheRepositoryMethod()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
             var mockedAd = new Mock<Advertisement>();
 
@@ -180,8 +100,6 @@ namespace CourseProject.Tests.Services
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             var result = service.GetAdById(123455);
@@ -193,16 +111,12 @@ namespace CourseProject.Tests.Services
         public void GetAdvertisements_ShouldCallAdvertisementsRepositoryMethod()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
             mockedAdsRepo.Setup(x => x.GetAll()).Verifiable();
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             service.GetAdvertisements();
@@ -214,8 +128,6 @@ namespace CourseProject.Tests.Services
         public void GetAdvertisements_ShouldReturnTheResultFromTheRepositoryMethod()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
             var expected = new List<Advertisement>()
             {
@@ -228,8 +140,6 @@ namespace CourseProject.Tests.Services
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             var result = service.GetAdvertisements();
@@ -237,116 +147,115 @@ namespace CourseProject.Tests.Services
             Assert.AreEqual(expected, result);
         }
 
-        [Test]
-        public void GetCategories_ShouldCallCategoriesRepositoryMethod()
-        {
-            var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
-            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
-            mockedCategoriesRepo.Setup(x => x.GetAll()).Verifiable();
+        // TODO: Move to cities and categories services tests
 
-            var service = new AdvertisementsService(
-                mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
-                mockedAdsRepo.Object);
+        //[Test]
+        //public void GetCategories_ShouldCallCategoriesRepositoryMethod()
+        //{
+        //    var mockedUnitOfWork = new Mock<IUnitOfWork>();
+        //    var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
+        //    var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
+        //    var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
-            service.GetCategories();
+        //    mockedCategoriesRepo.Setup(x => x.GetAll()).Verifiable();
 
-            mockedCategoriesRepo.Verify(x => x.GetAll(), Times.Once);
-        }
+        //    var service = new AdvertisementsService(
+        //        mockedUnitOfWork.Object,
+        //        mockedCategoriesRepo.Object,
+        //        mockedCitiesRepo.Object,
+        //        mockedAdsRepo.Object);
 
-        [Test]
-        public void GetCategories_ShouldReturnTheResultFromTheRepositoryMethod()
-        {
-            var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
-            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
-            var expected = new List<Category>()
-            {
-                new Mock<Category>().Object,
-                new Mock<Category>().Object,
-                new Mock<Category>().Object
-            };
+        //    service.GetCategories();
 
-            mockedCategoriesRepo.Setup(x => x.GetAll()).Returns(expected);
+        //    mockedCategoriesRepo.Verify(x => x.GetAll(), Times.Once);
+        //}
 
-            var service = new AdvertisementsService(
-                mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
-                mockedAdsRepo.Object);
+        //[Test]
+        //public void GetCategories_ShouldReturnTheResultFromTheRepositoryMethod()
+        //{
+        //    var mockedUnitOfWork = new Mock<IUnitOfWork>();
+        //    var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
+        //    var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
+        //    var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
+        //    var expected = new List<Category>()
+        //    {
+        //        new Mock<Category>().Object,
+        //        new Mock<Category>().Object,
+        //        new Mock<Category>().Object
+        //    };
 
-            var result = service.GetCategories();
+        //    mockedCategoriesRepo.Setup(x => x.GetAll()).Returns(expected);
 
-            Assert.AreEqual(expected, result);
-        }
+        //    var service = new AdvertisementsService(
+        //        mockedUnitOfWork.Object,
+        //        mockedCategoriesRepo.Object,
+        //        mockedCitiesRepo.Object,
+        //        mockedAdsRepo.Object);
 
-        [Test]
-        public void GetCities_ShouldCallCitiesRepositoryMethod()
-        {
-            var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
-            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
+        //    var result = service.GetCategories();
 
-            mockedCitiesRepo.Setup(x => x.GetAll()).Verifiable();
+        //    Assert.AreEqual(expected, result);
+        //}
 
-            var service = new AdvertisementsService(
-                mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
-                mockedAdsRepo.Object);
+        //[Test]
+        //public void GetCities_ShouldCallCitiesRepositoryMethod()
+        //{
+        //    var mockedUnitOfWork = new Mock<IUnitOfWork>();
+        //    var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
+        //    var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
+        //    var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
-            service.GetCities();
+        //    mockedCitiesRepo.Setup(x => x.GetAll()).Verifiable();
 
-            mockedCitiesRepo.Verify(x => x.GetAll(), Times.Once);
-        }
+        //    var service = new AdvertisementsService(
+        //        mockedUnitOfWork.Object,
+        //        mockedCategoriesRepo.Object,
+        //        mockedCitiesRepo.Object,
+        //        mockedAdsRepo.Object);
 
-        [Test]
-        public void GetCities_ShouldReturnTheResultFromTheRepositoryMethod()
-        {
-            var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
-            var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
-            var expected = new List<City>()
-            {
-                new Mock<City>().Object,
-                new Mock<City>().Object,
-                new Mock<City>().Object
-            };
+        //    service.GetCities();
 
-            mockedCitiesRepo.Setup(x => x.GetAll()).Returns(expected);
+        //    mockedCitiesRepo.Verify(x => x.GetAll(), Times.Once);
+        //}
 
-            var service = new AdvertisementsService(
-                mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
-                mockedAdsRepo.Object);
+        //[Test]
+        //public void GetCities_ShouldReturnTheResultFromTheRepositoryMethod()
+        //{
+        //    var mockedUnitOfWork = new Mock<IUnitOfWork>();
+        //    var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
+        //    var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
+        //    var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
+        //    var expected = new List<City>()
+        //    {
+        //        new Mock<City>().Object,
+        //        new Mock<City>().Object,
+        //        new Mock<City>().Object
+        //    };
 
-            var result = service.GetCities();
+        //    mockedCitiesRepo.Setup(x => x.GetAll()).Returns(expected);
 
-            Assert.AreEqual(expected, result);
-        }
+        //    var service = new AdvertisementsService(
+        //        mockedUnitOfWork.Object,
+        //        mockedCategoriesRepo.Object,
+        //        mockedCitiesRepo.Object,
+        //        mockedAdsRepo.Object);
+
+        //    var result = service.GetCities();
+
+        //    Assert.AreEqual(expected, result);
+        //}
 
         [Test]
         public void CreateAdvertisement_ShouldCallAdsRepositoryAddMethod()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
             mockedAdsRepo.Setup(x => x.Add(It.IsAny<Advertisement>())).Verifiable();
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             service.CreateAdvertisement(new Mock<Advertisement>().Object);
@@ -358,8 +267,6 @@ namespace CourseProject.Tests.Services
         public void CreateAdvertisement_ShouldCallAdsRepositoryMethodWithCorrectParameter()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
             var mockedAd = new Mock<Advertisement>();
 
@@ -367,8 +274,6 @@ namespace CourseProject.Tests.Services
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             service.CreateAdvertisement(mockedAd.Object);
@@ -380,16 +285,12 @@ namespace CourseProject.Tests.Services
         public void CreateAdvertisement_ShouldCallUnitOfWorkCommitMethod()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
             mockedUnitOfWork.Setup(x => x.Commit()).Verifiable();
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             service.CreateAdvertisement(new Mock<Advertisement>().Object);
@@ -401,16 +302,12 @@ namespace CourseProject.Tests.Services
         public void CreateAdvertisement_ShouldCallUnitOfWorkDisposeMethod()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
             mockedUnitOfWork.Setup(x => x.Dispose()).Verifiable();
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             service.CreateAdvertisement(new Mock<Advertisement>().Object);
@@ -448,16 +345,12 @@ namespace CourseProject.Tests.Services
         public void DecrementFreePlaces_ShouldCallAdsRepositoryUpdateMethod()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
             mockedAdsRepo.Setup(x => x.Update(It.IsAny<Advertisement>())).Verifiable();
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             service.DecrementFreePlaces(new Mock<Advertisement>().Object);
@@ -469,8 +362,6 @@ namespace CourseProject.Tests.Services
         public void DecrementFreePlaces_ShouldCallAdsRepositoryMethodWithCorrectParameter()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
             var ad = new Mock<Advertisement>();
 
@@ -478,8 +369,6 @@ namespace CourseProject.Tests.Services
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             service.DecrementFreePlaces(ad.Object);
@@ -491,16 +380,12 @@ namespace CourseProject.Tests.Services
         public void DecrementFreePlaces_ShouldCallUnitOfWorkCommitMethod()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
             mockedUnitOfWork.Setup(x => x.Commit()).Verifiable();
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             service.DecrementFreePlaces(new Mock<Advertisement>().Object);
@@ -512,16 +397,12 @@ namespace CourseProject.Tests.Services
         public void DecrementFreePlaces_ShouldCallUnitOfWorkDisposeMethod()
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var mockedCategoriesRepo = new Mock<IGenericRepository<Category>>();
-            var mockedCitiesRepo = new Mock<IGenericRepository<City>>();
             var mockedAdsRepo = new Mock<IGenericRepository<Advertisement>>();
 
             mockedUnitOfWork.Setup(x => x.Dispose()).Verifiable();
 
             var service = new AdvertisementsService(
                 mockedUnitOfWork.Object,
-                mockedCategoriesRepo.Object,
-                mockedCitiesRepo.Object,
                 mockedAdsRepo.Object);
 
             service.DecrementFreePlaces(new Mock<Advertisement>().Object);

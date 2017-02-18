@@ -13,6 +13,8 @@
                 <p class="details-description col-md-6"><%#: Item.Description %> </p>
                 <img class="col-md-6" src="<%#Item.ImagePathBig %>" alt="<%#: Item.Name %>" />
             </div>
+            <p>City: <strong><%#: Item.City.Name %>lv.</strong></p>
+            <p>Category: <strong><%#: Item.Category.Name %>lv.</strong></p>
             <p>by <a href="/users/<%#: Item.Seller.UserName %>"><%#: Item.Seller.UserName %></a></p>
             <p>Price: <strong><%#: Item.Price %>lv.</strong></p>
             <p>Expire Date: <strong><%#: Item.ExpireDate %></strong></p>
