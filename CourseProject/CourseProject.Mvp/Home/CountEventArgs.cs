@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace CourseProject.Web.EventArguments
+namespace CourseProject.Mvp.Home
 {
     public class CountEventArgs : EventArgs
     {

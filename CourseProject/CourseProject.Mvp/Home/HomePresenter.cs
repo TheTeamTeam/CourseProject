@@ -1,10 +1,8 @@
 ﻿using System;
 using WebFormsMvp;
 using CourseProject.Services.Contracts;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Views;
 
-namespace CourseProject.Web.Presenters
+namespace CourseProject.Mvp.Home
 {
     public class HomePresenter : Presenter<IHomeView>
     {

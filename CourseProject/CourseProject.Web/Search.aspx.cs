@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
+using WebFormsMvp;
 using WebFormsMvp.Web;
 using CourseProject.Models;
-using CourseProject.Web.Models;
-using CourseProject.Web.Views;
-using CourseProject.Web.EventArguments;
+using CourseProject.Mvp.Search;
 
 namespace CourseProject.Web
 {
+    [PresenterBinding(typeof(SearchPresenter))]
     public partial class Search : MvpPage<SearchModel>, ISearchView
     {
         public event EventHandler Initializing;

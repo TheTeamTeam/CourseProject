@@ -1,9 +1,7 @@
 ﻿using System;
 using WebFormsMvp;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Models;
 
-namespace CourseProject.Web.Views
+namespace CourseProject.Mvp.Home
 {
     public interface IHomeView : IView<HomeModel>
     {

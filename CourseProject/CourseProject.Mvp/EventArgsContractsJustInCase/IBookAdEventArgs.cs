@@ -1,6 +1,6 @@
 ﻿using CourseProject.Models;
 
-namespace CourseProject.Web.EventArguments.Contracts
+namespace CourseProject.Mvp.EventArgsContracts
 {
     public interface IBookAdEventArgs
     {

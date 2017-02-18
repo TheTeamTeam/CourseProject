@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace CourseProject.Web.EventArguments.Contracts
+namespace CourseProject.Mvp.EventArgsContracts
 {
     public interface ICreatingAdvertisementEventArgs
     {

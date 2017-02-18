@@ -118,12 +118,29 @@
     <Compile Include="CreateAdvertisement\CreateAdvertisementPresenter.cs" />
     <Compile Include="CreateAdvertisement\CreatingAdvertisementEventArgs.cs" />
     <Compile Include="CreateAdvertisement\ICreateAdvertisementView.cs" />
+    <Compile Include="EventArgsContractsJustInCase\IAdDetailsEventArgs.cs" />
+    <Compile Include="EventArgsContractsJustInCase\IBookAdEventArgs.cs" />
+    <Compile Include="EventArgsContractsJustInCase\ICreatingAdvertisementEventArgs.cs" />
+    <Compile Include="EventArgsContractsJustInCase\IGetUserByIdEventArgs.cs" />
+    <Compile Include="EventArgsContractsJustInCase\IGetUserByUsernameEventArgs.cs" />
+    <Compile Include="EventArgsContractsJustInCase\IIdEventArgs.cs" />
+    <Compile Include="EventArgsContractsJustInCase\IRoleNameEventArgs.cs" />
+    <Compile Include="EventArgsContractsJustInCase\ISaveAdEventArgs.cs" />
+    <Compile Include="EventArgsContractsJustInCase\ISearchEventArgs.cs" />
+    <Compile Include="Home\CountEventArgs.cs" />
+    <Compile Include="Home\HomeModel.cs" />
+    <Compile Include="Home\HomePresenter.cs" />
+    <Compile Include="Home\IHomeView.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Identity\EmailService.cs" />
     <Compile Include="Identity\IdentityHelper.cs" />
     <Compile Include="Identity\SmsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search\ISearchView.cs" />
+    <Compile Include="Search\SearchEventArgs.cs" />
+    <Compile Include="Search\SearchModel.cs" />
+    <Compile Include="Search\SearchPresenter.cs" />
     <Compile Include="Users\AdminControls\ChangeRoles\ChangeRolesModel.cs" />
     <Compile Include="Users\AdminControls\ChangeRoles\ChangeRolesPresenter.cs" />
     <Compile Include="Users\AdminControls\ChangeRoles\IChangeRolesView.cs" />
@@ -155,6 +172,7 @@
       <Name>CourseProject.Services</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

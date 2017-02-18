@@ -302,9 +302,6 @@
     <Compile Include="ErrorPages\500.aspx.designer.cs">
       <DependentUpon>500.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EventArguments\Contracts\IIdEventArgs.cs" />
-    <Compile Include="EventArguments\Contracts\ISaveAdEventArgs.cs" />
-    <Compile Include="EventArguments\CountEventArgs.cs" />
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -312,15 +309,6 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EventArguments\Contracts\IAdDetailsEventArgs.cs" />
-    <Compile Include="EventArguments\Contracts\IBookAdEventArgs.cs" />
-    <Compile Include="EventArguments\Contracts\IGetUserByIdEventArgs.cs" />
-    <Compile Include="EventArguments\Contracts\IGetUserByUsernameEventArgs.cs" />
-    <Compile Include="EventArguments\Contracts\IRoleNameEventArgs.cs" />
-    <Compile Include="EventArguments\Contracts\ISearchEventArgs.cs" />
-    <Compile Include="EventArguments\Contracts\ICreatingAdvertisementEventArgs.cs" />
-    <Compile Include="EventArguments\IdEventArgs.cs" />
-    <Compile Include="EventArguments\SearchEventArgs.cs" />
     <Compile Include="Grids.aspx.cs">
       <DependentUpon>Grids.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -335,7 +323,6 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Account\OpenAuthProviders.ascx.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -343,9 +330,6 @@
     <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Models\SearchModel.cs" />
-    <Compile Include="Presenters\HomePresenter.cs" />
-    <Compile Include="Presenters\SearchPresenter.cs" />
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -374,7 +358,6 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\IHomeView.cs" />
     <Compile Include="AdDetails.aspx.cs">
       <DependentUpon>AdDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -413,12 +396,9 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EventArguments\CreatingAdvertisementEventArgs.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CreateAdvertisementModel.cs" />
-    <Compile Include="Presenters\CreateAdvertisementPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -449,8 +429,6 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\ICreateAdvertisementView.cs" />
-    <Compile Include="Views\ISearchView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

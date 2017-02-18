@@ -1,9 +1,7 @@
 ﻿using System;
 using WebFormsMvp;
-using CourseProject.Web.Models;
-using CourseProject.Web.EventArguments;
 
-namespace CourseProject.Web.Views
+namespace CourseProject.Mvp.Search
 {
     public interface ISearchView : IView<SearchModel>
     {

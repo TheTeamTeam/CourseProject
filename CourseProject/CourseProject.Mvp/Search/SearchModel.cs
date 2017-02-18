@@ -2,7 +2,7 @@
 using System.Linq;
 using CourseProject.Models;
 
-namespace CourseProject.Web.Models
+namespace CourseProject.Mvp.Search
 {
     public class SearchModel
     {

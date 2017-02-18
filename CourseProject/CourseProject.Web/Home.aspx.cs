@@ -1,10 +1,7 @@
 ﻿using System;
 using WebFormsMvp;
 using WebFormsMvp.Web;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Presenters;
-using CourseProject.Web.Models;
-using CourseProject.Web.Views;
+using CourseProject.Mvp.Home;
 
 namespace CourseProject.Web
 {

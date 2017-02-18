@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Linq;
 using WebFormsMvp;
-using CourseProject.Web.Views;
 using CourseProject.Services.Contracts;
-using CourseProject.Web.EventArguments;
 
-namespace CourseProject.Web.Presenters
+namespace CourseProject.Mvp.Search
 {
     public class SearchPresenter : Presenter<ISearchView>
     {

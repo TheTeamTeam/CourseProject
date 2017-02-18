@@ -1,9 +1,8 @@
 ﻿using System;
-using CourseProject.Web.EventArguments.Contracts;
 
-namespace CourseProject.Web.EventArguments
+namespace CourseProject.Mvp.Search
 {
-    public class SearchEventArgs : EventArgs, ISearchEventArgs
+    public class SearchEventArgs : EventArgs
     {
         public SearchEventArgs(string searchWord, string orderBy, int categoryId, int cityId)
         {
