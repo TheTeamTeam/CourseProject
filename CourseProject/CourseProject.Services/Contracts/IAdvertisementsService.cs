@@ -1,6 +1,6 @@
-﻿using CourseProject.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using CourseProject.Models;
 
 namespace CourseProject.Services.Contracts
 {

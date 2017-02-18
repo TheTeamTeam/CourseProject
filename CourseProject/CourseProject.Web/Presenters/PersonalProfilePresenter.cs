@@ -28,8 +28,8 @@ namespace CourseProject.Web.Presenters
             this.usersService = usersService;
             this.adsService = adsService;
 
-            this.View.GettingUser += OnGettingUser;
-            this.View.RemovingSavedAd += OnRemovingSavedAd;
+            this.View.GettingUser += this.OnGettingUser;
+            this.View.RemovingSavedAd += this.OnRemovingSavedAd;
         }
 
         private void OnRemovingSavedAd(object sender, IdEventArgs e)
@@ -47,7 +47,5 @@ namespace CourseProject.Web.Presenters
                 this.View.Model.SellerAds = this.adsService.GetSellerAds(e.Id);
             }
         }
-
-        
     }
 }

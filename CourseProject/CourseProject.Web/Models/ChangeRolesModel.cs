@@ -8,7 +8,7 @@ namespace CourseProject.Web.Models
     public class ChangeRolesModel
     {
         public bool IsSeller { get; set; }
-        public bool IsAdmin { get; set; }
 
+        public bool IsAdmin { get; set; }
     }
 }

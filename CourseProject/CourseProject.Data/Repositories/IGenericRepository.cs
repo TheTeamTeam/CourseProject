@@ -7,9 +7,10 @@ namespace CourseProject.Data.Repositories
 {
     public interface IGenericRepository<T> where T : class
     {
-        T GetById(object id);
-
+        // TODO: Remove if not used
         IQueryable<T> All { get; }
+
+        T GetById(object id);
 
         IEnumerable<T> GetAll();
 

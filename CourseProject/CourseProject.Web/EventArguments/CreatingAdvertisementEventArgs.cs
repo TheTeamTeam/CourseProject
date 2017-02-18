@@ -1,7 +1,6 @@
 ﻿using System;
-using CourseProject.Models;
-using CourseProject.Web.EventArguments.Contracts;
 using System.Web;
+using CourseProject.Web.EventArguments.Contracts;
 
 namespace CourseProject.Web.EventArguments
 {
@@ -30,13 +29,21 @@ namespace CourseProject.Web.EventArguments
         }
 
         public string Name { get; private set; }
+
         public string Description { get; private set; }
+
         public int Places { get; private set; }
+
         public decimal Price { get; private set; }
+
         public DateTime ExpireDate { get; private set; }
+
         public HttpPostedFile Image { get; private set; }
+
         public int CityId { get; private set; }
+
         public int CategoryId { get; private set; }
+
         public string SellerId { get; private set; }
     }
 }

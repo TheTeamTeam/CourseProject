@@ -1,18 +1,16 @@
-﻿using CourseProject.Web.Account.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CourseProject.Web.Account.EventArguments;
+using CourseProject.Web.Account.Views;
 using CourseProject.Web.Account.Models;
 
 namespace CourseProject.Tests.Web.Account.Presenters.Mocks
 {
     public class MockedLoginView : ILoginView
     {
-        private event EventHandler<LoginEventArgs> logginIn;
         private HashSet<string> logginInInvocationList;
+
+        private event EventHandler<LoginEventArgs> logginIn;
 
         public MockedLoginView()
         {
@@ -20,6 +18,7 @@ namespace CourseProject.Tests.Web.Account.Presenters.Mocks
         }
 
         public event EventHandler Load;
+
         public event EventHandler<LoginEventArgs> LoggingIn
         {
             add
@@ -27,6 +26,7 @@ namespace CourseProject.Tests.Web.Account.Presenters.Mocks
                 this.logginIn += value;
                 this.logginInInvocationList.Add(value.Method.Name);
             }
+
             remove
             {
                 this.logginIn -= value;

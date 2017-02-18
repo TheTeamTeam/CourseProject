@@ -12,9 +12,10 @@ namespace CourseProject.Web.Presenters
         private readonly IAdvertisementsService adsService;
         private readonly IUsersService usersService;
 
-        public AdDetailsPresenter(IAdDetailsView view, 
-                                  IAdvertisementsService adsService,
-                                  IUsersService usersService)
+        public AdDetailsPresenter(
+            IAdDetailsView view,
+            IAdvertisementsService adsService,
+            IUsersService usersService)
             : base(view)
         {
             if (adsService == null)
@@ -43,7 +44,7 @@ namespace CourseProject.Web.Presenters
             if (ad == null)
             {
                 // The item wasn't found
-                this.View.ModelState.AddModelError("", String.Format("Item with id {0} was not found", e.Id));
+                this.View.ModelState.AddModelError("", string.Format("Item with id {0} was not found", e.Id));
                 return;
             }
 
@@ -66,7 +67,7 @@ namespace CourseProject.Web.Presenters
             this.View.Model.Advertisement = ad;
 
             this.View.Model.BookButtonVisible = e.UserId != null ? !this.usersService.UserBookedAd(e.UserId, ad) : false;
-            this.View.Model.SaveButtonVisible = e.UserId != null ? !this.usersService.UserSavedAd(e.UserId, ad) : false;      
+            this.View.Model.SaveButtonVisible = e.UserId != null ? !this.usersService.UserSavedAd(e.UserId, ad) : false;
         }
 
         private void OnBookAd(object sender, BookAdEventArgs e)
@@ -81,7 +82,7 @@ namespace CourseProject.Web.Presenters
 
         private void OnSaveAd(object sender, SaveAdEventArgs e)
         {
-            if(!this.usersService.UserSavedAd(e.Id, e.Ad))
+            if (!this.usersService.UserSavedAd(e.Id, e.Ad))
             {
                 this.usersService.AddAdToSaved(e.Id, e.Ad);
                 this.View.Model.SaveButtonVisible = false;

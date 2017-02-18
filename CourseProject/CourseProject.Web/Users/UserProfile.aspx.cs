@@ -4,14 +4,15 @@ using WebFormsMvp.Web;
 using CourseProject.Web.EventArguments;
 using CourseProject.Web.Models;
 using CourseProject.Web.Views;
+using WebFormsMvp;
+using CourseProject.Web.Presenters;
 
 namespace CourseProject.Web.Users
 {
+    [PresenterBinding(typeof(UserProfilePresenter))]
     public partial class UserProfile : MvpPage<UserProfileModel>, IUserProfileView
     {
         public event EventHandler<GetUserByUsernameEventArgs> GettingUser;
-        public event EventHandler<RoleEventArgs> AddingRole;
-        public event EventHandler<RoleEventArgs> RemovingRole;
 
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -1,10 +1,6 @@
-﻿using CourseProject.Data;
+﻿using System.Data.Entity;
+using CourseProject.Data;
 using CourseProject.Data.Migrations;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace CourseProject.Web
 { 

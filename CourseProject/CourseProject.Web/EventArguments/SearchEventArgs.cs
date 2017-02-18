@@ -5,7 +5,7 @@ namespace CourseProject.Web.EventArguments
 {
     public class SearchEventArgs : EventArgs, ISearchEventArgs
     {
-        public SearchEventArgs(string searchWord, string orderBy,int categoryId, int cityId)
+        public SearchEventArgs(string searchWord, string orderBy, int categoryId, int cityId)
         {
             this.SearchWord = searchWord;
             this.OrderBy = orderBy;
@@ -19,6 +19,6 @@ namespace CourseProject.Web.EventArguments
 
         public int CategoryId { get; set; }
 
-        public int CityId { get;  set; }
+        public int CityId { get; set; }
     }
 }

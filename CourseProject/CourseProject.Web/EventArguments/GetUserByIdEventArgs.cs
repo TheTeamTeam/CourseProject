@@ -14,6 +14,6 @@ namespace CourseProject.Web.EventArguments
 
         public string Id { get; private set; }
 
-        public bool IsSeller{get; private set;}
+        public bool IsSeller { get; private set; }
     }
 }

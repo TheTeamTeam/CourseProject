@@ -13,6 +13,7 @@ namespace CourseProject.Web.EventArguments
         }
 
         public string Username { get; private set; }
+
         public HttpContext Context { get; private set; }
     }
 }

@@ -1,5 +1,5 @@
-﻿using CourseProject.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using CourseProject.Models;
 
 namespace CourseProject.Web.Models
 {

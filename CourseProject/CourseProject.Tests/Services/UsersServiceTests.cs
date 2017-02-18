@@ -1,27 +1,23 @@
-﻿using CourseProject.Data.Repositories;
+﻿using System;
+using System.Collections.Generic;
+using Moq;
+using NUnit.Framework;
+using CourseProject.Data.Repositories;
 using CourseProject.Data.UnitsOfWork;
 using CourseProject.Models;
 using CourseProject.Services;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseProject.Tests.Services
 {
     [TestFixture]
-    class UsersServiceTests
+    public class UsersServiceTests
     {
         [Test]
         public void Constructor_ShouldThrowArgumentNullException_WhenUnitOfWorkIsNull()
         {
             var mockedUsersRepo = new Mock<IGenericRepository<User>>();
 
-            Assert.Throws<ArgumentNullException>(() => new UsersService(null,
-                                                                        mockedUsersRepo.Object));
+            Assert.Throws<ArgumentNullException>(() => new UsersService(null, mockedUsersRepo.Object));
         }
 
         [Test]
@@ -29,8 +25,7 @@ namespace CourseProject.Tests.Services
         {
             var mockedUsersRepo = new Mock<IGenericRepository<User>>();
 
-            Assert.That(() => new UsersService(null,
-                                               mockedUsersRepo.Object),
+            Assert.That(() => new UsersService(null, mockedUsersRepo.Object),
                 Throws.ArgumentNullException.With.Message.Contains("Unit of work cannot be null."));
         }
 
@@ -39,8 +34,7 @@ namespace CourseProject.Tests.Services
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
 
-            Assert.Throws<ArgumentNullException>(() => new UsersService(mockedUnitOfWork.Object,
-                                                                        null));
+            Assert.Throws<ArgumentNullException>(() => new UsersService(mockedUnitOfWork.Object, null));
         }
 
         [Test]
@@ -48,8 +42,7 @@ namespace CourseProject.Tests.Services
         {
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
 
-            Assert.That(() => new UsersService(mockedUnitOfWork.Object,
-                                               null),
+            Assert.That(() => new UsersService(mockedUnitOfWork.Object, null),
                 Throws.ArgumentNullException.With.Message.Contain("Users repository cannot be null."));
         }
 
@@ -114,7 +107,7 @@ namespace CourseProject.Tests.Services
             var mockedAd = new Mock<Advertisement>();
             var mockedUser = new Mock<User>();
 
-            mockedUser.Setup(x => x.UpcomingAds).Returns(new List<Advertisement>());   
+            mockedUser.Setup(x => x.UpcomingAds).Returns(new List<Advertisement>());
             mockedUsersRepo.Setup(x => x.GetById(It.IsAny<string>())).Verifiable();
             mockedUsersRepo.Setup(x => x.GetById(It.IsAny<string>())).Returns(mockedUser.Object);
 
@@ -239,7 +232,7 @@ namespace CourseProject.Tests.Services
             var mockedAd = new Mock<Advertisement>();
             var mockedUser = new Mock<User>();
 
-            mockedUser.Setup(x => x.SavedAds).Returns(new List<Advertisement>());   
+            mockedUser.Setup(x => x.SavedAds).Returns(new List<Advertisement>());
             mockedUsersRepo.Setup(x => x.GetById(It.IsAny<string>())).Verifiable();
             mockedUsersRepo.Setup(x => x.GetById(It.IsAny<string>())).Returns(mockedUser.Object);
 

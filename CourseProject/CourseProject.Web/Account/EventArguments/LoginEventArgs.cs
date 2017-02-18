@@ -16,9 +16,13 @@ namespace CourseProject.Web.Account.EventArguments
         }
 
         public HttpContext Context { get; set; }
+
         public string UserName { get; private set; }
+
         public string Password { get; private set; }
+
         public bool RememberMe { get; private set; }
+
         public bool ShouldLockOut { get; private set; }
     }
 }

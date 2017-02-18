@@ -1,11 +1,9 @@
-﻿using CourseProject.Web.EventArguments;
-using CourseProject.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Web;
 using System.Web.ModelBinding;
 using WebFormsMvp;
+using CourseProject.Web.EventArguments;
+using CourseProject.Web.Models;
 
 namespace CourseProject.Web.Views
 {
@@ -21,10 +19,10 @@ namespace CourseProject.Web.Views
 
         event EventHandler<IdEventArgs> UpdateAd;
 
+        HttpResponse Response { get; }
+
         ModelStateDictionary ModelState { get; }
 
         bool TryUpdateModel<TModel>(TModel model) where TModel : class;
-
-        HttpResponse Response { get; }
     }
 }

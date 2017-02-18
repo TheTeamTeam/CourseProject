@@ -1,18 +1,13 @@
-﻿using CourseProject.Web.Models;
-using CourseProject.Web.Presenters;
-using CourseProject.Web.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using System;
+using System.Web.ModelBinding;
+using Microsoft.AspNet.Identity;
 using WebFormsMvp;
 using WebFormsMvp.Web;
-using CourseProject.Web.EventArguments;
 using CourseProject.Models;
-using Microsoft.AspNet.Identity;
-using System.Web.ModelBinding;
+using CourseProject.Web.EventArguments;
+using CourseProject.Web.Models;
+using CourseProject.Web.Presenters;
+using CourseProject.Web.Views;
 
 namespace CourseProject.Web
 {
@@ -27,28 +22,8 @@ namespace CourseProject.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-        }
-
-        protected void BookButton_Click(object sender, EventArgs e)
-        {
-            string id = this.Page.User.Identity.GetUserId();
-
-            this.BookAd?.Invoke(sender, new BookAdEventArgs(id, this.Model.Advertisement));     
-        }
-
-        protected void SaveButton_Click(object sender, EventArgs e)
-        {
-            var id = this.Page.User.Identity.GetUserId();
-
-            this.SaveAd?.Invoke(sender, new SaveAdEventArgs(id, this.Model.Advertisement));
-        }
-
-        // The id parameter should match the DataKeyNames value set on the control
-        // or be decorated with a value provider attribute, e.g. [QueryString]int id
-        // TODO: Decide where to leave logic
-        public Advertisement AdForm_GetItem([QueryString] int? id)
-        {
-            int adId = id ?? 1;
+            var adStringId = this.Request.QueryString["id"];
+            int adId = adStringId != null ? int.Parse(adStringId) : 1;
             string userId = this.Page.User.Identity.GetUserId();
 
             this.Initializing?.Invoke(this, new AdDetailsEventArgs(adId, userId));
@@ -57,7 +32,13 @@ namespace CourseProject.Web
             {
                 this.Response.Redirect("~/errorPages/404");
             }
-
+        }
+        
+        // The id parameter should match the DataKeyNames value set on the control
+        // or be decorated with a value provider attribute, e.g. [QueryString]int id
+        // TODO: Decide where to leave logic
+        public Advertisement AdForm_GetItem([QueryString] int? id)
+        {         
             return this.Model.Advertisement;
         }
 
@@ -71,6 +52,20 @@ namespace CourseProject.Web
         public void AdForm_UpdateItem(int id)
         {
             this.UpdateAd?.Invoke(this, new IdEventArgs(id));
+        }
+        
+        protected void BookButton_Click(object sender, EventArgs e)
+        {
+            string id = this.Page.User.Identity.GetUserId();
+
+            this.BookAd?.Invoke(sender, new BookAdEventArgs(id, this.Model.Advertisement));
+        }
+
+        protected void SaveButton_Click(object sender, EventArgs e)
+        {
+            var id = this.Page.User.Identity.GetUserId();
+
+            this.SaveAd?.Invoke(sender, new SaveAdEventArgs(id, this.Model.Advertisement));
         }
     }
 }

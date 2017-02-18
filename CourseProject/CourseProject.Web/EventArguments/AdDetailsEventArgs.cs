@@ -1,7 +1,6 @@
 ﻿using System;
 using CourseProject.Web.EventArguments.Contracts;
 
-
 namespace CourseProject.Web.EventArguments
 {
     public class AdDetailsEventArgs : EventArgs, IAdDetailsEventArgs

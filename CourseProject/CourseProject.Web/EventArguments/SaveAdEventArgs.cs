@@ -2,7 +2,6 @@
 using CourseProject.Models;
 using CourseProject.Web.EventArguments.Contracts;
 
-
 namespace CourseProject.Web.EventArguments
 {
     public class SaveAdEventArgs : EventArgs, ISaveAdEventArgs

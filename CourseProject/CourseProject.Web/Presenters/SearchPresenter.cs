@@ -14,13 +14,13 @@ namespace CourseProject.Web.Presenters
         private readonly ICategoriesService categoriesService;
 
         public SearchPresenter(
-            ISearchView view, 
+            ISearchView view,
             IAdvertisementsService adsService,
             ICitiesService citiesService,
-            ICategoriesService categoriesService) 
+            ICategoriesService categoriesService)
             : base(view)
         {
-            if(adsService == null)
+            if (adsService == null)
             {
                 throw new ArgumentNullException("Ads service cannot be null.");
             }
@@ -39,8 +39,8 @@ namespace CourseProject.Web.Presenters
             this.citiesService = citiesService;
             this.categoriesService = categoriesService;
 
-            this.View.Searching += OnSearching;
-            this.View.Initializing += OnInitializing;
+            this.View.Searching += this.OnSearching;
+            this.View.Initializing += this.OnInitializing;
         }
 
         private void OnInitializing(object sender, EventArgs e)
@@ -52,12 +52,7 @@ namespace CourseProject.Web.Presenters
 
         private void OnSearching(object sender, SearchEventArgs e)
         {
-            // TODO: paging
-
             this.View.Model.Advertisements = this.adsService.SearchAds(e.SearchWord, e.OrderBy, e.CategoryId, e.CityId);
-
-            // TODO: Optimize this - iteration
-            // this.View.Model.Count = this.adsService.GetAdsCount(e.SearchWord, e.CategoryId, e.CityId);
         }
     }
 }

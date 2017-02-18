@@ -45,10 +45,15 @@ namespace CourseProject.Models
         public string ImagePathBig { get; set; }
 
         public string SellerId { get; set; }
+
         public virtual User Seller { get; set; }
+
         public int CategoryId { get; set; }
+
         public virtual Category Category { get; set; }
+
         public int CityId { get; set; }
+
         public virtual City City { get; set; }
 
         public virtual ICollection<User> UsersSaved
@@ -57,6 +62,7 @@ namespace CourseProject.Models
             {
                 return this.usersSaved;
             }
+
             set
             {
                 this.usersSaved = value;
@@ -69,6 +75,7 @@ namespace CourseProject.Models
             {
                 return this.usersReserved;
             }
+
             set
             {
                 this.usersReserved = value;

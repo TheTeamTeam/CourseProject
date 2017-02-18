@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Reflection;
+using System.Linq.Expressions;
+using System.Linq.Dynamic;
 using CourseProject.Data.Repositories;
 using CourseProject.Data.UnitsOfWork;
 using CourseProject.Models;
 using CourseProject.Services.Contracts;
-using System.Linq.Expressions;
-using System.Linq.Dynamic;
 
 namespace CourseProject.Services
 {
@@ -64,6 +62,39 @@ namespace CourseProject.Services
                 this.unitOfWork.Commit();
             }
         }
+                                
+        public IEnumerable<Advertisement> GetTopAds(int count)
+        {
+            // TODO: Should it be in another method
+            // var filterExpressions = new List<Expression<Func<Advertisement, bool>>>();
+            // filterExpressions.Add(x => x.ExpireDate.CompareTo(DateTime.Now) > 0);
+            var result = this.adsRepository.GetAll(null, x => x.ExpireDate).Take(count);
+            return result.ToList();
+        }
+
+        public IEnumerable<Advertisement> GetSellerAds(string id)
+        {
+            return this.adsRepository.GetAll(x => x.SellerId == id).ToList();
+        }
+
+        public void DeleteAd(int id)
+        {
+            using (this.unitOfWork)
+            {
+                var ad = this.adsRepository.GetById(id);
+                this.adsRepository.Delete(ad);
+                this.unitOfWork.Commit();
+            }
+        }
+
+        public void UpdateAd(Advertisement ad)
+        {
+            using (this.unitOfWork)
+            {
+                this.adsRepository.Update(ad);
+                this.unitOfWork.Commit();
+            }
+        }
         
         public IQueryable<Advertisement> SearchAds(string word, string order, int categoryId, int cityId)
         {
@@ -89,20 +120,10 @@ namespace CourseProject.Services
             return result;
         }
 
-        private IEnumerable<Expression<Func<Advertisement, object>>> BuildSearchIncludes()
-        {
-            var includes = new List<Expression<Func<Advertisement, object>>>();
-
-            includes.Add(x => x.City);          
-            includes.Add(x => x.Category);
-
-            return includes;
-        }
-
         private IEnumerable<Expression<Func<Advertisement, bool>>> BuildFilterExpressions(string word, int categoryId, int cityId)
         {
             var filterExpressions = new List<Expression<Func<Advertisement, bool>>>();
-            // TODO: if empty   
+
             if (!string.IsNullOrEmpty(word))
             {
                 filterExpressions.Add(x => x.Name.Contains(word) || x.Description.Contains(word));
@@ -115,43 +136,20 @@ namespace CourseProject.Services
 
             if (cityId > 0)
             {
-                filterExpressions.Add(x => x.CityId  == cityId);
+                filterExpressions.Add(x => x.CityId == cityId);
             }
 
             return filterExpressions;
         }
         
-        public IEnumerable<Advertisement> GetTopAds(int count)
+        private IEnumerable<Expression<Func<Advertisement, object>>> BuildSearchIncludes()
         {
-            // TODO: Should it be in another method
-            //var filterExpressions = new List<Expression<Func<Advertisement, bool>>>();
-            //filterExpressions.Add(x => x.ExpireDate.CompareTo(DateTime.Now) > 0);
-            var result = this.adsRepository.GetAll(null, x => x.ExpireDate).Take(count);
-            return result.ToList();
-        }
+            var includes = new List<Expression<Func<Advertisement, object>>>();
 
-        public IEnumerable<Advertisement> GetSellerAds(string id)
-        {
-            return this.adsRepository.GetAll(x => x.SellerId == id).ToList();
-        }
+            includes.Add(x => x.City);
+            includes.Add(x => x.Category);
 
-        public void DeleteAd(int id)
-        {
-            using (this.unitOfWork)
-            {
-                var ad = this.adsRepository.GetById(id);
-                this.adsRepository.Delete(ad);
-                this.unitOfWork.Commit();
-            }
-        }
-
-        public void UpdateAd(Advertisement ad)
-        {
-            using (this.unitOfWork)
-            {
-                this.adsRepository.Update(ad);
-                unitOfWork.Commit();
-            }
+            return includes;
         }
     }
 }

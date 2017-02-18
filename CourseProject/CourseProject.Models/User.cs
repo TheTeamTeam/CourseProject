@@ -24,14 +24,6 @@ namespace CourseProject.Models
             this.followedUsers = new HashSet<User>();
         }
 
-        // public int Id { get; set; }
-
-        //[Required]
-        //[Index(IsUnique = true)]
-        //[MinLength(6)]
-        //[MaxLength(20)]
-        //public string Username { get; set; }
-
         [Required]
         [MinLength(3)]
         [MaxLength(20)]
@@ -51,6 +43,7 @@ namespace CourseProject.Models
             {
                 return this.savedAds;
             }
+
             set
             {
                 this.savedAds = value;
@@ -63,9 +56,23 @@ namespace CourseProject.Models
             {
                 return this.upcomingAds;
             }
+
             set
             {
                 this.upcomingAds = value;
+            }
+        }
+        
+        public virtual ICollection<User> FollowedUsers
+        {
+            get
+            {
+                return this.followedUsers;
+            }
+
+            set
+            {
+                this.followedUsers = value;
             }
         }
 
@@ -73,25 +80,14 @@ namespace CourseProject.Models
         {
             // note the authenticationtype must match the one defined in cookieauthenticationoptions.authenticationtype
             var useridentity = manager.CreateIdentity(this, DefaultAuthenticationTypes.ApplicationCookie);
+
             // add custom user claims here
             return useridentity;
         }
 
         public Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
-            return Task.FromResult(GenerateUserIdentity(manager));
-        }
-
-        public virtual ICollection<User> FollowedUsers
-        {
-            get
-            {
-                return this.followedUsers;
-            }
-            set
-            {
-                this.followedUsers = value;
-            }
+            return Task.FromResult(this.GenerateUserIdentity(manager));
         }
     }
 }

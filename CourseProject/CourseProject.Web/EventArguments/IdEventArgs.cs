@@ -1,5 +1,5 @@
-﻿using CourseProject.Web.EventArguments.Contracts;
-using System;
+﻿using System;
+using CourseProject.Web.EventArguments.Contracts;
 
 namespace CourseProject.Web.EventArguments
 {

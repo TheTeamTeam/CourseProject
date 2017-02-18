@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using WebFormsMvp.Web;
+using CourseProject.Models;
 using CourseProject.Web.Models;
 using CourseProject.Web.Views;
 using CourseProject.Web.EventArguments;
-using CourseProject.Data;
-using System.Data.Entity.Infrastructure;
-using CourseProject.Models;
 
 namespace CourseProject.Web
 {
@@ -48,7 +42,7 @@ namespace CourseProject.Web
 
         public IQueryable<Advertisement> MainList_GetData()
         {
-            var searchWord = (string)this.Session["SearchWord"] ?? "";
+            var searchWord = (string)this.Session["SearchWord"] ?? string.Empty;
 
             var order = this.OrderProperties.SelectedValue;
             var cityId = int.Parse(this.CitiesDropDown.SelectedValue);

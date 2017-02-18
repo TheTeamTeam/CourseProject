@@ -16,9 +16,8 @@ namespace CourseProject.Tests.Web.Presenters
 {
     [TestFixture]
     public class PersonalProfilePresenterTests
-    {    
+    {
         // TODO: Fix tests
-
         [Test]
         public void Constructor_ShouldThrowArgumentNullException_WhenUserServiceIsNull()
         {
@@ -62,7 +61,7 @@ namespace CourseProject.Tests.Web.Presenters
 
             mockedView.InvokeGettingUser(mockedView, new Mock<GetUserByIdEventArgs>("id", false).Object);
 
-            mockedService.Verify(x=>x.GetUserById(It.IsAny<string>()), Times.Once);            
+            mockedService.Verify(x => x.GetUserById(It.IsAny<string>()), Times.Once);
         }
 
         // TODO: Relies on the agrs contructor, maybe extract interface ??
@@ -76,7 +75,7 @@ namespace CourseProject.Tests.Web.Presenters
             var mockedService = new Mock<IUsersService>();
             mockedService.Setup(x => x.GetUserById(It.IsAny<string>())).Verifiable();
             var presenter = new PersonalProfilePresenter(mockedView, mockedService.Object, mockedAdsService.Object);
-            // TODO: interface mock
+            
             var eventArgs = new GetUserByIdEventArgs(id, false);
 
             mockedView.InvokeGettingUser(mockedView, eventArgs);

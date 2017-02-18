@@ -22,7 +22,7 @@ namespace CourseProject.Tests.Data.UnitsOfWork
         [Test]
         public void Constructor_ShouldThrowExceptionWithCorrectMessage_WhenDbContextIsNull()
         {
-            Assert.That(()=> new UnitOfWork(null), 
+            Assert.That(() => new UnitOfWork(null),
                 Throws.ArgumentNullException.With.Message.Contains("DbContext cannot be null."));
         }
 

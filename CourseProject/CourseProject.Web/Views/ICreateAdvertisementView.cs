@@ -1,16 +1,14 @@
-﻿using CourseProject.Web.EventArguments;
-using CourseProject.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System;
 using WebFormsMvp;
+using CourseProject.Web.EventArguments;
+using CourseProject.Web.Models;
 
 namespace CourseProject.Web.Views
 {
     public interface ICreateAdvertisementView : IView<CreateAdvertisementModel>
     {
         event EventHandler MyInit;
+
         event EventHandler<CreatingAdvertisementEventArgs> CreatingAdvertisement;
     }
 }

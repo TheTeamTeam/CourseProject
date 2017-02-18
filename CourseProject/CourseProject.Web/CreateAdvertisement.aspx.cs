@@ -1,20 +1,14 @@
-﻿using CourseProject.Models;
-using CourseProject.Web.Models;
-using CourseProject.Web.Presenters;
-using CourseProject.Web.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Globalization;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity;
 using WebFormsMvp;
 using WebFormsMvp.Web;
 using CourseProject.Web.EventArguments;
-using Microsoft.AspNet.Identity;
-using System.IO;
-using ImageResizer;
-using System.Globalization;
+using CourseProject.Web.Models;
+using CourseProject.Web.Presenters;
+using CourseProject.Web.Views;
 
 namespace CourseProject.Web
 {
@@ -26,7 +20,7 @@ namespace CourseProject.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!this.IsPostBack)
             {
                 this.MyInit?.Invoke(sender, e);
                 
@@ -37,6 +31,7 @@ namespace CourseProject.Web
                 this.Cities.DataBind();
             }
         }
+
         protected void CreateAdvertisement_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)

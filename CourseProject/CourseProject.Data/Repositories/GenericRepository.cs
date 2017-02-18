@@ -10,27 +10,23 @@ namespace CourseProject.Data.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
+        private readonly IAdsHubDbContext context;
+        private readonly IDbSet<T> dbSet;
+
         public GenericRepository(IAdsHubDbContext context)
         {
-            this.Context = context;
-            this.DbSet = this.Context.Set<T>();
+            this.context = context;
+            this.dbSet = this.context.Set<T>();
         }
-
-
-        // TODO: Make readonly field ??
-
-        private IAdsHubDbContext Context { get; set; }
-
-        private IDbSet<T> DbSet { get; set; }
 
         public IQueryable<T> All
         {
-            get { return this.DbSet; }
+            get { return this.dbSet; }
         }
 
         public T GetById(object id)
         {
-            return this.DbSet.Find(id);
+            return this.dbSet.Find(id);
         }
 
         public IEnumerable<T> GetAll()
@@ -50,7 +46,7 @@ namespace CourseProject.Data.Repositories
 
         public IEnumerable<T2> GetAll<T1, T2>(Expression<Func<T, bool>> filterExpression, Expression<Func<T, T1>> sortExpression, Expression<Func<T, T2>> selectExpression)
         {
-            IQueryable<T> result = this.DbSet;
+            IQueryable<T> result = this.dbSet;
 
             if (filterExpression != null)
             {
@@ -74,7 +70,7 @@ namespace CourseProject.Data.Repositories
 
         public IQueryable<T> GetAllWithMultipleFilters(IEnumerable<Expression<Func<T, bool>>> filterExpressions, string orderProperty, bool ascending)
         {
-            IQueryable<T> result = this.DbSet;
+            IQueryable<T> result = this.dbSet;
 
             if (filterExpressions != null)
             {
@@ -104,54 +100,36 @@ namespace CourseProject.Data.Repositories
         {
             if (includes != null)
             {
-                query = includes.Aggregate(query,
-                          (current, include) => current.Include(include));
+                query = includes.Aggregate(query, (current, include) => current.Include(include));
             }
 
             return query;
         }
-        // TODO: should this stay
-        //public IEnumerable<T1> Select<T1>(Expression<Func<T, T1>> selectExpression)
-        //{
-        //    return this.DbSet.Select(selectExpression).ToList();
-        //}
-
-        //public int GetCount(Expression<Func<T, bool>> filterExpression)
-        //{
-        //    IQueryable<T> result = this.DbSet;
-
-        //    if(filterExpression != null)
-        //    {
-        //        result = result.Where(filterExpression);
-        //    }
-
-        //    return result.Count();
-        //}
 
         public void Add(T entity)
         {
-            var entry = AttachIfDetached(entity);
+            var entry = this.AttachIfDetached(entity);
             entry.State = EntityState.Added;
         }
 
         public void Update(T entity)
         {
-            var entry = AttachIfDetached(entity);
+            var entry = this.AttachIfDetached(entity);
             entry.State = EntityState.Modified;
         }
 
         public void Delete(T entity)
         {
-            var entry = AttachIfDetached(entity);
+            var entry = this.AttachIfDetached(entity);
             entry.State = EntityState.Deleted;
         }
 
         private DbEntityEntry AttachIfDetached(T entity)
         {
-            var entry = this.Context.Entry(entity);
+            var entry = this.context.Entry(entity);
             if (entry.State == EntityState.Detached)
             {
-                this.DbSet.Attach(entity);
+                this.dbSet.Attach(entity);
             }
 
             return entry;

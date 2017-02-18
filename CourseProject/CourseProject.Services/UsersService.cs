@@ -1,9 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using CourseProject.Data.Repositories;
 using CourseProject.Data.UnitsOfWork;
 using CourseProject.Models;
 using CourseProject.Services.Contracts;
-using System;
 
 namespace CourseProject.Services
 {
@@ -35,7 +35,7 @@ namespace CourseProject.Services
             return this.usersRepository.GetById(userId);
         }
 
-        public User GetUserByUsername(string username) //Not tested
+        public User GetUserByUsername(string username) // Not tested
         {
             // TODO: Find method in repostory ??
             return this.usersRepository.GetAll(x => x.UserName == username).FirstOrDefault();

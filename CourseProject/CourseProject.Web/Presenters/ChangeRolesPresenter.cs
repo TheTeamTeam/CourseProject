@@ -1,13 +1,10 @@
-﻿using CourseProject.Web.EventArguments;
-using CourseProject.Web.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using System.Web;
 using WebFormsMvp;
 using CourseProject.Web.Identity;
+using CourseProject.Web.EventArguments;
+using CourseProject.Web.Views;
 
 namespace CourseProject.Web.Presenters
 {

@@ -19,6 +19,7 @@ namespace CourseProject.Web.Users
     public partial class Profile : MvpPage<PersonalProfileModel>, IPersonalProfileView
     {
         public event EventHandler<IGetUserByIdEventArgs> GettingUser;
+
         public event EventHandler<IdEventArgs> RemovingSavedAd;
 
         protected void Page_Load(object sender, EventArgs e)

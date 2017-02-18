@@ -8,7 +8,7 @@ namespace CourseProject.Data.UnitsOfWork
 
         public UnitOfWork(IAdsHubDbContext dbContext)
         {
-            if(dbContext == null)
+            if (dbContext == null)
             {
                 throw new ArgumentNullException("DbContext cannot be null.");
             }

@@ -11,12 +11,14 @@ namespace CourseProject.Web.Identity
         public const string XsrfKey = "XsrfId";
 
         public const string ProviderNameKey = "providerName";
+
         public static string GetProviderNameFromRequest(HttpRequest request)
         {
             return request.QueryString[ProviderNameKey];
         }
 
         public const string CodeKey = "code";
+
         public static string GetCodeFromRequest(HttpRequest request)
         {
             return request.QueryString[CodeKey];

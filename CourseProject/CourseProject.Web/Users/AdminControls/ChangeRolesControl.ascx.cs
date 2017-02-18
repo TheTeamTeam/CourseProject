@@ -1,15 +1,11 @@
-﻿using CourseProject.Web.Models;
-using CourseProject.Web.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using WebFormsMvp.Web;
 using CourseProject.Web.EventArguments;
 using WebFormsMvp;
+using CourseProject.Web.Models;
 using CourseProject.Web.Presenters;
+using CourseProject.Web.Views;
 
 namespace CourseProject.Web.Users.AdminControls
 {
@@ -17,13 +13,10 @@ namespace CourseProject.Web.Users.AdminControls
     public partial class ChangeRolesControl : MvpUserControl<ChangeRolesModel>, IChangeRolesView
     {
         public event EventHandler<RoleEventArgs> AddingRole;
-        public event EventHandler<RoleEventArgs> RemovingRole;
-        public event EventHandler<StringIdEventArgs> GettingRoles;
 
-        protected void Page_PreRender(object sender, EventArgs e)
-        {
-            this.GettingRoles?.Invoke(this, new StringIdEventArgs(this.UserId));
-        }
+        public event EventHandler<RoleEventArgs> RemovingRole;
+
+        public event EventHandler<StringIdEventArgs> GettingRoles;
 
         public string UserId { get; set; } 
 
@@ -33,6 +26,11 @@ namespace CourseProject.Web.Users.AdminControls
             {
                 return this.Context;
             }
+        }
+        
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            this.GettingRoles?.Invoke(this, new StringIdEventArgs(this.UserId));
         }
 
         // TODO: Should roles be constants / enum

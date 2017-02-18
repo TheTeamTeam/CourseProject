@@ -8,7 +8,7 @@ namespace CourseProject.Services.Contracts
 
         User GetUserByUsername(string username);
 
-        void AddAdToUpcoming(string userId, Advertisement Ad);
+        void AddAdToUpcoming(string userId, Advertisement ad);
 
         void AddAdToSaved(string userId, Advertisement ad);
 

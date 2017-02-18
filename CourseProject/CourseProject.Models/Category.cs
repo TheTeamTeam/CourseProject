@@ -29,6 +29,7 @@ namespace CourseProject.Models
             {
                 return this.advertisements;
             }
+
             set
             {
                 this.advertisements = value;

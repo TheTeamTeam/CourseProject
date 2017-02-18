@@ -13,9 +13,9 @@ namespace CourseProject.Web.Account.Presenters
     public class RegisterPresenter : Presenter<IRegisterView>
     {
         public RegisterPresenter(IRegisterView view)
-            :base(view)
+            : base(view)
         {
-            this.View.Registering += OnRegistering;
+            this.View.Registering += this.OnRegistering;
         }
 
         private void OnRegistering(object sender, RegisterEventArgs e)
@@ -31,7 +31,7 @@ namespace CourseProject.Web.Account.Presenters
 
             var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = e.Context.GetOwinContext().Get<ApplicationSignInManager>();
-            
+
             IdentityResult result = manager.Create(user, e.Password);
 
             if (result.Succeeded)

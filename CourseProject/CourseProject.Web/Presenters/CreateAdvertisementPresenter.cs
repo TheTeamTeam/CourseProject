@@ -1,19 +1,18 @@
-﻿using WebFormsMvp;
-using CourseProject.Data.Repositories;
+﻿using System;
+using System.IO;
+using System.Web;
+using ImageResizer;
+using WebFormsMvp;
 using CourseProject.Models;
 using CourseProject.Services.Contracts;
 using CourseProject.Web.EventArguments;
 using CourseProject.Web.Views;
-using System;
-using System.IO;
-using ImageResizer;
-using System.Web;
 
 namespace CourseProject.Web.Presenters
 {
     public class CreateAdvertisementPresenter : Presenter<ICreateAdvertisementView>
     {
-        private IAdvertisementsService adsService;
+        private readonly IAdvertisementsService adsService;
         private readonly ICitiesService citiesService;
         private readonly ICategoriesService categoriesService;
 
@@ -43,8 +42,8 @@ namespace CourseProject.Web.Presenters
             this.citiesService = citiesService;
             this.categoriesService = categoriesService;
 
-            this.View.MyInit += OnInit;
-            this.View.CreatingAdvertisement += OnCreatingAdvertisement;
+            this.View.MyInit += this.OnInit;
+            this.View.CreatingAdvertisement += this.OnCreatingAdvertisement;
         }
 
         private void OnInit(object sender, EventArgs e)
@@ -68,6 +67,7 @@ namespace CourseProject.Web.Presenters
                 CityId = e.CityId,
                 CategoryId = e.CategoryId,
                 SellerId = e.SellerId,
+
                 // TODO: have default image
                 ImagePathSmall = filename != null ? "/images/small/" + filename : null,
                 ImagePathBig = filename != null ? "/images/big/" + filename : null,
@@ -78,21 +78,22 @@ namespace CourseProject.Web.Presenters
 
         private void SaveImagesToFileSystem(HttpPostedFile image, string filename)
         {
-            //The resizing settings can specify any of 30 commands.. See http://imageresizing.net for details.
-            //Destination paths can have variables like <guid> and <ext>, or 
-            //even a santizied version of the original filename, like <filename:A-Za-z0-9>
-            ImageJob i = new ImageJob(image,
+            // The resizing settings can specify any of 30 commands.. See http://imageresizing.net for details.
+            // Destination paths can have variables like <guid> and <ext>, or 
+            // even a santizied version of the original filename, like <filename:A-Za-z0-9>
+            ImageJob i = new ImageJob(
+                image,
                 $"~/images/small/{filename}",
                 new Instructions("width=200;height=200;format=jpg;mode=max"));
-            i.CreateParentDirectory = true; //Auto-create the uploads directory.
+            i.CreateParentDirectory = true; // Auto-create the uploads directory.
             i.Build();
 
-            ImageJob j = new ImageJob(image,
+            ImageJob j = new ImageJob(
+                image,
                 $"~/images/big/{filename}",
                 new Instructions("width=500;height=500;format=jpg;mode=max"));
-            j.CreateParentDirectory = true; //Auto-create the uploads directory.
+            j.CreateParentDirectory = true; // Auto-create the uploads directory.
             j.Build();
-
         }
     }
 }
