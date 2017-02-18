@@ -24,7 +24,7 @@ namespace CourseProject.Web.Users
         protected void Page_Load(object sender, EventArgs e)
         {
             var id = this.Page.User.Identity.GetUserId();
-            var isSeller = this.Page.User.IsInRole("Seller");
+            var isSeller = this.Page.User.IsInRole("Seller") || this.Page.User.IsInRole("Admin");
             this.GettingUser?.Invoke(this, new GetUserByIdEventArgs(id, isSeller));
         }
 

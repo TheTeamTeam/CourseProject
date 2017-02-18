@@ -31,9 +31,13 @@
         <EditItemTemplate>
             <asp:Label runat="server" AssociatedControlID="EditName" Text="Names:"></asp:Label>
             <asp:TextBox runat="server" ID="EditName" Text="<%# BindItem.Name %>" CssClass="form-control"></asp:TextBox>
+            <asp:RegularExpressionValidator Display="Dynamic" runat="server" ControlToValidate="EditName" 
+                    CssClass="text-danger" ValidationExpression="^[\s\S]{3,20}$" Text="Minimum 3 and maximum 20 characters required." />
 
             <asp:Label runat="server" AssociatedControlID="EditDescription" Text="Description:"></asp:Label>
             <asp:TextBox runat="server" ID="EditDescription" Text="<%# BindItem.Description %>" TextMode="MultiLine" Rows="7" CssClass="form-control"></asp:TextBox>
+            <asp:RegularExpressionValidator Display="Dynamic" runat="server" ControlToValidate="EditDescription" 
+                    CssClass="text-danger" ValidationExpression="^[\s\S]{3,500}$" Text="Minimum 3 and maximum 500 characters required."  />
 
             <asp:Label runat="server" AssociatedControlID="EditPrice" Text="Price:"></asp:Label>
             <asp:TextBox runat="server" ID="EditPrice" Text="<%# BindItem.Price %>" CssClass="form-control"></asp:TextBox>

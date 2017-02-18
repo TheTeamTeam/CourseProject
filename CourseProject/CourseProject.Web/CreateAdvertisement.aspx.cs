@@ -97,6 +97,8 @@ namespace CourseProject.Web
                 };
 
                 this.CreatingAdvertisement?.Invoke(sender, new CreatingAdvertisementEventArgs(advertisement));
+
+                this.Response.Redirect("~/users/profile");
             }
         }
     }

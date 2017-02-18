@@ -11,16 +11,16 @@
             <asp:Label runat="server" AssociatedControlID="Name" CssClass="col-md-2 control-label">Title</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Name" CssClass="form-control" />  
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Name"
-                    CssClass="text-danger" ErrorMessage="The title field is required." />
+                <asp:RegularExpressionValidator Display="Dynamic" runat="server" ControlToValidate="Name" 
+                    CssClass="text-danger" ValidationExpression="^[\s\S]{3,20}$"  ErrorMessage="Minimum 3 and maximum 20 characters required." />
             </div>
         </div>
          <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Description" CssClass="col-md-2 control-label">Description</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="Description" CssClass="form-control" /> 
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Description"
-                    CssClass="text-danger" ErrorMessage="The description field is required." />            
+                <asp:TextBox runat="server" ID="Description" TextMode="MultiLine" Rows="7" CssClass="form-control" />                
+                <asp:RegularExpressionValidator Display="Dynamic" runat="server" ControlToValidate="Description" 
+                    CssClass="text-danger" ValidationExpression="^[\s\S]{3,500}$"  ErrorMessage="Minimum 3 and maximum 500 characters required." />
             </div>
         </div>
          <div class="form-group">

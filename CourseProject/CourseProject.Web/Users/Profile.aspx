@@ -11,7 +11,7 @@
 
     <asp:LoginView runat="server">
         <RoleGroups>
-            <asp:RoleGroup Roles="Seller">
+            <asp:RoleGroup Roles="Admin,Seller">
                 <ContentTemplate>
                     <h2>Your Ads!</h2>
                     <div class="jumbotron">
