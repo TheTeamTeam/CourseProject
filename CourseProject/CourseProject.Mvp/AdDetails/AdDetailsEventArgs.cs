@@ -1,9 +1,8 @@
 ﻿using System;
-using CourseProject.Web.EventArguments.Contracts;
 
-namespace CourseProject.Web.EventArguments
+namespace CourseProject.Mvp.AdDetails
 {
-    public class AdDetailsEventArgs : EventArgs, IAdDetailsEventArgs
+    public class AdDetailsEventArgs : EventArgs
     {
         public AdDetailsEventArgs(int adId, string userId)
         {

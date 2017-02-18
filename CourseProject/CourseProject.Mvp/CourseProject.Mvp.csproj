@@ -38,6 +38,10 @@
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ImageResizer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageResizer.4.0.5\lib\net45\ImageResizer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -102,8 +106,18 @@
     <Compile Include="Account\Register\RegisterEventArgs.cs" />
     <Compile Include="Account\Register\RegisterModel.cs" />
     <Compile Include="Account\Register\RegisterPresenter.cs" />
+    <Compile Include="AdDetails\AdDetailsEventArgs.cs" />
+    <Compile Include="AdDetails\AdDetailsModel.cs" />
+    <Compile Include="AdDetails\AdDetailsPresenter.cs" />
+    <Compile Include="AdDetails\BookAdEventArgs.cs" />
+    <Compile Include="AdDetails\IAdDetailsView.cs" />
+    <Compile Include="AdDetails\SaveAdEventArgs.cs" />
     <Compile Include="CommonEventArguments\IdEventArgs.cs" />
     <Compile Include="CommonEventArguments\StringIdEventArgs.cs" />
+    <Compile Include="CreateAdvertisement\CreateAdvertisementModel.cs" />
+    <Compile Include="CreateAdvertisement\CreateAdvertisementPresenter.cs" />
+    <Compile Include="CreateAdvertisement\CreatingAdvertisementEventArgs.cs" />
+    <Compile Include="CreateAdvertisement\ICreateAdvertisementView.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Identity\EmailService.cs" />

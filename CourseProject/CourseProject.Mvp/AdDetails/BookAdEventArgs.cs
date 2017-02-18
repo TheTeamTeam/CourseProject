@@ -1,10 +1,9 @@
 ﻿using System;
 using CourseProject.Models;
-using CourseProject.Web.EventArguments.Contracts;
 
-namespace CourseProject.Web.EventArguments 
+namespace CourseProject.Mvp.AdDetails
 {
-    public class BookAdEventArgs : EventArgs, IBookAdEventArgs
+    public class BookAdEventArgs : EventArgs
     {
         public BookAdEventArgs(string userId, Advertisement ad)
         {

@@ -5,10 +5,7 @@ using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using WebFormsMvp;
 using WebFormsMvp.Web;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Models;
-using CourseProject.Web.Presenters;
-using CourseProject.Web.Views;
+using CourseProject.Mvp.CreateAdvertisement;
 
 namespace CourseProject.Web
 {

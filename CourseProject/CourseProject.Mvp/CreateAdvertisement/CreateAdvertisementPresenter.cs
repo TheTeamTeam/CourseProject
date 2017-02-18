@@ -5,10 +5,8 @@ using ImageResizer;
 using WebFormsMvp;
 using CourseProject.Models;
 using CourseProject.Services.Contracts;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Views;
 
-namespace CourseProject.Web.Presenters
+namespace CourseProject.Mvp.CreateAdvertisement
 {
     public class CreateAdvertisementPresenter : Presenter<ICreateAdvertisementView>
     {

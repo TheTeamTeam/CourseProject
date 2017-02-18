@@ -1,6 +1,6 @@
 ﻿using CourseProject.Models;
 
-namespace CourseProject.Web.Models
+namespace CourseProject.Mvp.AdDetails
 {
     public class AdDetailsModel
     {

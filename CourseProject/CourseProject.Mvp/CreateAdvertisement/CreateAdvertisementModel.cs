@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using CourseProject.Models;
 
-namespace CourseProject.Web.Models
+namespace CourseProject.Mvp.CreateAdvertisement
 {
     public class CreateAdvertisementModel
     {

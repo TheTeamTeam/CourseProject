@@ -1,11 +1,10 @@
 ﻿using System;
 using WebFormsMvp;
 using CourseProject.Services.Contracts;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Views;
 using CourseProject.Models;
+using CourseProject.Mvp.CommonEventArguments;
 
-namespace CourseProject.Web.Presenters
+namespace CourseProject.Mvp.AdDetails
 {
     public class AdDetailsPresenter : Presenter<IAdDetailsView>
     {

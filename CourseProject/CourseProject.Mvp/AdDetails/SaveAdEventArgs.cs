@@ -1,10 +1,9 @@
 ﻿using System;
 using CourseProject.Models;
-using CourseProject.Web.EventArguments.Contracts;
 
-namespace CourseProject.Web.EventArguments
+namespace CourseProject.Mvp.AdDetails
 {
-    public class SaveAdEventArgs : EventArgs, ISaveAdEventArgs
+    public class SaveAdEventArgs : EventArgs
     {
         public SaveAdEventArgs(string userId, Advertisement ad)
         {

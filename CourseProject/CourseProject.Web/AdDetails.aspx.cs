@@ -4,10 +4,8 @@ using Microsoft.AspNet.Identity;
 using WebFormsMvp;
 using WebFormsMvp.Web;
 using CourseProject.Models;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Models;
-using CourseProject.Web.Presenters;
-using CourseProject.Web.Views;
+using CourseProject.Mvp.AdDetails;
+using CourseProject.Mvp.CommonEventArguments;
 
 namespace CourseProject.Web
 {

@@ -2,10 +2,9 @@
 using System.Web;
 using System.Web.ModelBinding;
 using WebFormsMvp;
-using CourseProject.Web.EventArguments;
-using CourseProject.Web.Models;
+using CourseProject.Mvp.CommonEventArguments;
 
-namespace CourseProject.Web.Views
+namespace CourseProject.Mvp.AdDetails
 {
     public interface IAdDetailsView : IView<AdDetailsModel>
     {

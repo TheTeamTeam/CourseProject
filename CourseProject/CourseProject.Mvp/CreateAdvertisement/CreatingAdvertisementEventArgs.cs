@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Web;
-using CourseProject.Web.EventArguments.Contracts;
 
-namespace CourseProject.Web.EventArguments
+namespace CourseProject.Mvp.CreateAdvertisement
 {
-    public class CreatingAdvertisementEventArgs : EventArgs, ICreatingAdvertisementEventArgs
+    public class CreatingAdvertisementEventArgs : EventArgs
     {
         public CreatingAdvertisementEventArgs(
                     string name,
