@@ -89,6 +89,8 @@
     <Compile Include="UsersServiceTests\AddAdToUpcoming_Should.cs" />
     <Compile Include="UsersServiceTests\Constructor_Should.cs" />
     <Compile Include="UsersServiceTests\GetUserById_Should.cs" />
+    <Compile Include="UsersServiceTests\GetUserByUsername_Should.cs" />
+    <Compile Include="UsersServiceTests\RemoveAdFromSaved_Should.cs" />
     <Compile Include="UsersServiceTests\UserBookedAd_Should.cs" />
     <Compile Include="UsersServiceTests\UserSavedAd_Should.cs" />
   </ItemGroup>
