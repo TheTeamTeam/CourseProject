@@ -72,9 +72,14 @@
     <Compile Include="AdvertisementsServiceTests\Contructor_Should.cs" />
     <Compile Include="AdvertisementsServiceTests\CreateAdvertisement_Should.cs" />
     <Compile Include="AdvertisementsServiceTests\DecrementFreePlaces_Should.cs" />
+    <Compile Include="AdvertisementsServiceTests\DeleteAd_Should.cs" />
     <Compile Include="AdvertisementsServiceTests\GetAdvertisements_Should.cs" />
     <Compile Include="AdvertisementsServiceTests\GetById_Should.cs" />
+    <Compile Include="AdvertisementsServiceTests\GetSellerAds_Should.cs" />
+    <Compile Include="AdvertisementsServiceTests\GetTopAds_Should.cs" />
     <Compile Include="AdvertisementsServiceTests\OtherTests.cs" />
+    <Compile Include="AdvertisementsServiceTests\SearchAds_Should.cs" />
+    <Compile Include="AdvertisementsServiceTests\UpdateAd_Should.cs" />
     <Compile Include="CategoriesServiceTests\Constructor_Should.cs" />
     <Compile Include="CategoriesServiceTests\GetCategories_Should.cs" />
     <Compile Include="CitiesServiceTests\Constructor_Should.cs" />
