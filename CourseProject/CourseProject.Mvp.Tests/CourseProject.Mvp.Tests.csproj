@@ -80,6 +80,7 @@
     <Compile Include="Users\PersonalProfile\PersonalProfilePresenterTests\Constructor_Should.cs" />
     <Compile Include="Users\PersonalProfile\PersonalProfilePresenterTests\Mocks\MockedPersonalProfileView.cs" />
     <Compile Include="Users\PersonalProfile\PersonalProfilePresenterTests\OnGettingUser_Should.cs" />
+    <Compile Include="Users\PersonalProfile\PersonalProfilePresenterTests\OnRemovingSavedAd_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
@@ -101,6 +102,9 @@
       <Project>{b04986bf-c421-440a-906a-741b51bda0bb}</Project>
       <Name>CourseProject.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Home\HomePresenterTests\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

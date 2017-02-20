@@ -43,7 +43,6 @@ namespace CourseProject.Mvp.Search
 
         private void OnInitializing(object sender, EventArgs e)
         {
-            // TODO: should they be in a different service
             this.View.Model.Cities = this.citiesService.GetCities();
             this.View.Model.Categories = this.categoriesService.GetCategories();
         }
