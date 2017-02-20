@@ -5,6 +5,7 @@ using ImageResizer;
 using WebFormsMvp;
 using CourseProject.Models;
 using CourseProject.Services.Contracts;
+using CourseProject.Mvp.Factories;
 
 namespace CourseProject.Mvp.CreateAdvertisement
 {
@@ -13,12 +14,14 @@ namespace CourseProject.Mvp.CreateAdvertisement
         private readonly IAdvertisementsService adsService;
         private readonly ICitiesService citiesService;
         private readonly ICategoriesService categoriesService;
+        private readonly IImageJobFactory imageJobFactory;
 
         public CreateAdvertisementPresenter(
             ICreateAdvertisementView view,
             IAdvertisementsService adsService,
             ICitiesService citiesService,
-            ICategoriesService categoriesService)
+            ICategoriesService categoriesService,
+            IImageJobFactory imageJobFactory)
             : base(view)
         {
             if (adsService == null)
@@ -36,9 +39,15 @@ namespace CourseProject.Mvp.CreateAdvertisement
                 throw new ArgumentNullException("Categories service cannot be null.");
             }
 
+            if (imageJobFactory == null)
+            {
+                throw new ArgumentNullException("Image job factory cannot be null.");
+            }
+
             this.adsService = adsService;
             this.citiesService = citiesService;
             this.categoriesService = categoriesService;
+            this.imageJobFactory = imageJobFactory;
 
             this.View.MyInit += this.OnInit;
             this.View.CreatingAdvertisement += this.OnCreatingAdvertisement;
@@ -79,14 +88,14 @@ namespace CourseProject.Mvp.CreateAdvertisement
             // The resizing settings can specify any of 30 commands.. See http://imageresizing.net for details.
             // Destination paths can have variables like <guid> and <ext>, or 
             // even a santizied version of the original filename, like <filename:A-Za-z0-9>
-            ImageJob i = new ImageJob(
+            ImageJob i =this.imageJobFactory.CreateImageJob(
                 image,
                 $"~/images/small/{filename}",
                 new Instructions("width=200;height=200;format=jpg;mode=max"));
             i.CreateParentDirectory = true; // Auto-create the uploads directory.
             i.Build();
 
-            ImageJob j = new ImageJob(
+            ImageJob j = this.imageJobFactory.CreateImageJob(
                 image,
                 $"~/images/big/{filename}",
                 new Instructions("width=500;height=500;format=jpg;mode=max"));
