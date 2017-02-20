@@ -8,7 +8,7 @@ using NUnit.Framework;
 using Moq;
 using CourseProject.Mvp.CreateAdvertisement;
 using CourseProject.Services.Contracts;
-using CourseProject.Mvp.Factories;
+using CourseProject.Mvp.ImageResizing;
 using CourseProject.Models;
 using ImageResizer;
 using CourseProject.Mvp.Tests.CreateAdvertisement.CreateAdvertisementPresenterTests.ImageResizerExtensions;

@@ -1,6 +1,6 @@
 ﻿using ImageResizer;
 
-namespace CourseProject.Mvp.Factories
+namespace CourseProject.Mvp.ImageResizing
 {
     public interface IImageJobFactory
     {

@@ -8,7 +8,7 @@ using Ninject.Parameters;
 using WebFormsMvp;
 using WebFormsMvp.Binder;
 using CourseProject.Web.App_Start.Factories;
-using CourseProject.Mvp.Factories;
+using CourseProject.Mvp.ImageResizing;
 using ImageResizer;
 
 namespace CourseProject.Web.App_Start.NinjectModules
@@ -19,6 +19,7 @@ namespace CourseProject.Web.App_Start.NinjectModules
         {
             this.Bind<IImageJobFactory>().ToFactory();
             this.Bind<ImageJob>().ToSelf();
+            this.Bind<IImageSaver>().To<ImageSaver>();
 
             this.Bind<IPresenterFactory>().To<MvpPresenterFactory>().InSingletonScope();
 

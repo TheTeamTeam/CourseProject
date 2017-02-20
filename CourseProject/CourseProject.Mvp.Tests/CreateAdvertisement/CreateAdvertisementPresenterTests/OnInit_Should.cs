@@ -7,7 +7,7 @@ using NUnit.Framework;
 using Moq;
 using CourseProject.Mvp.CreateAdvertisement;
 using CourseProject.Services.Contracts;
-using CourseProject.Mvp.Factories;
+using CourseProject.Mvp.ImageResizing;
 using CourseProject.Models;
 
 namespace CourseProject.Mvp.Tests.CreateAdvertisement.CreateAdvertisementPresenterTests
@@ -24,6 +24,7 @@ namespace CourseProject.Mvp.Tests.CreateAdvertisement.CreateAdvertisementPresent
             var mockedCitiesService = new Mock<ICitiesService>();
             var mockedCategoriesService = new Mock<ICategoriesService>();
             var mockedFactory = new Mock<IImageJobFactory>();
+            var mockedSaver = new Mock<IImageSaver>();
 
             mockedView.Setup(x => x.Model).Returns(model);
             mockedCitiesService.Setup(x => x.GetCities()).Verifiable();
@@ -33,7 +34,8 @@ namespace CourseProject.Mvp.Tests.CreateAdvertisement.CreateAdvertisementPresent
               mockedAdsService.Object,
               mockedCitiesService.Object,
               mockedCategoriesService.Object,
-              mockedFactory.Object);
+              mockedFactory.Object,
+              mockedSaver.Object);
 
             mockedView.Raise(x => x.MyInit += null, EventArgs.Empty);
 
@@ -49,6 +51,7 @@ namespace CourseProject.Mvp.Tests.CreateAdvertisement.CreateAdvertisementPresent
             var mockedCitiesService = new Mock<ICitiesService>();
             var mockedCategoriesService = new Mock<ICategoriesService>();
             var mockedFactory = new Mock<IImageJobFactory>();
+            var mockedSaver = new Mock<IImageSaver>();
 
             var data = new List<City>()
             {
@@ -64,7 +67,8 @@ namespace CourseProject.Mvp.Tests.CreateAdvertisement.CreateAdvertisementPresent
               mockedAdsService.Object,
               mockedCitiesService.Object,
               mockedCategoriesService.Object,
-              mockedFactory.Object);
+              mockedFactory.Object,
+              mockedSaver.Object);
 
             mockedView.Raise(x => x.MyInit += null, EventArgs.Empty);
 
@@ -80,6 +84,7 @@ namespace CourseProject.Mvp.Tests.CreateAdvertisement.CreateAdvertisementPresent
             var mockedCitiesService = new Mock<ICitiesService>();
             var mockedCategoriesService = new Mock<ICategoriesService>();
             var mockedFactory = new Mock<IImageJobFactory>();
+            var mockedSaver = new Mock<IImageSaver>();
 
             mockedView.Setup(x => x.Model).Returns(model);
             mockedCategoriesService.Setup(x => x.GetCategories()).Verifiable();
@@ -89,7 +94,8 @@ namespace CourseProject.Mvp.Tests.CreateAdvertisement.CreateAdvertisementPresent
                 mockedAdsService.Object,
                 mockedCitiesService.Object,
                 mockedCategoriesService.Object,
-                mockedFactory.Object);
+                mockedFactory.Object,
+                mockedSaver.Object);
 
             mockedView.Raise(x => x.MyInit += null, EventArgs.Empty);
 
@@ -105,6 +111,7 @@ namespace CourseProject.Mvp.Tests.CreateAdvertisement.CreateAdvertisementPresent
             var mockedCitiesService = new Mock<ICitiesService>();
             var mockedCategoriesService = new Mock<ICategoriesService>();
             var mockedFactory = new Mock<IImageJobFactory>();
+            var mockedSaver = new Mock<IImageSaver>();
 
             var data = new List<Category>()
             {
@@ -120,7 +127,8 @@ namespace CourseProject.Mvp.Tests.CreateAdvertisement.CreateAdvertisementPresent
               mockedAdsService.Object,
               mockedCitiesService.Object,
               mockedCategoriesService.Object,
-              mockedFactory.Object);
+              mockedFactory.Object,
+              mockedSaver.Object);
 
             mockedView.Raise(x => x.MyInit += null, EventArgs.Empty);
 
