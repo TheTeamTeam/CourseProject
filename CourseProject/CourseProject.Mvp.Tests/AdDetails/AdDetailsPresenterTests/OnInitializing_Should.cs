@@ -22,10 +22,10 @@ namespace CourseProject.Mvp.Tests.AdDetails.AdDetailsPresenterTests
             var mockedAd = new Mock<Advertisement>();
             var mockedView = new Mock<IAdDetailsView>();
             var mockedAdvertisementService = new Mock<IAdvertisementsService>();
+            var mockedUsersService = new Mock<IUsersService>();
             mockedView.Setup(x => x.Model).Returns(model);
             mockedAdvertisementService.Setup(x => x.GetAdById(It.IsAny<int>())).Verifiable();
-            mockedAdvertisementService.Setup(x => x.GetAdById(It.IsAny<int>())).Returns(mockedAd.Object);
-            var mockedUsersService = new Mock<IUsersService>();
+            mockedAdvertisementService.Setup(x => x.GetAdById(It.IsAny<int>())).Returns(mockedAd.Object);          
             var adDetailsPresenter = new AdDetailsPresenter(mockedView.Object,
                                                             mockedAdvertisementService.Object,
                                                             mockedUsersService.Object);
@@ -43,10 +43,10 @@ namespace CourseProject.Mvp.Tests.AdDetails.AdDetailsPresenterTests
             var mockedAd = new Mock<Advertisement>();
             var mockedView = new Mock<IAdDetailsView>();
             var mockedAdvertisementService = new Mock<IAdvertisementsService>();
+            var mockedUsersService = new Mock<IUsersService>();
             mockedView.Setup(x => x.Model).Returns(model);
             mockedAdvertisementService.Setup(x => x.GetAdById(It.IsAny<int>())).Verifiable();
             mockedAdvertisementService.Setup(x => x.GetAdById(It.IsAny<int>())).Returns(mockedAd.Object);
-            var mockedUsersService = new Mock<IUsersService>();
             var adDetailsPresenter = new AdDetailsPresenter(mockedView.Object,
                                                             mockedAdvertisementService.Object,
                                                             mockedUsersService.Object);
@@ -65,9 +65,9 @@ namespace CourseProject.Mvp.Tests.AdDetails.AdDetailsPresenterTests
             var mockedAd = new Mock<Advertisement>();
             var mockedView = new Mock<IAdDetailsView>();
             var mockedAdvertisementService = new Mock<IAdvertisementsService>();
+            var mockedUsersService = new Mock<IUsersService>();
             mockedView.Setup(x => x.Model).Returns(model);
             mockedAdvertisementService.Setup(x => x.GetAdById(It.IsAny<int>())).Returns(mockedAd.Object);
-            var mockedUsersService = new Mock<IUsersService>();
             var adDetailsPresenter = new AdDetailsPresenter(mockedView.Object,
                                                             mockedAdvertisementService.Object,
                                                             mockedUsersService.Object);
@@ -85,9 +85,9 @@ namespace CourseProject.Mvp.Tests.AdDetails.AdDetailsPresenterTests
             var mockedAd = new Mock<Advertisement>();
             var mockedView = new Mock<IAdDetailsView>();
             var mockedAdvertisementService = new Mock<IAdvertisementsService>();
+            var mockedUsersService = new Mock<IUsersService>();
             mockedView.Setup(x => x.Model).Returns(model);
             mockedAdvertisementService.Setup(x => x.GetAdById(It.IsAny<int>())).Returns(mockedAd.Object);
-            var mockedUsersService = new Mock<IUsersService>();
             var adDetailsPresenter = new AdDetailsPresenter(mockedView.Object,
                                                             mockedAdvertisementService.Object,
                                                             mockedUsersService.Object);

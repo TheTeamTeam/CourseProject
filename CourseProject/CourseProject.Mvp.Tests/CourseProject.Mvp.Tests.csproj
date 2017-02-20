@@ -77,6 +77,7 @@
     <Compile Include="Account\Login\LoginPresenterTests\Mocks\MockedLoginView.cs" />
     <Compile Include="Account\Login\LoginPresenterTests\OtherTests.cs" />
     <Compile Include="AdDetails\AdDetailsPresenterTests\Constructor_Should.cs" />
+    <Compile Include="AdDetails\AdDetailsPresenterTests\OnBookAd_Should.cs" />
     <Compile Include="AdDetails\AdDetailsPresenterTests\OnInitializing_Should.cs" />
     <Compile Include="Home\HomePresenterTests\Constructor_Should.cs" />
     <Compile Include="Home\HomePresenterTests\OnInitializing_Should.cs" />
