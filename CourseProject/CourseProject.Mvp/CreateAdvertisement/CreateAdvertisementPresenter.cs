@@ -26,7 +26,7 @@ namespace CourseProject.Mvp.CreateAdvertisement
         {
             if (adsService == null)
             {
-                throw new ArgumentNullException("Ads service cannot be null.");
+                throw new ArgumentNullException("Advertisements service cannot be null.");
             }
 
             if (citiesService == null)
@@ -83,7 +83,7 @@ namespace CourseProject.Mvp.CreateAdvertisement
             this.adsService.CreateAdvertisement(advertisement);
         }
 
-        private void SaveImagesToFileSystem(HttpPostedFile image, string filename)
+        private void SaveImagesToFileSystem(HttpPostedFileBase image, string filename)
         {
             // The resizing settings can specify any of 30 commands.. See http://imageresizing.net for details.
             // Destination paths can have variables like <guid> and <ext>, or 
@@ -94,7 +94,7 @@ namespace CourseProject.Mvp.CreateAdvertisement
                 new Instructions("width=200;height=200;format=jpg;mode=max"));
             i.CreateParentDirectory = true; // Auto-create the uploads directory.
             i.Build();
-
+            
             ImageJob j = this.imageJobFactory.CreateImageJob(
                 image,
                 $"~/images/big/{filename}",

@@ -44,7 +44,7 @@ namespace CourseProject.Web
 
                 if (Image.HasFile && (Image.PostedFile.ContentType == "image/jpeg" || Image.PostedFile.ContentType == "image/png"))
                 {
-                    HttpPostedFile file = Image.PostedFile;
+                    HttpPostedFileWrapper file = new HttpPostedFileWrapper(Image.PostedFile);
 
                     this.CreatingAdvertisement?.Invoke(sender, new CreatingAdvertisementEventArgs(
                         name,

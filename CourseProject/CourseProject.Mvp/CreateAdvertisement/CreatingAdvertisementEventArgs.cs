@@ -11,7 +11,7 @@ namespace CourseProject.Mvp.CreateAdvertisement
                     int places,
                     decimal price,
                     DateTime expireDate,
-                    HttpPostedFile image,
+                    HttpPostedFileBase image,
                     int cityId,
                     int categoryId,
                     string sellerId)
@@ -37,7 +37,7 @@ namespace CourseProject.Mvp.CreateAdvertisement
 
         public DateTime ExpireDate { get; private set; }
 
-        public HttpPostedFile Image { get; private set; }
+        public HttpPostedFileBase Image { get; private set; }
 
         public int CityId { get; private set; }
 
