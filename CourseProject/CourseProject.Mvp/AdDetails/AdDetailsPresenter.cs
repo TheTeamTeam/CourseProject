@@ -19,7 +19,7 @@ namespace CourseProject.Mvp.AdDetails
         {
             if (adsService == null)
             {
-                throw new ArgumentNullException("Ads service cannot be null.");
+                throw new ArgumentNullException("Advertisements service cannot be null.");
             }
 
             if (usersService == null)

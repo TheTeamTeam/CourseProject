@@ -85,6 +85,9 @@
     <Compile Include="CreateAdvertisement\CreateAdvertisementPresenterTests\ImageResizerExtensions\ImageBuilderMock.cs" />
     <Compile Include="CreateAdvertisement\CreateAdvertisementPresenterTests\OnCreatingAdvertisement_Should.cs" />
     <Compile Include="CreateAdvertisement\CreateAdvertisementPresenterTests\OnInit_Should.cs" />
+    <Compile Include="AdDetails\AdDetailsPresenterTests\Constructor_Should.cs" />
+    <Compile Include="AdDetails\AdDetailsPresenterTests\OnBookAd_Should.cs" />
+    <Compile Include="AdDetails\AdDetailsPresenterTests\OnInitializing_Should.cs" />
     <Compile Include="Home\HomePresenterTests\Constructor_Should.cs" />
     <Compile Include="Home\HomePresenterTests\OnInitializing_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
