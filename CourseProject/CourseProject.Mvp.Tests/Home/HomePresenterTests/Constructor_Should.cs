@@ -5,7 +5,7 @@ using CourseProject.Mvp.Home;
 
 namespace CourseProject.Mvp.Tests.Home.HomePresenterTests
 {
-        [TestFixture]
+    [TestFixture]
     public class Constructor_Should
     {
         [Test]
