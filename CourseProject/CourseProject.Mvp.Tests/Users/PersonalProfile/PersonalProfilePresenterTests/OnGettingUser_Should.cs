@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using Moq;
-using CourseProject.Mvp.Tests.Users.PersonalProfile.PersonalProfilePresenterTests.Mocks;
 using CourseProject.Services.Contracts;
 using CourseProject.Mvp.Users.PersonalProfile;
 using CourseProject.Models;

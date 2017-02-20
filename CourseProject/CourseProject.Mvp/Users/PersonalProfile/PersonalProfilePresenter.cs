@@ -20,7 +20,7 @@ namespace CourseProject.Mvp.Users.PersonalProfile
 
             if (adsService == null)
             {
-                throw new ArgumentNullException("Advertisement service cannot be null.");
+                throw new ArgumentNullException("Advertisements service cannot be null.");
             }
 
             this.usersService = usersService;

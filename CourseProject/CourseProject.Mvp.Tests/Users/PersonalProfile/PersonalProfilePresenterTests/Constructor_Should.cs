@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using Moq;
-using CourseProject.Mvp.Tests.Users.PersonalProfile.PersonalProfilePresenterTests.Mocks;
 using CourseProject.Services.Contracts;
 using CourseProject.Mvp.Users.PersonalProfile;
 
@@ -31,6 +26,25 @@ namespace CourseProject.Mvp.Tests.Users.PersonalProfile.PersonalProfilePresenter
 
             Assert.That(() => new PersonalProfilePresenter(mockedView.Object, null, mockedAdsService.Object),
                     Throws.ArgumentNullException.With.Message.Contains("Users service cannot be null."));
+        }
+
+        [Test]
+        public void ThrowArgumentNullException_WhenAdvertisementsServiceIsNull()
+        {
+            var mockedView = new Mock<IPersonalProfileView>();
+            var mockedUsersService = new Mock<IUsersService>();
+
+            Assert.Throws<ArgumentNullException>(() => new PersonalProfilePresenter(mockedView.Object, mockedUsersService.Object, null));
+        }
+
+        [Test]
+        public void ThrowExceptionWithCorrectMessage_ThrowArgumentNullException_WhenAdvertisementsServiceIsNull()
+        {
+            var mockedView = new Mock<IPersonalProfileView>();
+            var mockedUsersService = new Mock<IUsersService>();
+
+            Assert.That(() => new PersonalProfilePresenter(mockedView.Object, mockedUsersService.Object, null),
+                    Throws.ArgumentNullException.With.Message.Contains("Advertisements service cannot be null."));
         }
 
         //[Test]

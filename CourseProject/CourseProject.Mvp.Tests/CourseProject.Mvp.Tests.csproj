@@ -76,9 +76,10 @@
     <Compile Include="Account\Login\LoginPresenterTests\Contructor_Should.cs" />
     <Compile Include="Account\Login\LoginPresenterTests\Mocks\MockedLoginView.cs" />
     <Compile Include="Account\Login\LoginPresenterTests\OtherTests.cs" />
+    <Compile Include="Home\HomePresenterTests\Constructor_Should.cs" />
+    <Compile Include="Home\HomePresenterTests\OnInitializing_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\PersonalProfile\PersonalProfilePresenterTests\Constructor_Should.cs" />
-    <Compile Include="Users\PersonalProfile\PersonalProfilePresenterTests\Mocks\MockedPersonalProfileView.cs" />
     <Compile Include="Users\PersonalProfile\PersonalProfilePresenterTests\OnGettingUser_Should.cs" />
     <Compile Include="Users\PersonalProfile\PersonalProfilePresenterTests\OnRemovingSavedAd_Should.cs" />
   </ItemGroup>
@@ -103,9 +104,7 @@
       <Name>CourseProject.Services</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Home\HomePresenterTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
