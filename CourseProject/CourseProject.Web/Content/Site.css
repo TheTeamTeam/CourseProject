@@ -13,6 +13,7 @@ body {
 }
 
 .details-description {
+    margin-top: 30px;
     overflow-wrap: break-word;
 }
 
@@ -97,12 +98,6 @@ background: -webkit-linear-gradient(top,  #ffffff 11%,#d7ed97 35%,#b4db6b 53%,#d
 background: linear-gradient(to bottom,  #ffffff 11%,#d7ed97 35%,#b4db6b 53%,#d7ed97 66%,#ffffff 85%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 
-
-
-
-
-
-
 }
 
 .home-content{
@@ -112,11 +107,22 @@ left: 0px;
 right: 0px;
 }
 
-/*.home-line{
-    width: 100%;
-    height: 200px;
-    background-image: url(Untitled.png);
-    /*background:no-repeat;
-    background-size: cover;
+.ad-height{
+    height: 250px;
+}
 
-}*/
+.ad-display-info{
+    font-size: 17px;
+}
+
+.no-top-margin{
+    margin-top: 0px;
+}
+
+.vertical-center{
+    vertical-align: middle;
+}
+
+.small-padding{
+   padding: 20px !important;
+}

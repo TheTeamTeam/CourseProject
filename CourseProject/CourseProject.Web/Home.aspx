@@ -9,24 +9,30 @@
             </p>
         </div>
         <div class="container">
-        <h2 class="text-green">Offers ending soon!</h2>
-        <div class="jumbotron">
-            <asp:ListView runat="server" ID="MainList"
-                DataSource="<%# this.Model.TopAds %>"
-                ItemType="CourseProject.Models.Advertisement">
-                <ItemSeparatorTemplate>
-                    <hr />
-                </ItemSeparatorTemplate>
-                <ItemTemplate>
-                    <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
-                    <div>
-                        <img class="col-md-3" src="<%#: Item.ImagePathSmall %>" alt="<%#: Item.Name %>" />
-                    </div>
-                    <p>Price: <%#: Item.Price %>lv.</p>
-                    <p>Places: <%#: Item.Places %>, City: <%#: Item.City.Name %>, Category: <%#: Item.Category.Name %></p>
-                </ItemTemplate>
-            </asp:ListView>
-        </div>
+            <h2 class="text-green">Offers ending soon!</h2>
+            <div class="jumbotron">
+                <asp:ListView runat="server" ID="MainList"
+                    DataSource="<%# this.Model.TopAds %>"
+                    ItemType="CourseProject.Models.Advertisement">
+                    <ItemSeparatorTemplate>
+                        <hr />
+                    </ItemSeparatorTemplate>
+                    <ItemTemplate>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="<%#: Item.ImagePathSmall %>" alt="<%#: Item.Name %>" />
+                            </div>
+                            <div class ="ad-display-info col-md-8">
+                                <h2 class="no-top-margin"><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h2>
+                                <div>Price: <%#: Item.Price %> lv.</div>
+                                <div>Places: <%#: Item.Places %></div> 
+                                <div>City: <%#: Item.City.Name %> </div>
+                                <div>Category: <%#: Item.Category.Name %></div>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:ListView>
             </div>
+        </div>
     </div>
 </asp:Content>

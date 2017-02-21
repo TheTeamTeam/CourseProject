@@ -64,12 +64,19 @@
                 <hr />
             </ItemSeparatorTemplate>
             <ItemTemplate>
-                <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
-                <div>
-                    <img class="col-md-3" src="<%#: Item.ImagePathSmall %>" alt="<%#: Item.Name %>" />
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="<%#: Item.ImagePathSmall %>" alt="<%#: Item.Name %>" />
+                    </div>
+                    <div class="col-md-8 ad-display-info">
+                        <h2 class="no-top-margin"><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h2>
+                        <div>Price: <%#: Item.Price %> lv.</div>
+                        <div>Expire date: <%#: Item.ExpireDate.ToLocalTime() %></div> 
+                        <div>Places: <%#: Item.Places %></div>
+                        <div>City: <%#: Item.City.Name %></div>
+                        <div>Category: <%#: Item.Category.Name %></div> 
+                    </div>
                 </div>
-                <p>Price: <%#: Item.Price %>lv. Expire date: <%#: Item.ExpireDate %></p>
-                <p>Places: <%#: Item.Places %>, City: <%#: Item.City.Name %>, Category: <%#: Item.Category.Name %></p>
             </ItemTemplate>
             <EmptyDataTemplate>
                 <p class="lead">There are no results to your search!</p>

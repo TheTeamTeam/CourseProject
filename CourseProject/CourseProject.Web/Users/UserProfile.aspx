@@ -31,11 +31,18 @@
                     <hr />
                 </ItemSeparatorTemplate>
                 <ItemTemplate>
-                    <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
-                    <div>
-                        <img class="col-md-3" src="<%#: Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="<%#: Item.ImagePathSmall %>" alt="<%#: Item.Name %>" />
+                        </div>
+                        <div class="ad-display-info col-md-8">
+                            <h2 class="no-top-margin"><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h2>
+                            <div>Price: <%#: Item.Price %> lv.</div>
+                            <div>Places: <%#: Item.Places %></div>
+                            <div>City: <%#: Item.City.Name %> </div>
+                            <div>Category: <%#: Item.Category.Name %></div>
+                        </div>
                     </div>
-                    <p>Price: <%#: Item.Price %>lv.</p>
                 </ItemTemplate>
                 <EmptyDataTemplate>
                     <p class="text-green">This seller has no ads yet!</p>

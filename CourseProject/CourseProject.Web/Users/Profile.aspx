@@ -22,11 +22,18 @@
                                 <hr />
                             </ItemSeparatorTemplate>
                             <ItemTemplate>
-                                <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
-                                <div>
-                                    <img class="col-md-3" src="<%#: Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
-                                </div>
-                                <p>Price: <%#: Item.Price %>lv.</p>
+                                <div class="row">
+                            <div class="col-md-4">
+                                <img src="<%#: Item.ImagePathSmall %>" alt="<%#: Item.Name %>" />
+                            </div>
+                            <div class ="ad-display-info col-md-8">
+                                <h2 class="no-top-margin"><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h2>
+                                <div>Price: <%#: Item.Price %> lv.</div>
+                                <div>Places: <%#: Item.Places %></div> 
+                                <div>City: <%#: Item.City.Name %> </div>
+                                <div>Category: <%#: Item.Category.Name %></div>
+                            </div>
+                        </div>
                             </ItemTemplate>
                             <EmptyDataTemplate>
                                 <p class="text-green">You have not ads yet!</p>
@@ -39,8 +46,8 @@
     </asp:LoginView>
 
     <div class="row">
-        <div class="col-md-5 jumbotron">
-            <h3>Upcoming</h3>
+        <div class="col-md-5 jumbotron small-padding">
+            <h2>Upcoming</h2>
             <asp:ListView runat="server" ID="UpcomingList"
                 DataSource="<%# this.Model.ProfileUser.UpcomingAds %>"
                 ItemType="CourseProject.Models.Advertisement">
@@ -48,11 +55,17 @@
                     <hr />
                 </ItemSeparatorTemplate>
                 <ItemTemplate>
-                    <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
-                    <div>
-                        <img class="col-md-3" src="<%#: Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
-                    </div>
-                    <p>Price: <%#: Item.Price %>lv.</p>
+                    <div class="row">
+                            <div class="col-md-4">
+                                <img src="<%#: Item.ImagePathSmall %>" alt="<%#: Item.Name %>" />
+                            </div>
+                            <div class ="ad-display-info col-md-offset-2 col-md-6">
+                                <h3 class="no-top-margin"><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
+                                <div>Price: <%#: Item.Price %> lv.</div>
+                                <div>City: <%#: Item.City.Name %> </div>
+                                <div>Category: <%#: Item.Category.Name %></div>
+                            </div>
+                        </div>
                 </ItemTemplate>
                 <EmptyDataTemplate>
                     <p class="text-green">You have no upcoming events!</p>
@@ -60,23 +73,29 @@
             </asp:ListView>
         </div>
 
-        <div class="col-md-6 col-md-offset-1 jumbotron">
-            <h3>Saved</h3>
+        <div class="col-md-6 col-md-offset-1 jumbotron small-padding">
+            <h2>Saved</h2>
             <asp:UpdatePanel runat="server" ID="SavedAdsPanel" UpdateMode="Conditional" ChildrenAsTriggers="true">
                 <ContentTemplate>
-                    <asp:ListView runat="server" ID="ListView1"
+                    <asp:ListView runat="server" ID="ListView1"                        
                         DataSource="<%# this.Model.ProfileUser.SavedAds %>"
                         ItemType="CourseProject.Models.Advertisement">
                         <ItemSeparatorTemplate>
                             <hr />
                         </ItemSeparatorTemplate>
                         <ItemTemplate>
-                            <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
-                            <div>
-                                <img class="col-md-3" src="<%#: Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
+                            <div class="row">
+                            <div class="col-md-4">
+                                <img src="<%#: Item.ImagePathSmall %>" alt="<%#: Item.Name %>" />
                             </div>
-                            <p>Price: <%#: Item.Price %>lv.</p>
+                            <div class ="ad-display-info col-md-offset-1 col-md-6">
+                                <h3 class="no-top-margin"><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
+                                <div>Price: <%#: Item.Price %> lv.</div>
+                                <div>City: <%#: Item.City.Name %> </div>
+                                <div>Category: <%#: Item.Category.Name %></div>
                             <asp:Button runat="server" ID="RemoveFromSaved" Text="Remove From Saved" data-id="<%# Item.Id %>" OnClick="RemoveFromSaved_Click" CssClass="btn btn-default" />
+                            </div>
+                        </div>
                         </ItemTemplate>
                         <EmptyDataTemplate>
                             <p class="text-green">You have not saved any ads yet!</p>

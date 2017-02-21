@@ -8,17 +8,21 @@
         DataKeyNames="Id"
         ItemType="CourseProject.Models.Advertisement">
         <ItemTemplate>
-            <h3><%#: Item.Name %></h3>
-            <div>
-                <p class="details-description col-md-6"><%#: Item.Description %> </p>
-                <img class="col-md-6" src="<%#: Item.ImagePathBig %>" alt="<%#: Item.Name %>" />
+            <h1><%#: Item.Name %></h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="details-description"><%#: Item.Description %> </p>
+                </div>
+                <div class="col-md-6">
+                    <img src="<%#: Item.ImagePathBig %>" alt="<%#: Item.Name %>" />
+                </div>
             </div>
-            <p>City: <strong><%#: Item.City.Name %></strong></p>
-            <p>Category: <strong><%#: Item.Category.Name %></strong></p>
-            <p>by <a href="/users/<%#: Item.Seller.UserName %>"><%#: Item.Seller.UserName %></a></p>
-            <p>Price: <strong><%#: Item.Price %>lv.</strong></p>
-            <p>Expire Date: <strong><%#: Item.ExpireDate %></strong></p>
-            <p>Free places: <strong><%#: Item.Places %></strong></p>
+            <p class="lead">City: <strong><%#: Item.City.Name %></strong></p>
+            <p class="lead">Category: <strong><%#: Item.Category.Name %></strong></p>
+            <p class="lead">by <a href="/users/<%#: Item.Seller.UserName %>"><%#: Item.Seller.UserName %></a></p>
+            <p class="lead">Price: <strong><%#: Item.Price %>lv.</strong></p>
+            <p class="lead">Expire Date: <strong><%#: Item.ExpireDate %></strong></p>
+            <p class="lead">Free places: <strong><%#: Item.Places %></strong></p>
             <asp:LoginView runat="server">
                 <RoleGroups>
                     <asp:RoleGroup Roles="Admin">
@@ -31,16 +35,18 @@
             </asp:LoginView>
         </ItemTemplate>
         <EditItemTemplate>
-            <asp:Label runat="server" AssociatedControlID="EditName" Text="Names:"></asp:Label>
+            <asp:Label runat="server" AssociatedControlID="EditName" Text="Name:"></asp:Label>
             <asp:TextBox runat="server" ID="EditName" Text="<%# BindItem.Name %>" CssClass="form-control"></asp:TextBox>
-            <asp:RegularExpressionValidator Display="Dynamic" runat="server" ControlToValidate="EditName" 
-                    CssClass="text-danger" ValidationExpression="^[\s\S]{3,20}$" Text="Minimum 3 and maximum 20 characters required." />
+            <asp:RegularExpressionValidator Display="Dynamic" runat="server" ControlToValidate="EditName"
+                CssClass="text-danger" ValidationExpression="^[\s\S]{3,20}$" Text="Minimum 3 and maximum 20 characters required." />
 
+            <br />
             <asp:Label runat="server" AssociatedControlID="EditDescription" Text="Description:"></asp:Label>
             <asp:TextBox runat="server" ID="EditDescription" Text="<%# BindItem.Description %>" TextMode="MultiLine" Rows="7" CssClass="form-control"></asp:TextBox>
-            <asp:RegularExpressionValidator Display="Dynamic" runat="server" ControlToValidate="EditDescription" 
-                    CssClass="text-danger" ValidationExpression="^[\s\S]{3,500}$" Text="Minimum 3 and maximum 500 characters required."  />
+            <asp:RegularExpressionValidator Display="Dynamic" runat="server" ControlToValidate="EditDescription"
+                CssClass="text-danger" ValidationExpression="^[\s\S]{3,500}$" Text="Minimum 3 and maximum 500 characters required." />
 
+            <br />
             <asp:Label runat="server" AssociatedControlID="EditPrice" Text="Price:"></asp:Label>
             <asp:TextBox runat="server" ID="EditPrice" Text="<%# BindItem.Price %>" CssClass="form-control"></asp:TextBox>
             <asp:RangeValidator runat="server" ControlToValidate="EditPrice" Type="Double" MinimumValue="0" MaximumValue="1000"
@@ -61,7 +67,7 @@
     <%-- Buttons outside of the view because the ajaxtoolkit wouldn't work --%>
     <br />
     <asp:Button runat="server" ID="BookButton" Text="Book"
-        Visible="<%# this.Model.BookButtonVisible && this.Model.Advertisement.Places > 0 %>" OnClick="BookButton_Click" CssClass="btn btn-default"/>
+        Visible="<%# this.Model.BookButtonVisible && this.Model.Advertisement.Places > 0 %>" OnClick="BookButton_Click" CssClass="btn btn-default" />
 
     <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender" runat="server" DisplayModalPopupID="mpe" TargetControlID="BookButton" />
     <ajaxToolkit:ModalPopupExtender ID="mpe" runat="server" PopupControlID="PopUpPnl" TargetControlID="BookButton"
@@ -76,5 +82,5 @@
         <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
     </asp:Panel>
     <asp:Button runat="server" ID="SaveButton" Text="Save Ad"
-        Visible="<%# this.Model.SaveButtonVisible %>" OnClick="SaveButton_Click" CssClass="btn btn-default"/>
+        Visible="<%# this.Model.SaveButtonVisible %>" OnClick="SaveButton_Click" CssClass="btn btn-default" />
 </asp:Content>
