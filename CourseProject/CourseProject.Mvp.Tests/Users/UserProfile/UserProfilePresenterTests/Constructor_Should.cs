@@ -7,6 +7,7 @@ using NUnit.Framework;
 using Moq;
 using CourseProject.Mvp.Users.UserProfile;
 using CourseProject.Services.Contracts;
+using CourseProject.Mvp.Identity.Contracts;
 
 namespace CourseProject.Mvp.Tests.Users.UserProfile.UserProfilePresenterTests
 {
@@ -18,11 +19,13 @@ namespace CourseProject.Mvp.Tests.Users.UserProfile.UserProfilePresenterTests
         {
             var mockedView = new Mock<IUserProfileView>();
             var mockedAdsService = new Mock<IAdvertisementsService>();
+            var mockedProvider = new Mock<IRolesProvider>();
 
             Assert.Throws<ArgumentNullException>(() => new UserProfilePresenter(
                 mockedView.Object,
                 null,
-                mockedAdsService.Object));
+                mockedAdsService.Object,
+                mockedProvider.Object));
         }
 
         [Test]
@@ -30,8 +33,9 @@ namespace CourseProject.Mvp.Tests.Users.UserProfile.UserProfilePresenterTests
         {
             var mockedView = new Mock<IUserProfileView>();
             var mockedAdsService = new Mock<IAdvertisementsService>();
+            var mockedProvider = new Mock<IRolesProvider>();
 
-            Assert.That(() => new UserProfilePresenter(mockedView.Object, null, mockedAdsService.Object),
+            Assert.That(() => new UserProfilePresenter(mockedView.Object, null, mockedAdsService.Object, mockedProvider.Object),
                     Throws.ArgumentNullException.With.Message.Contains("Users service cannot be null."));
         }
 
@@ -40,11 +44,13 @@ namespace CourseProject.Mvp.Tests.Users.UserProfile.UserProfilePresenterTests
         {
             var mockedView = new Mock<IUserProfileView>();
             var mockedUsersService = new Mock<IUsersService>();
+            var mockedProvider = new Mock<IRolesProvider>();
 
             Assert.Throws<ArgumentNullException>(() => new UserProfilePresenter(
                 mockedView.Object,
                 mockedUsersService.Object,
-                null));
+                null,
+                mockedProvider.Object));
         }
 
         [Test]
@@ -52,9 +58,35 @@ namespace CourseProject.Mvp.Tests.Users.UserProfile.UserProfilePresenterTests
         {
             var mockedView = new Mock<IUserProfileView>();
             var mockedUsersService = new Mock<IUsersService>();
+            var mockedProvider = new Mock<IRolesProvider>();
 
-            Assert.That(() => new UserProfilePresenter(mockedView.Object, mockedUsersService.Object, null),
+            Assert.That(() => new UserProfilePresenter(mockedView.Object, mockedUsersService.Object, null, mockedProvider.Object),
                     Throws.ArgumentNullException.With.Message.Contains("Advertisements service cannot be null."));
+        }
+
+        [Test]
+        public void ThrowArgumentNullException_WhenRolesProviderIsNull()
+        {
+            var mockedView = new Mock<IUserProfileView>();
+            var mockedUsersService = new Mock<IUsersService>();
+            var mockedAdsService = new Mock<IAdvertisementsService>();
+
+            Assert.Throws<ArgumentNullException>(() => new UserProfilePresenter(
+                mockedView.Object,
+                mockedUsersService.Object,
+                mockedAdsService.Object,
+                null));
+        }
+
+        [Test]
+        public void ThrowExceptionWithCorrectMessage_WhenRolesProviderIsNull()
+        {
+            var mockedView = new Mock<IUserProfileView>();
+            var mockedUsersService = new Mock<IUsersService>();
+            var mockedAdsService = new Mock<IAdvertisementsService>();
+
+            Assert.That(() => new UserProfilePresenter(mockedView.Object, mockedUsersService.Object, mockedAdsService.Object, null),
+                    Throws.ArgumentNullException.With.Message.Contains("Roles provider cannot be null."));
         }
     }
 }

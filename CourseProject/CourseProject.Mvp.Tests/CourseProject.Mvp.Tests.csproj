@@ -84,7 +84,6 @@
     <Compile Include="AdDetails\AdDetailsPresenterTests\OnDeleteAd_Should.cs" />
     <Compile Include="AdDetails\AdDetailsPresenterTests\OnUpdateAd_Should.cs" />
     <Compile Include="CreateAdvertisement\CreateAdvertisementPresenterTests\Constructor_Should.cs" />
-    <Compile Include="CreateAdvertisement\CreateAdvertisementPresenterTests\ImageResizerExtensions\ImageBuilderMock.cs" />
     <Compile Include="CreateAdvertisement\CreateAdvertisementPresenterTests\OnCreatingAdvertisement_Should.cs" />
     <Compile Include="CreateAdvertisement\CreateAdvertisementPresenterTests\OnInit_Should.cs" />
     <Compile Include="AdDetails\AdDetailsPresenterTests\Constructor_Should.cs" />
@@ -101,7 +100,6 @@
     <Compile Include="Users\PersonalProfile\PersonalProfilePresenterTests\OnGettingUser_Should.cs" />
     <Compile Include="Users\PersonalProfile\PersonalProfilePresenterTests\OnRemovingSavedAd_Should.cs" />
     <Compile Include="Users\UserProfile\UserProfilePresenterTests\Constructor_Should.cs" />
-    <Compile Include="Users\UserProfile\UserProfilePresenterTests\OnGettingUser_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

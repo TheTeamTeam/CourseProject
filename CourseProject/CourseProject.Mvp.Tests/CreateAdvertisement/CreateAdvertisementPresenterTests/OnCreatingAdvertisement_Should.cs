@@ -11,7 +11,6 @@ using CourseProject.Services.Contracts;
 using CourseProject.Mvp.ImageResizing;
 using CourseProject.Models;
 using ImageResizer;
-using CourseProject.Mvp.Tests.CreateAdvertisement.CreateAdvertisementPresenterTests.ImageResizerExtensions;
 
 namespace CourseProject.Mvp.Tests.CreateAdvertisement.CreateAdvertisementPresenterTests
 {

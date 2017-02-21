@@ -3,30 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
+using Moq;
+using CourseProject.Mvp.Account.Login;
+using System.Web;
 
 namespace CourseProject.Mvp.Tests.Account.Login.LoginPresenterTests
 {
-    class OtherTests
+    [TestFixture]
+    public class OtherTests
     {
-        // Not working - extension methods
-        // [Test]
-        // public void OnLoggingIn_ShouldGetApplicationUserManagerFromEventArgsContext()
-        // {
-        //     var mockedView = new MockedLoginView();
+        //[Test]
+        //public void OnLoggingIn_ShouldGetApplicationUserManagerFromEventArgsContext()
+        //{
+        //    var model = new LoginModel();
+        //    var mockedView = new Mock<ILoginView>();
+        //    mockedView.Setup(x => x.Model).Returns(model);
 
-        //     var mockedSignInManager = new Mock<ApplicationSignInManager>();
-        //     var mockedEventArgs = new Mock<LoginEventArgs>();
-        //     mockedEventArgs.Setup(x => x.Context.GetOwinContext().GetUserManager<ApplicationUserManager>()).Verifiable();
-        //     mockedEventArgs.Setup(x => x.Context.GetOwinContext().GetUserManager<ApplicationSignInManager>())
-        //         .Returns(mockedSignInManager.Object);
+        //    var presenter = new LoginPresenter(mockedView.Object);
+            
+        //    mockedView.Raise(x => x.LoggingIn += null, new LoginEventArgs(new HttpContext(), "username", "234456pass", true, false));
 
-        //     var presenter = new LoginPresenter(mockedView);
-
-        //     mockedView.InvokeLogginIn(mockedView, mockedEventArgs.Object);
-
-        //     mockedEventArgs.Verify(x => x.Context.GetOwinContext().GetUserManager<ApplicationUserManager>(), Times.Once);
-        //     mockedEventArgs.Verify(x => x.Context.GetOwinContext().GetUserManager<ApplicationSignInManager>(), Times.Once);
-        // }
+        //    Assert.IsNotNull(model.SignInStatus);
+        //}
 
         // [Test]
         // public void OnLoggingIn_ShouldCallPasswordSignInOnTheSignInManager()
