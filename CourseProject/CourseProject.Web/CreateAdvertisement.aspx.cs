@@ -32,12 +32,18 @@ namespace CourseProject.Web
         protected void CreateAdvertisement_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
-            {           
+            {          
+                DateTime date;
+                if(!DateTime.TryParseExact(ExpireDate.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture,DateTimeStyles.AllowTrailingWhite, out date))
+                {
+                    this.ErrorMessage.Text = "Date should be in the format month/day/year";
+                    return;
+                }
+
                 var name = this.Name.Text;
                 var description = this.Description.Text;
                 var places = int.Parse(this.Places.Text);
                 var price = decimal.Parse(this.Price.Text);
-                var date = DateTime.ParseExact(ExpireDate.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
                 var userId = this.Page.User.Identity.GetUserId();
                 var categoryId = int.Parse(this.Categories.SelectedValue);
                 var cityId = int.Parse(this.Cities.SelectedValue);

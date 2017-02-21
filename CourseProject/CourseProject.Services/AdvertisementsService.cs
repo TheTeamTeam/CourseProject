@@ -66,9 +66,7 @@ namespace CourseProject.Services
         public IEnumerable<Advertisement> GetTopAds(int count)
         {
             // TODO: Should it be in another method
-            // var filterExpressions = new List<Expression<Func<Advertisement, bool>>>();
-            // filterExpressions.Add(x => x.ExpireDate.CompareTo(DateTime.Now) > 0);
-            var result = this.adsRepository.GetAll(null, x => x.ExpireDate).Take(count);
+            var result = this.adsRepository.GetAll(x => x.ExpireDate.CompareTo(DateTime.Now) > 0 && x.Places > 0, x=>x.ExpireDate).Take(count);
             return result.ToList();
         }
 

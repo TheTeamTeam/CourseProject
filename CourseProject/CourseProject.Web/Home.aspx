@@ -8,9 +8,8 @@
                 Here you can find the best offers in town! Just register and you are ready to book and buy awesome things and go to awesome events. Hurry up, the free places for the best offers' places are limited!
             </p>
         </div>
-    <%--<div class="home-line"></div>--%>
         <div class="container">
-        <h2 class="text-green">Our top offers!</h2>
+        <h2 class="text-green">Offers ending soon!</h2>
         <div class="jumbotron">
             <asp:ListView runat="server" ID="MainList"
                 DataSource="<%# this.Model.TopAds %>"
