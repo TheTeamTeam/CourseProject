@@ -7,10 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace CourseProject.Web
 {
-    public partial class Contact : Page
+    public partial class Sitemap : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
         }
     }
 }

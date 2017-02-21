@@ -209,12 +209,12 @@
     <Content Include="Grids.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Search.aspx" />
+    <Content Include="Sitemap.aspx" />
     <Content Include="Users\AdminControls\ChangeRolesControl.ascx" />
     <Content Include="Users\Profile.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="AdDetails.aspx" />
     <Content Include="CreateAdvertisement.aspx" />
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap-default.min.css" />
     <Content Include="Content\Site.css" />
@@ -272,6 +272,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ErrorPages\400.aspx.cs">
@@ -337,6 +338,13 @@
     <Compile Include="Search.aspx.designer.cs">
       <DependentUpon>Search.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Sitemap.aspx.cs">
+      <DependentUpon>Sitemap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sitemap.aspx.designer.cs">
+      <DependentUpon>Sitemap.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Users\AdminControls\ChangeRolesControl.ascx.cs">
       <DependentUpon>ChangeRolesControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -389,13 +397,6 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
