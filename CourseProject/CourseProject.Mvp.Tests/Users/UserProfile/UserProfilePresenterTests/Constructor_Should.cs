@@ -63,5 +63,30 @@ namespace CourseProject.Mvp.Tests.Users.UserProfile.UserProfilePresenterTests
             Assert.That(() => new UserProfilePresenter(mockedView.Object, mockedUsersService.Object, null, mockedProvider.Object),
                     Throws.ArgumentNullException.With.Message.Contains("Advertisements service cannot be null."));
         }
+
+        [Test]
+        public void ThrowArgumentNullException_WhenRolesProviderIsNull()
+        {
+            var mockedView = new Mock<IUserProfileView>();
+            var mockedUsersService = new Mock<IUsersService>();
+            var mockedAdsService = new Mock<IAdvertisementsService>();
+
+            Assert.Throws<ArgumentNullException>(() => new UserProfilePresenter(
+                mockedView.Object,
+                mockedUsersService.Object,
+                mockedAdsService.Object,
+                null));
+        }
+
+        [Test]
+        public void ThrowExceptionWithCorrectMessage_WhenRolesProviderIsNull()
+        {
+            var mockedView = new Mock<IUserProfileView>();
+            var mockedUsersService = new Mock<IUsersService>();
+            var mockedAdsService = new Mock<IAdvertisementsService>();
+
+            Assert.That(() => new UserProfilePresenter(mockedView.Object, mockedUsersService.Object, mockedAdsService.Object, null),
+                    Throws.ArgumentNullException.With.Message.Contains("Roles provider cannot be null."));
+        }
     }
 }
