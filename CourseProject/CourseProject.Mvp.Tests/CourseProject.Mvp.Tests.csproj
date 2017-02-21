@@ -81,12 +81,15 @@
     <Compile Include="Account\Login\LoginPresenterTests\Contructor_Should.cs" />
     <Compile Include="Account\Login\LoginPresenterTests\Mocks\MockedLoginView.cs" />
     <Compile Include="Account\Login\LoginPresenterTests\OtherTests.cs" />
+    <Compile Include="AdDetails\AdDetailsPresenterTests\OnDeleteAd_Should.cs" />
+    <Compile Include="AdDetails\AdDetailsPresenterTests\OnUpdateAd_Should.cs" />
     <Compile Include="CreateAdvertisement\CreateAdvertisementPresenterTests\Constructor_Should.cs" />
     <Compile Include="CreateAdvertisement\CreateAdvertisementPresenterTests\OnCreatingAdvertisement_Should.cs" />
     <Compile Include="CreateAdvertisement\CreateAdvertisementPresenterTests\OnInit_Should.cs" />
     <Compile Include="AdDetails\AdDetailsPresenterTests\Constructor_Should.cs" />
     <Compile Include="AdDetails\AdDetailsPresenterTests\OnBookAd_Should.cs" />
     <Compile Include="AdDetails\AdDetailsPresenterTests\OnInitializing_Should.cs" />
+    <Compile Include="AdDetails\AdDetailsPresenterTests\OnSaveAd_Should.cs" />
     <Compile Include="Home\HomePresenterTests\Constructor_Should.cs" />
     <Compile Include="Home\HomePresenterTests\OnInitializing_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
