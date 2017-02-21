@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using WebFormsMvp;
 using CourseProject.Mvp.Identity;
 using CourseProject.Services.Contracts;
+using CourseProject.Mvp.Identity.Contracts;
 
 namespace CourseProject.Mvp.Users.UserProfile
 {
@@ -12,8 +14,13 @@ namespace CourseProject.Mvp.Users.UserProfile
     {
         private IUsersService usersService;
         private IAdvertisementsService adsService;
+        private readonly IRolesProvider rolesProvider;
 
-        public UserProfilePresenter(IUserProfileView view, IUsersService usersService, IAdvertisementsService adsService)
+        public UserProfilePresenter(
+            IUserProfileView view, 
+            IUsersService usersService, 
+            IAdvertisementsService adsService,
+            IRolesProvider rolesProvider)
             : base(view)
         {
             if (usersService == null)
@@ -26,8 +33,14 @@ namespace CourseProject.Mvp.Users.UserProfile
                 throw new ArgumentNullException("Advertisements service cannot be null.");
             }
 
+            if (rolesProvider == null)
+            {
+                throw new ArgumentNullException("Roles provider cannot be null.");
+            }
+
             this.usersService = usersService;
             this.adsService = adsService;
+            this.rolesProvider = rolesProvider;
 
             this.View.GettingUser += this.OnGettingUser;
         }
@@ -42,8 +55,7 @@ namespace CourseProject.Mvp.Users.UserProfile
                 return;
             }
 
-            var manager = e.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var roles = manager.GetRoles(user.Id);
+            var roles = this.rolesProvider.GetRoles(e.Context, user.Id);
 
             var isSeller = roles.Contains("Seller");
 

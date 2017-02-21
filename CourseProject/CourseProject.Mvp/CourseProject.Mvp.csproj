@@ -127,6 +127,8 @@
     <Compile Include="EventArgsContractsJustInCase\IRoleNameEventArgs.cs" />
     <Compile Include="EventArgsContractsJustInCase\ISaveAdEventArgs.cs" />
     <Compile Include="EventArgsContractsJustInCase\ISearchEventArgs.cs" />
+    <Compile Include="Identity\Contracts\IRolesProvider.cs" />
+    <Compile Include="Identity\RolesProvider.cs" />
     <Compile Include="ImageResizing\IImageJobFactory.cs" />
     <Compile Include="Home\CountEventArgs.cs" />
     <Compile Include="Home\HomeModel.cs" />
