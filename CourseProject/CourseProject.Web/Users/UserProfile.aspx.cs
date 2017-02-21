@@ -17,7 +17,6 @@ namespace CourseProject.Web.Users
 
             if (username == null)
             {
-                // TODO: redirect to not found
                 this.Server.Transfer("~/ErrorPages/404.aspx");
                 return;
             }

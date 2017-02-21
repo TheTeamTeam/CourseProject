@@ -31,7 +31,6 @@ namespace CourseProject.Web.Users.AdminControls
             this.GettingRoles?.Invoke(this, new StringIdEventArgs(this.UserId));
         }
 
-        // TODO: Should roles be constants / enum
         protected void MakeSellerBtn_Click(object sender, EventArgs e)
         {
             this.AddingRole?.Invoke(this, new RoleEventArgs("Seller", this.Context, this.UserId));

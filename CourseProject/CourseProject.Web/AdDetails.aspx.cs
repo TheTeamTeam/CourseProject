@@ -34,7 +34,6 @@ namespace CourseProject.Web
         
         // The id parameter should match the DataKeyNames value set on the control
         // or be decorated with a value provider attribute, e.g. [QueryString]int id
-        // TODO: Decide where to leave logic
         public Advertisement AdForm_GetItem([QueryString] int? id)
         {         
             // If initializing event is called here, on button click, the model.advertisement is null.

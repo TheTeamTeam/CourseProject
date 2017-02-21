@@ -12,7 +12,6 @@ FROM Categories c"></asp:SqlDataSource>
         SelectCommand="SELECT c.Id, c.Name,
     (SELECT COUNT(*) FROM Advertisements a WHERE a.CityId = c.Id) AS CountAds
 FROM Cities c"></asp:SqlDataSource>
-    <%--  SELECT [Id], [Name] FROM [Categories]--%>
 
     <div class="col-md-6">
         <h3 class="text-success">Categories</h3>

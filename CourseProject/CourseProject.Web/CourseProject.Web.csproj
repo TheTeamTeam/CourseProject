@@ -275,6 +275,7 @@
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\NinjectModules\CommonNinjectModule.cs" />
     <Compile Include="ErrorPages\400.aspx.cs">
       <DependentUpon>400.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

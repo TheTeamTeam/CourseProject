@@ -68,7 +68,6 @@
     <Compile Include="Repositories\GenericRepositoryTests\GetAllWithMultipleFilters_Should.cs" />
     <Compile Include="Repositories\GenericRepositoryTests\GetById_Should.cs" />
     <Compile Include="Repositories\GenericRepositoryTests\Mocks\MockedModel.cs" />
-    <Compile Include="Repositories\GenericRepositoryTests\OtherTests.cs" />
     <Compile Include="UnitsOfWork\UnitOfWorkTests\Commit_Should.cs" />
     <Compile Include="UnitsOfWork\UnitOfWorkTests\Contructor_Should.cs" />
   </ItemGroup>

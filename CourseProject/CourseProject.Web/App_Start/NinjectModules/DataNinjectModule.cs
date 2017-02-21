@@ -12,8 +12,6 @@ namespace CourseProject.Web.App_Start.NinjectModules
     {
         public override void Load()
         {
-            // TODO: Bind default interfaces
-
             this.Bind<IAdsHubDbContext>().To<AdsHubDbContext>().InRequestScope();
             this.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>)).InRequestScope();
             this.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
