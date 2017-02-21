@@ -45,6 +45,7 @@ namespace CourseProject.Web
         public void AdForm_DeleteItem(int id)
         {
             this.DeleteAd?.Invoke(this, new IdEventArgs(id));
+            this.Response.Redirect("~/");
         }
 
         // The id parameter name should match the DataKeyNames value set on the control

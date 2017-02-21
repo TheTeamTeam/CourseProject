@@ -20,7 +20,7 @@ namespace CourseProject.Mvp.Search
         {
             if (adsService == null)
             {
-                throw new ArgumentNullException("Ads service cannot be null.");
+                throw new ArgumentNullException("Advertisements service cannot be null.");
             }
 
             if (citiesService == null)

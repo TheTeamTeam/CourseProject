@@ -57,7 +57,6 @@ namespace CourseProject.Mvp.AdDetails
         private void OnDeleteAd(object sender, IdEventArgs e)
         {
             this.adsService.DeleteAd(e.Id);
-            this.View.Response.Redirect("~/");
         }
 
         private void OnInitializing(object sender, AdDetailsEventArgs e)

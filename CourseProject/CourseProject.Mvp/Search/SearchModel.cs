@@ -11,7 +11,5 @@ namespace CourseProject.Mvp.Search
         public IEnumerable<City> Cities { get; set; }
 
         public IEnumerable<Category> Categories { get; set; }
-
-        public int Count { get; set; }
     }
 }
