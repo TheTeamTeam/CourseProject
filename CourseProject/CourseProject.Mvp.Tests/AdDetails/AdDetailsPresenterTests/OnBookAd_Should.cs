@@ -15,7 +15,7 @@ namespace CourseProject.Mvp.Tests.AdDetails.AdDetailsPresenterTests
     public class OnBookAd_Should
     {
         [Test]
-        public void ShouldNotCallUsersServiceAddAdToUpcomingMethodWhenUserBookedAdReturnTrue()
+        public void ShouldNotCallUsersServiceAddAdToUpcomingMethodWhenUserBookedAdReturnsTrue()
         {
             var mockedAd = new Mock<Advertisement>();
             var mockedView = new Mock<IAdDetailsView>();
@@ -35,7 +35,7 @@ namespace CourseProject.Mvp.Tests.AdDetails.AdDetailsPresenterTests
         }
 
         [Test]
-        public void ShouldNotCallAdsServiceDecrementFreePlacesMethodWhenUserBookedAdReturnTrue()
+        public void ShouldNotCallAdsServiceDecrementFreePlacesMethodWhenUserBookedAdReturnsTrue()
         {
             var mockedAd = new Mock<Advertisement>();
             var mockedView = new Mock<IAdDetailsView>();
@@ -55,7 +55,7 @@ namespace CourseProject.Mvp.Tests.AdDetails.AdDetailsPresenterTests
         }
 
         [Test]
-        public void ShouldCallUsersServiceAddAdToUpcomingMethodWhenUserBookedAdReturnFalse()
+        public void ShouldCallUsersServiceAddAdToUpcomingMethodWhenUserBookedAdReturnsFalse()
         {
             var model = new AdDetailsModel();
             var mockedAd = new Mock<Advertisement>();
@@ -77,7 +77,7 @@ namespace CourseProject.Mvp.Tests.AdDetails.AdDetailsPresenterTests
         }
 
         [Test]
-        public void ShouldCallUsersServiceAddAdToUpcomingMethodWithCorrectParametersWhenUserBookedAdReturnFalse()
+        public void ShouldCallUsersServiceAddAdToUpcomingMethodWithCorrectParametersWhenUserBookedAdReturnsFalse()
         {
             var model = new AdDetailsModel();
             var mockedAd = new Mock<Advertisement>();
@@ -99,7 +99,7 @@ namespace CourseProject.Mvp.Tests.AdDetails.AdDetailsPresenterTests
         }
 
         [Test]
-        public void ShouldCallAdsServiceDecrementFreePlacesMethodWhenUserBookedAdReturnFalse()
+        public void ShouldCallAdsServiceDecrementFreePlacesMethodWhenUserBookedAdReturnsFalse()
         {
             var model = new AdDetailsModel();
             var mockedAd = new Mock<Advertisement>();
@@ -121,7 +121,7 @@ namespace CourseProject.Mvp.Tests.AdDetails.AdDetailsPresenterTests
         }
 
         [Test]
-        public void ShouldCallAdsServiceDecrementFreePlacesWithCorrectParametersWhenUserBookedAdReturnFalse()
+        public void ShouldCallAdsServiceDecrementFreePlacesWithCorrectParametersWhenUserBookedAdReturnsFalse()
         {
             var model = new AdDetailsModel();
             var mockedAd = new Mock<Advertisement>();
@@ -143,9 +143,10 @@ namespace CourseProject.Mvp.Tests.AdDetails.AdDetailsPresenterTests
         }
 
         [Test]
-        public void ShouldSetBookButtonVisibleToFalseWhenUserBookedAdReturnFalse()
+        public void ShouldSetBookButtonVisibleToFalseWhenUserBookedAdReturnsFalse()
         {
             var model = new AdDetailsModel();
+            model.BookButtonVisible = true;
             var mockedAd = new Mock<Advertisement>();
             var mockedView = new Mock<IAdDetailsView>();
             var mockedAdvertisementService = new Mock<IAdvertisementsService>();
