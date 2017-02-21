@@ -4,11 +4,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="container col-md-8">
-            <h3><%# this.Model.ProfileUser.FirstName %> <%# this.Model.ProfileUser.LastName %></h3>
-            <h5><%# this.Model.ProfileUser.UserName %></h5>
+            <h3><%#: this.Model.ProfileUser.FirstName %> <%#: this.Model.ProfileUser.LastName %></h3>
+            <h5><%#: this.Model.ProfileUser.UserName %></h5>
 
             <p>Age: <%# this.Model.ProfileUser.Age %></p>
-            <p>Email: <%# this.Model.ProfileUser.Email %></p>
+            <p>Email: <%#: this.Model.ProfileUser.Email %></p>
         </div>
 
         <asp:LoginView runat="server">
@@ -33,7 +33,7 @@
                 <ItemTemplate>
                     <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
                     <div>
-                        <img class="col-md-3" src="<%# Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
+                        <img class="col-md-3" src="<%#: Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
                     </div>
                     <p>Price: <%#: Item.Price %>lv.</p>
                 </ItemTemplate>

@@ -11,7 +11,7 @@
             <h3><%#: Item.Name %></h3>
             <div>
                 <p class="details-description col-md-6"><%#: Item.Description %> </p>
-                <img class="col-md-6" src="<%#Item.ImagePathBig %>" alt="<%#: Item.Name %>" />
+                <img class="col-md-6" src="<%#: Item.ImagePathBig %>" alt="<%#: Item.Name %>" />
             </div>
             <p>City: <strong><%#: Item.City.Name %></strong></p>
             <p>Category: <strong><%#: Item.Category.Name %></strong></p>

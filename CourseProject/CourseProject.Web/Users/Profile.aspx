@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="CourseProject.Web.Users.Profile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h3><%# this.Model.ProfileUser.FirstName %> <%# this.Model.ProfileUser.LastName %></h3>
-    <h5><%# this.Model.ProfileUser.UserName %></h5>
+    <h3><%#: this.Model.ProfileUser.FirstName %> <%#: this.Model.ProfileUser.LastName %></h3>
+    <h5><%#: this.Model.ProfileUser.UserName %></h5>
 
-    <p>Age: <%# this.Model.ProfileUser.Age %></p>
-    <p>Email: <%# this.Model.ProfileUser.Email %></p>
+    <p>Age: <%#: this.Model.ProfileUser.Age %></p>
+    <p>Email: <%#: this.Model.ProfileUser.Email %></p>
 
     <%-- Control for listing ? --%>
 
@@ -24,7 +24,7 @@
                             <ItemTemplate>
                                 <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
                                 <div>
-                                    <img class="col-md-3" src="<%# Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
+                                    <img class="col-md-3" src="<%#: Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
                                 </div>
                                 <p>Price: <%#: Item.Price %>lv.</p>
                             </ItemTemplate>
@@ -50,7 +50,7 @@
                 <ItemTemplate>
                     <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
                     <div>
-                        <img class="col-md-3" src="<%# Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
+                        <img class="col-md-3" src="<%#: Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
                     </div>
                     <p>Price: <%#: Item.Price %>lv.</p>
                 </ItemTemplate>
@@ -73,7 +73,7 @@
                         <ItemTemplate>
                             <h3><a href="/addetails/?id=<%# Item.Id %>"><%#: Item.Name %></a></h3>
                             <div>
-                                <img class="col-md-3" src="<%# Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
+                                <img class="col-md-3" src="<%#: Item.ImagePathSmall%>" alt="<%#: Item.Name %>" />
                             </div>
                             <p>Price: <%#: Item.Price %>lv.</p>
                             <asp:Button runat="server" ID="RemoveFromSaved" Text="Remove From Saved" data-id="<%# Item.Id %>" OnClick="RemoveFromSaved_Click" CssClass="btn btn-default" />

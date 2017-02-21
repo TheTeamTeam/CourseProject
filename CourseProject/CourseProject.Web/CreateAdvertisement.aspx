@@ -1,4 +1,4 @@
-﻿<%@ Page Title="CreateAdvertisement" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateAdvertisement.aspx.cs" Inherits="CourseProject.Web.CreateAdvertisement" %>
+﻿<%@ Page Title="CreateAdvertisement" Language="C#" MasterPageFile="~/Site.Master" ValidateRequest="false" AutoEventWireup="true" CodeBehind="CreateAdvertisement.aspx.cs" Inherits="CourseProject.Web.CreateAdvertisement" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
